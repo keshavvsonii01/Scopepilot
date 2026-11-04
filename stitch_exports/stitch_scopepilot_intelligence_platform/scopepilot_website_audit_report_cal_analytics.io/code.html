@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface":"#fbf9f3","background":"#fbf9f3","on-secondary-fixed-variant":"#105300","tertiary-container":"#0e1c2d","on-tertiary-container":"#77859a","primary-fixed":"#e1e3e1","secondary-fixed":"#8afd67","inverse-surface":"#30312d","on-secondary-fixed":"#032100","inverse-primary":"#c5c7c5","secondary":"#196e00","surface-container-lowest":"#ffffff","surface-container-highest":"#e4e2dc","on-secondary":"#ffffff","surface-container-high":"#eae8e2","primary":"#000000","on-secondary-container":"#1b7400","surface-container-low":"#f5f3ed","error":"#ba1a1a","on-surface-variant":"#434846","on-surface":"#1b1c18","on-error":"#ffffff","tertiary-fixed":"#d5e3fb","tertiary":"#000000","surface-variant":"#e4e2dc","on-primary":"#ffffff","surface-bright":"#fbf9f3","on-primary-fixed":"#191c1b","on-error-container":"#93000a","inverse-on-surface":"#f3f1eb","on-primary-container":"#828483","error-container":"#ffdad6","tertiary-fixed-dim":"#b9c7df","primary-container":"#191c1b","surface-container":"#f0eee8","primary-fixed-dim":"#c5c7c5","outline":"#747876","on-tertiary-fixed-variant":"#3a485b","outline-variant":"#c4c7c5","surface-dim":"#dcdad4","on-primary-fixed-variant":"#444746","on-tertiary":"#ffffff","on-tertiary-fixed":"#0e1c2d","on-background":"#1b1c18","secondary-fixed-dim":"#6edf4d","surface-tint":"#5c5f5d","secondary-container":"#8afd67"},borderRadius:{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},spacing:{"space-xl":"2.5rem","space-sm":"0.5rem","space-2xl":"4rem","margin-sm":"1rem","space-lg":"1.5rem","gutter-lg":"2.5rem","margin":"2rem","gutter-sm":"1rem","margin-lg":"4rem","space-xs":"0.25rem","space-md":"1rem","gutter":"1.5rem"},fontFamily:{"body-md":["Inter"],"display-xl-mobile":["Space Grotesk"],"mono-metric":["JetBrains Mono"],"body-lg":["Inter"],"headline-lg-mobile":["Space Grotesk"],"mono-label":["JetBrains Mono"],"display-xl":["Space Grotesk"],"mono-code":["JetBrains Mono"],"headline-sm":["Space Grotesk"],"headline-lg":["Space Grotesk"],"headline-md":["Space Grotesk"],"body-sm":["Inter"]},fontSize:{"body-md":["14px",{"lineHeight":"22px","letterSpacing":"0em","fontWeight":"400"}],"display-xl-mobile":["38px",{"lineHeight":"42px","letterSpacing":"-0.03em","fontWeight":"700"}],"mono-metric":["20px",{"lineHeight":"24px","letterSpacing":"-0.02em","fontWeight":"600"}],"body-lg":["17px",{"lineHeight":"26px","letterSpacing":"-0.01em","fontWeight":"400"}],"headline-lg-mobile":["28px",{"lineHeight":"32px","letterSpacing":"-0.02em","fontWeight":"600"}],"mono-label":["11px",{"lineHeight":"14px","letterSpacing":"0.06em","fontWeight":"500"}],"display-xl":["56px",{"lineHeight":"60px","letterSpacing":"-0.04em","fontWeight":"700"}],"mono-code":["12px",{"lineHeight":"18px","letterSpacing":"0em","fontWeight":"400"}],"headline-sm":["18px",{"lineHeight":"24px","letterSpacing":"-0.01em","fontWeight":"600"}],"headline-lg":["36px",{"lineHeight":"40px","letterSpacing":"-0.03em","fontWeight":"600"}],"headline-md":["24px",{"lineHeight":"28px","letterSpacing":"-0.02em","fontWeight":"600"}],"body-sm":["12px",{"lineHeight":"18px","letterSpacing":"0em","fontWeight":"400"}]}}}};</script></head><body class="bg-background font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-72 bg-surface-container-low border-r border-outline-variant/40 z-50 flex flex-col justify-between overflow-y-auto"><div class="flex flex-col"><div class="p-space-md border-b border-outline-variant/30"><div class="flex items-center justify-between mb-space-xs"><div class="flex items-center gap-space-xs"><span class="w-2.5 h-2.5 bg-primary rounded-none"></span><span class="font-headline-sm text-headline-sm uppercase tracking-tight text-primary">ScopePilot</span></div><span class="font-mono-label text-[10px] tracking-wider bg-secondary-container/20 text-on-secondary-fixed-variant border border-secondary px-1.5 py-0.5 rounded">SYS: ONLINE</span></div><div class="flex items-center justify-between text-on-surface-variant"><span class="font-mono-code text-[10px] uppercase text-outline">TELEMETRY // V2.4</span><span class="font-mono-code text-[10px] text-outline">+</span></div></div><div class="p-space-md border-b border-outline-variant/30 bg-surface-container/60"><div class="font-mono-label text-mono-label uppercase text-on-surface-variant mb-1">Active Workspace</div><div class="flex items-center justify-between cursor-pointer py-1 px-2 bg-surface border border-outline-variant rounded hover:border-primary transition-colors"><div class="flex items-center gap-2 truncate"><span class="w-2 h-2 rounded-full bg-secondary"></span><span class="font-mono-code text-mono-code text-on-surface truncate">Studio Archetype // Pro Agency</span></div><span class="material-symbols-outlined text-[16px] text-on-surface-variant">unfold_more</span></div></div><div class="px-space-md py-space-sm"><span class="font-mono-label text-mono-label uppercase text-on-surface-variant px-space-xs mb-space-xs block">Workspace Navigation</span><nav class="flex flex-col gap-1" data-active-classes="bg-primary text-on-primary font-medium rounded"><a class="flex items-center gap-space-sm px-space-sm py-2 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[18px]">grid_view</span><span>Dashboard</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md" data-path="new-audit" href="#"><span class="material-symbols-outlined text-[18px]">radar</span><span>New Audit</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md" data-path="intelligence-pipeline" href="#"><span class="material-symbols-outlined text-[18px]">account_tree</span><span>Intelligence Pipeline</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md" data-path="audit-reports" href="#"><span class="material-symbols-outlined text-[18px]">terminal</span><span>Audit Reports</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded text-on-surface-variant hover:bg-space-container-high hover:text-on-surface transition-colors font-body-md text-body-md" data-path="proposal-studio" href="#"><span class="material-symbols-outlined text-[18px]">description</span><span>Proposal Studio</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md" data-path="client-deliverables" href="#"><span class="material-symbols-outlined text-[18px]">inventory_2</span><span>Client Deliverables</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md" data-path="agency-settings" href="#"><span class="material-symbols-outlined text-[18px]">tune</span><span>Agency Settings</span></a></nav></div></div><div class="flex flex-col border-t border-outline-variant/30"><div class="p-space-md bg-surface-container-high/40 border-b border-outline-variant/30 space-y-2"><div class="flex items-center justify-between text-on-surface-variant"><span class="font-mono-label text-[10px] uppercase">Chromium Cluster</span><span class="font-mono-code text-[10px] text-secondary flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>Active</span></div><div class="space-y-1"><div class="flex items-center justify-between text-on-surface-variant"><span class="font-mono-label text-[10px] uppercase">Audit Quota</span><span class="font-mono-code text-[10px] text-on-surface">38 / 50 Used</span></div><div class="w-full bg-surface-container-highest h-1 rounded-none overflow-hidden"><div class="bg-primary h-full w-[76%]"></div></div></div></div><div class="p-space-md flex items-center justify-between bg-surface-container-low"><div class="flex items-center gap- space-sm"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div><div class="flex flex-col"><span class="font-body-md text-body-sm font-semibold text-on-surface leading-tight">Devin Vance</span><span class="font-mono-label text-[10px] text-on-surface-variant">Lead Architect</span></div></div><div class="flex items-center gap-1.5"><span class="font-mono-label text-[10px] uppercase bg-primary-container text-on-primary font-semibold px-1.5 py-0.5 rounded">PRO TIER</span><button aria-label="Quick settings" class="text-on-surface-variant hover:text-on-surface transition-colors p-1" type="button"><span class="material-symbols-outlined text-[18px]">more_vert</span></button></div></div></div></aside><div class="pl-72"><header class="fixed top-0 left-72 right-0 h-16 bg-surface/90 backdrop-blur-md border-b border-outline-variant/30 z-40 flex items-center justify-between px-space-lg"><div class="flex items-center gap-space-md"><div class="flex items-center gap-2 text-on-surface-variant font-mono-code text-mono-code"><span class="text-primary font-semibold">NODE_01</span><span>/</span><span>ENV: PRODUCTION</span></div><div class="hidden md:flex items-center gap-2 pl-space-md border-l border-outline-variant/40"><span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span><span class="font-mono-label text-[11px] text-on-surface-variant">SYS_LATENCY: 24ms</span></div></div><div class="flex items-center gap-space-md"><div class="relative hidden sm:flex items-center"><input class="bg-surface-container-low border border-outline-variant/60 rounded px-space-sm py-1.5 pl-8 font-mono-code text-mono-code text-on-surface placeholder:text-outline focus:border-primary focus:outline-none w-64" placeholder="Search telemetry, audits, clients..." type="text"/><span class="material-symbols-outlined absolute left-2 text-[16px] text-outline">search</span></div><div class="flex items-center gap-2 border-l border-outline-variant/40 pl-space-md"><button aria-label="Notifications" class="p-1.5 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high rounded transition-colors relative" type="button"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-1 right-1 w-2 h-2 bg-secondary rounded-full ring-2 ring-surface"></span></button><button aria-label="Help &amp; Docs" class="p-1.5 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high rounded transition-colors" type="button"><span class="material-symbols-outlined text-[20px]">help_outline</span></button></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></header><main class="w-full pt-16 bg-background min-h-screen"><div class="flex flex-col w-full">
+<!-- BREADCRUMB & METADATA BAR -->
+<section class="w-full bg-surface-container-low px-gutter py-space-sm">
+<div class="flex flex-wrap items-center justify-between gap-y-2 text-on-surface-variant">
+<div class="flex items-center gap-2 font-mono-code text-mono-code flex-wrap">
+<a class="hover:text-primary transition-colors" href="#">Audits</a>
+<span class="text-outline">/</span>
+<span class="font-semibold text-primary">cal-analytics.io</span>
+<span class="text-outline">/</span>
+<span class="bg-surface px-1.5 py-0.5 rounded text-primary font-mono-label text-[11px] uppercase tracking-wider">Report #AUD-9021</span>
+<span class="text-outline hidden sm:inline">|</span>
+<span class="text-on-surface-variant text-body-sm hidden md:inline">Audited: Today, 10:42 AM</span>
+</div>
+<div class="flex items-center gap-space-md">
+<div class="flex items-center gap-2 bg-surface px-2.5 py-1 rounded">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-secondary"></span>
+</span>
+<span class="font-mono-label text-mono-label uppercase text-primary tracking-wider">AUDIT COMPLETE // READY FOR PROPOSAL</span>
+</div>
+<span class="font-mono-code text-body-sm text-outline hidden lg:inline">Node: Chromium_04 (us-east)</span>
+</div>
+</div>
+</section>
+<!-- MAIN EDITORIAL CANVASES (12-Column Grid Layout) -->
+<div class="w-full p-gutter lg:p-gutter-lg flex flex-col gap-space-lg">
+<!-- TOP SECTION: TARGET SHOWCASE & HIGH-LEVEL TELEMETRY -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-gutter items-stretch">
+<!-- HERO TARGET SPECS & RADIAL GAUGE (XL: Col 8) -->
+<div class="xl:col-span-8 bg-surface-container-low p-gutter rounded-xl shadow-sm flex flex-col justify-between relative overflow-hidden">
+<div class="flex flex-col gap-space-md">
+<!-- Top Row: Domain Identity & Stack Tags -->
+<div class="flex flex-wrap items-start justify-between gap-space-md">
+<div class="flex items-center gap-space-md">
+<div class="w-12 h-12 bg-primary text-on-primary flex items-center justify-center rounded-lg shadow-sm">
+<span class="font-mono-metric text-mono-metric">CA</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight">cal-analytics.io</h1>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="https://cal-analytics.io/pricing" target="_blank" title="Inspect live target">
+<span class="material-symbols-outlined text-[18px]">open_in_new</span>
+</a>
+</div>
+<span class="font-mono-code text-mono-code text-on-surface-variant">Target Endpoint: https://cal-analytics.io/pricing</span>
+</div>
+</div>
+<!-- Pipeline Stack Pills -->
+<div class="flex flex-wrap items-center gap-1.5">
+<span class="font-mono-label text-mono-label px-2 py-0.5 rounded bg-surface text-primary">Next.js 14.2</span>
+<span class="font-mono-label text-mono-label px-2 py-0.5 rounded bg-surface text-primary">Tailwind CSS</span>
+<span class="font-mono-label text-mono-label px-2 py-0.5 rounded bg-surface text-primary">Stripe Elements</span>
+<span class="font-mono-label text-mono-label px-2 py-0.5 rounded bg-surface text-primary">Cloudflare Edge</span>
+</div>
+</div>
+<!-- Mid Row: Composite Score Gauge & Pillar Breakdown -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-space-md pt-space-md items-center">
+<!-- Gauge Card -->
+<div class="md:col-span-5 bg-surface p-space-md rounded-lg flex items-center gap-space-md shadow-sm">
+<div class="relative w-24 h-24 flex items-center justify-center flex-shrink-0">
+<svg class="w-24 h-24 -rotate-90" viewbox="0 0 36 36">
+<!-- Background Circle -->
+<path class="text-surface-container-high" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3.5"></path>
+<!-- Progress Circle (58% stroke-dasharray) -->
+<path class="text-primary" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="58, 100" stroke-linecap="square" stroke-width="3.5"></path>
+</svg>
+<div class="absolute flex flex-col items-center justify-center text-center">
+<span class="font-display-xl text-[28px] leading-tight text-primary">58</span>
+<span class="font-mono-label text-[9px] uppercase tracking-wider text-outline">/ 100</span>
+</div>
+</div>
+<div class="flex flex-col">
+<span class="font-mono-label text-mono-label uppercase text-error tracking-wider">Severe Friction</span>
+<span class="font-headline-sm text-headline-sm text-primary">Critical Deficits</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Immediate revenue leakage on primary checkout &amp; CTA.</span>
+</div>
+</div>
+<!-- Pillar Mini Scores -->
+<div class="md:col-span-7 grid grid-cols-2 gap-2">
+<div class="bg-surface p-2.5 rounded flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-mono-label text-[10px] uppercase text-outline">Performance</span>
+<span class="font-mono-label text-[10px] text-error font-semibold">Critical</span>
+</div>
+<div class="flex items-baseline justify-between mt-1">
+<span class="font-mono-metric text-mono-metric text-primary">42</span>
+<span class="font-mono-label text-[10px] text-outline">/ 100</span>
+</div>
+<div class="w-full bg-surface-container-high h-1 mt-1.5 overflow-hidden">
+<div class="bg-error h-full w-[42%]"></div>
+</div>
+</div>
+<div class="bg-surface p-2.5 rounded flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-mono-label text-[10px] uppercase text-outline">Accessibility</span>
+<span class="font-mono-label text-[10px] text-error font-semibold">High Risk</span>
+</div>
+<div class="flex items-baseline justify-between mt-1">
+<span class="font-mono-metric text-mono-metric text-primary">54</span>
+<span class="font-mono-label text-[10px] text-outline">/ 100</span>
+</div>
+<div class="w-full bg-surface-container-high h-1 mt-1.5 overflow-hidden">
+<div class="bg-outline h-full w-[54%]"></div>
+</div>
+</div>
+<div class="bg-surface p-2.5 rounded flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-mono-label text-[10px] uppercase text-outline">SEO &amp; Schema</span>
+<span class="font-mono-label text-[10px] text-secondary font-semibold">Good</span>
+</div>
+<div class="flex items-baseline justify-between mt-1">
+<span class="font-mono-metric text-mono-metric text-primary">82</span>
+<span class="font-mono-label text-[10px] text-outline">/ 100</span>
+</div>
+<div class="w-full bg-surface-container-high h-1 mt-1.5 overflow-hidden">
+<div class="bg-secondary h-full w-[82%]"></div>
+</div>
+</div>
+<div class="bg-surface p-2.5 rounded flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-mono-label text-[10px] uppercase text-outline">Hydration</span>
+<span class="font-mono-label text-[10px] text-error font-semibold">Friction</span>
+</div>
+<div class="flex items-baseline justify-between mt-1">
+<span class="font-mono-metric text-mono-metric text-primary">51</span>
+<span class="font-mono-label text-[10px] text-outline">/ 100</span>
+</div>
+<div class="w-full bg-surface-container-high h-1 mt-1.5 overflow-hidden">
+<div class="bg-primary h-full w-[51%]"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Action Bar -->
+<div class="flex flex-wrap items-center justify-between gap-space-sm pt-space-md mt-space-md border-t border-outline-variant/30">
+<div class="flex items-center gap-space-xs text-on-surface-variant font-mono-code text-body-sm">
+<span class="material-symbols-outlined text-[16px] text-secondary">verified</span>
+<span>Identified Opportunity: <strong class="text-primary font-mono-metric text-[16px]">$14,200</strong> in remediation scope</span>
+</div>
+<div class="flex flex-wrap items-center gap-2">
+<button class="bg-surface-container-high text-on-surface hover:bg-surface hover:text-primary transition-all px-3 py-1.5 rounded font-mono-label text-mono-label uppercase flex items-center gap-1.5 shadow-sm" type="button">
+<span class="material-symbols-outlined text-[16px]">picture_as_pdf</span>
+<span>Export PDF Report</span>
+</button>
+<button class="bg-surface-container-high text-on-surface hover:bg-surface hover:text-primary transition-all px-3 py-1.5 rounded font-mono-label text-mono-label uppercase flex items-center gap-1.5 shadow-sm" type="button">
+<span class="material-symbols-outlined text-[16px]">sync</span>
+<span>Re-Crawl</span>
+</button>
+<button class="bg-secondary-container text-on-secondary-fixed hover:bg-primary hover:text-on-primary transition-all px-4 py-1.5 rounded font-mono-label text-mono-label uppercase font-semibold flex items-center gap-2 shadow-md" id="add-all-scope-btn" type="button">
+<span class="material-symbols-outlined text-[18px]">add_task</span>
+<span>+ Add All Critical to Scope ($14,200)</span>
+</button>
+</div>
+</div>
+</div>
+<!-- SCREENSHOT HUD & LIVE TELEMETRY PROJECTION (XL: Col 4) -->
+<div class="xl:col-span-4 bg-primary text-on-primary p-space-md rounded-xl shadow-md flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between pb-space-sm border-b border-on-surface-variant/20">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+<span class="font-mono-label text-mono-label text-on-primary uppercase tracking-wider">DOM HUD Telemetry Inspector</span>
+</div>
+<span class="font-mono-code text-[11px] text-outline-variant">VIEWPORT: 1440x900</span>
+</div>
+<!-- Visual Screen Hud Container -->
+<div class="relative mt-space-sm bg-surface-container-lowest rounded overflow-hidden aspect-[16/10] shadow-inner group">
+<img class="w-full h-full object-cover filter contrast-[1.05]" data-alt="A clean modern SaaS pricing page user interface screenshot for Cal Analytics with dark theme, enterprise tiers, pricing tables, hero headline, and interactive upgrade buttons on a neutral desktop layout." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAG2cTp7Dnb5ZJ0d7EVduP2CjnbxRPXbLmsVEAPIqjw4MRGDKToal_CFsrmyPrcYBTcCVC48jbbzEb376iji2nygwXjccEfbtoGEJ4HyTvc-T6mEqNumA8t2Dk8ZPStxPCUErRnitFVxvlb6MvnVpmSdejM4ccrgmK9nKIgSrsxmX_JxeXJSNMF-ts8It6Uq3yk-fvZ-Ch0iJQjNO7P4jRvPQ9kt-zxPcu50O0Wwfhf"/>
+<!-- DOM Diagnostic Overlays -->
+<!-- Diagnostic Tag 1: LCP Target -->
+<div class="absolute top-[18%] left-[8%] right-[24%] h-12 border-2 border-secondary-container bg-secondary-container/10 flex items-start justify-between p-1">
+<span class="font-mono-label text-[9px] bg-primary text-secondary-container px-1 rounded uppercase tracking-tighter">LCP Target // #hero-display-headline</span>
+<span class="font-mono-code text-[9px] bg-error text-on-error px-1 rounded uppercase">4.82s (FATAL)</span>
+</div>
+<!-- Diagnostic Tag 2: Contrast Failure Button -->
+<div class="absolute bottom-[28%] left-[28%] w-36 h-9 border border-error bg-error/20 flex items-end justify-start p-1">
+<span class="font-mono-label text-[8px] bg-primary text-on-primary px-1 rounded uppercase">NODE: #hero-cta-btn [1.8:1 CONTRAST]</span>
+</div>
+<!-- Crosshair Marker Overlay -->
+<div class="absolute top-2 right-2 text-outline-variant font-mono-code text-xs">+</div>
+<div class="absolute bottom-2 left-2 text-outline-variant font-mono-code text-xs">+</div>
+</div>
+</div>
+<div class="mt-space-sm pt-space-xs grid grid-cols-2 gap-2 text-on-surface-variant">
+<div class="bg-surface-container-high/10 p-2 rounded">
+<span class="font-mono-label text-[10px] uppercase text-outline-variant block">Client Funnel Decay</span>
+<span class="font-mono-metric text-mono-metric text-on-primary mt-0.5 block">-18.4%</span>
+<span class="font-body-sm text-[11px] text-outline-variant">Mobile Checkout Conversion Drop</span>
+</div>
+<div class="bg-surface-container-high/10 p-2 rounded">
+<span class="font-mono-label text-[10px] uppercase text-outline-variant block">DOM Latency Peak</span>
+<span class="font-mono-metric text-mono-metric text-secondary-container mt-0.5 block">840ms</span>
+<span class="font-body-sm text-[11px] text-outline-variant">Client Hydration Interruption</span>
+</div>
+</div>
+</div>
+</div>
+<!-- FOUR CORE METRIC PILLARS SECTION -->
+<section class="w-full">
+<div class="flex items-center justify-between mb-space-sm">
+<h2 class="font-headline-sm text-headline-sm text-primary uppercase tracking-tight">Core Diagnostic Pillars</h2>
+<span class="font-mono-label text-mono-label uppercase text-on-surface-variant">W3C / Lighthouse v11 / WCAG 2.1 AA Protocol</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- Pillar 1: Web Vitals -->
+<div class="bg-surface-container-low p-space-md rounded-lg shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between pb-space-xs mb-space-sm border-b border-outline-variant/30">
+<span class="font-mono-label text-mono-label uppercase text-primary">01. Performance</span>
+<span class="material-symbols-outlined text-error text-[18px]">speed</span>
+</div>
+<div class="space-y-3">
+<div>
+<div class="flex justify-between items-baseline">
+<span class="font-mono-code text-body-sm text-on-surface-variant">LCP (Paint Delay)</span>
+<span class="font-mono-metric text-[16px] text-error">4.82s</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 mt-1 overflow-hidden">
+<div class="bg-error h-full w-[94%]"></div>
+</div>
+<span class="font-mono-label text-[9px] text-outline block mt-0.5">Recommended threshold: &lt;= 2.50s</span>
+</div>
+<div>
+<div class="flex justify-between items-baseline">
+<span class="font-mono-code text-body-sm text-on-surface-variant">INP (Responsiveness)</span>
+<span class="font-mono-metric text-[16px] text-primary">340ms</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 mt-1 overflow-hidden">
+<div class="bg-primary h-full w-[65%]"></div>
+</div>
+<span class="font-mono-label text-[9px] text-outline block mt-0.5">Target: &lt;= 200ms</span>
+</div>
+<div>
+<div class="flex justify-between items-baseline">
+<span class="font-mono-code text-body-sm text-on-surface-variant">CLS (Layout Shift)</span>
+<span class="font-mono-metric text-[16px] text-primary">0.18</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 mt-1 overflow-hidden">
+<div class="bg-outline h-full w-[45%]"></div>
+</div>
+<span class="font-mono-label text-[9px] text-outline block mt-0.5">Target: &lt;= 0.10</span>
+</div>
+</div>
+</div>
+<div class="pt-space-sm mt-space-sm border-t border-outline-variant/30">
+<span class="font-mono-code text-body-sm text-on-surface-variant block">Unused Bundles: <strong class="text-primary font-semibold">1.42 MB JS</strong></span>
+</div>
+</div>
+<!-- Pillar 2: Accessibility & Compliance -->
+<div class="bg-surface-container-low p-space-md rounded-lg shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between pb-space-xs mb-space-sm border-b border-outline-variant/30">
+<span class="font-mono-label text-mono-label uppercase text-primary">02. Accessibility</span>
+<span class="material-symbols-outlined text-outline text-[18px]">accessibility_new</span>
+</div>
+<div class="space-y-3">
+<div class="flex items-center justify-between p-2 bg-surface rounded">
+<span class="font-mono-code text-body-sm text-on-surface">Contrast Violations</span>
+<span class="bg-error/15 text-error font-mono-code text-body-sm px-2 py-0.5 rounded font-semibold">12 Failures</span>
+</div>
+<div class="flex items-center justify-between p-2 bg-surface rounded">
+<span class="font-mono-code text-body-sm text-on-surface">Missing Form Labels</span>
+<span class="bg-error/15 text-error font-mono-code text-body-sm px-2 py-0.5 rounded font-semibold">4 Critical</span>
+</div>
+<div class="flex items-center justify-between p-2 bg-surface rounded">
+<span class="font-mono-code text-body-sm text-on-surface">Keyboard Nav Traps</span>
+<span class="bg-surface-container-high text-primary font-mono-code text-body-sm px-2 py-0.5 rounded">1 Detected</span>
+</div>
+</div>
+</div>
+<div class="pt-space-sm mt-space-sm border-t border-outline-variant/30">
+<span class="font-mono-code text-body-sm text-on-surface-variant block">Compliance: <strong class="text-error font-semibold">WCAG 2.1 AA Incompliant</strong></span>
+</div>
+</div>
+<!-- Pillar 3: SEO & Schema -->
+<div class="bg-surface-container-low p-space-md rounded-lg shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between pb-space-xs mb-space-sm border-b border-outline-variant/30">
+<span class="font-mono-label text-mono-label uppercase text-primary">03. SEO Integrity</span>
+<span class="material-symbols-outlined text-secondary text-[18px]">travel_explore</span>
+</div>
+<div class="space-y-3">
+<div class="flex items-center justify-between p-2 bg-surface rounded">
+<span class="font-mono-code text-body-sm text-on-surface">JSON-LD Pricing Schema</span>
+<span class="bg-error/15 text-error font-mono-code text-body-sm px-2 py-0.5 rounded font-semibold">Missing</span>
+</div>
+<div class="flex items-center justify-between p-2 bg-surface rounded">
+<span class="font-mono-code text-body-sm text-on-surface">Canonical URL Mismatch</span>
+<span class="bg-surface-container-high text-primary font-mono-code text-body-sm px-2 py-0.5 rounded">Redirect Loop</span>
+</div>
+<div class="flex items-center justify-between p-2 bg-surface rounded">
+<span class="font-mono-code text-body-sm text-on-surface">Broken Footer Links</span>
+<span class="bg-surface-container-high text-primary font-mono-code text-body-sm px-2 py-0.5 rounded">2 Anchors (404)</span>
+</div>
+</div>
+</div>
+<div class="pt-space-sm mt-space-sm border-t border-outline-variant/30">
+<span class="font-mono-code text-body-sm text-on-surface-variant block">Indexability Status: <strong class="text-secondary font-semibold">Indexed with Warnings</strong></span>
+</div>
+</div>
+<!-- Pillar 4: Mobile & Hydration -->
+<div class="bg-surface-container-low p-space-md rounded-lg shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between pb-space-xs mb-space-sm border-b border-outline-variant/30">
+<span class="font-mono-label text-mono-label uppercase text-primary">04. Mobile Usability</span>
+<span class="material-symbols-outlined text-outline text-[18px]">stay_current_portrait</span>
+</div>
+<div class="space-y-3">
+<div class="flex items-center justify-between p-2 bg-surface rounded">
+<span class="font-mono-code text-body-sm text-on-surface">Hydration Latency Stall</span>
+<span class="bg-error/15 text-error font-mono-code text-body-sm px-2 py-0.5 rounded font-semibold">840ms</span>
+</div>
+<div class="flex items-center justify-between p-2 bg-surface rounded">
+<span class="font-mono-code text-body-sm text-on-surface">iOS Safari Modal Drawer</span>
+<span class="bg-surface-container-high text-primary font-mono-code text-body-sm px-2 py-0.5 rounded">Clip Bug</span>
+</div>
+<div class="flex items-center justify-between p-2 bg-surface rounded">
+<span class="font-mono-code text-body-sm text-on-surface">Tap Targets &lt; 48px</span>
+<span class="bg-surface-container-high text-primary font-mono-code text-body-sm px-2 py-0.5 rounded">6 Elements</span>
+</div>
+</div>
+</div>
+<div class="pt-space-sm mt-space-sm border-t border-outline-variant/30">
+<span class="font-mono-code text-body-sm text-on-surface-variant block">Viewport Compliance: <strong class="text-primary font-semibold">92% Passing</strong></span>
+</div>
+</div>
+</div>
+</section>
+<!-- MAIN TWO-COLUMN SPLIT: REMEDIATION MATRIX (8 COLS) + COMMERCIAL ARBITRAGE BLUEPRINT (4 COLS) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start">
+<!-- LEFT / CENTER: AUDIT REMEDIATION MATRIX (8 COLS) -->
+<section class="lg:col-span-8 flex flex-col gap-space-md">
+<!-- Filter Tabs & Header Bar -->
+<div class="flex flex-wrap items-center justify-between gap-space-sm pb-space-xs border-b border-outline-variant/30">
+<div>
+<h2 class="font-headline-md text-headline-md text-primary">Diagnostic Findings &amp; Sprint Matrix</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Client-facing remediation items linked directly to billable agency engineering scopes.</p>
+</div>
+<!-- Filter Navigation Tabs -->
+<div class="flex items-center gap-1 bg-surface-container-high p-1 rounded font-mono-label text-[11px]" id="filter-tabs">
+<button class="filter-tab active bg-surface text-primary px-3 py-1 rounded font-semibold shadow-sm transition-all" data-filter="all" type="button">All (18)</button>
+<button class="filter-tab text-on-surface-variant hover:text-primary px-3 py-1 rounded transition-all" data-filter="critical" type="button">Critical (5)</button>
+<button class="filter-tab text-on-surface-variant hover:text-primary px-3 py-1 rounded transition-all" data-filter="perf" type="button">Performance (6)</button>
+<button class="filter-tab text-on-surface-variant hover:text-primary px-3 py-1 rounded transition-all" data-filter="a11y" type="button">Accessibility (4)</button>
+<button class="filter-tab text-on-surface-variant hover:text-primary px-3 py-1 rounded transition-all" data-filter="seo" type="button">SEO (3)</button>
+</div>
+</div>
+<!-- FINDING CARD 1 (PERFORMANCE / CRITICAL) -->
+<article class="finding-card critical perf bg-surface-container-low rounded-xl p-space-md shadow-sm transition-all hover:shadow-md">
+<div class="flex flex-wrap items-center justify-between gap-space-xs pb-space-xs border-b border-outline-variant/30">
+<div class="flex items-center gap-2">
+<span class="font-mono-label text-[10px] uppercase bg-error/15 text-error px-2 py-0.5 rounded font-semibold">CRITICAL LEAKAGE</span>
+<span class="font-mono-label text-[10px] uppercase bg-surface text-on-surface-variant px-2 py-0.5 rounded">Core Web Vitals // LCP</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-mono-code text-[11px] text-secondary font-semibold bg-secondary-container/25 px-2 py-0.5 rounded">+$4,200 Billable Sprint</span>
+<span class="font-mono-code text-[11px] text-outline">#FIND-801</span>
+</div>
+</div>
+<div class="pt-space-sm">
+<h3 class="font-headline-sm text-headline-sm text-primary mb-1">Uncompressed 3.8MB Hero Graphics Blocking Main Paint Thread (4.82s LCP)</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">The pricing page hero graphic is delivered as a raw PNG over un-optimized Cloudflare edge routes without WebP/AVIF progressive streaming, triggering severe First Input and paint stalls.</p>
+</div>
+<!-- Code Locator & DOM Inspector Strip -->
+<div class="bg-surface p-space-sm rounded mt-space-sm font-mono-code text-mono-code text-on-surface">
+<div class="flex items-center justify-between text-outline text-[11px] mb-1">
+<span>AFFECTED TARGET: /pricing#enterprise</span>
+<span>DOM SELECTOR: #pricing-hero &gt; div.hero-visual-mount</span>
+</div>
+<div class="bg-surface-container-lowest p-2 rounded text-primary text-[11px] overflow-x-auto">
+<code>&lt;img src="/assets/pricing-diagram-full.png" class="hero-image" fetchpriority="auto" /&gt; /* Size: 3,892 KB | TTFB: 240ms | Decode: 1,840ms */</code>
+</div>
+</div>
+<!-- Diagnostic Grid: Root Cause & Agency Commercial Angle -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-sm mt-space-sm pt-space-xs">
+<div class="bg-surface p-space-sm rounded">
+<span class="font-mono-label text-[10px] uppercase text-outline block mb-1">AI Root Cause Diagnostic</span>
+<p class="font-body-sm text-body-sm text-on-surface">Asset lacks `srcset`, explicit dimensions (forcing CLS), and priority fetch hints. Render-blocking Google Fonts stylesheet delays text painting until the image decode finishes.</p>
+</div>
+<div class="bg-surface p-space-sm rounded">
+<span class="font-mono-label text-[10px] uppercase text-error block mb-1">Business Impact (Client Pitch Angle)</span>
+<p class="font-body-sm text-body-sm text-on-surface">Causes an estimated <strong>18.4% bounce rate</strong> on paid B2B paid traffic, directly leaking an estimated <strong>$4,800/mo in recurring SaaS ARR</strong> before trial creation.</p>
+</div>
+</div>
+<!-- Recommended Engineering Remediation -->
+<div class="mt-space-sm bg-surface-container-high/40 p-space-sm rounded">
+<span class="font-mono-label text-[10px] uppercase text-primary block mb-1">Recommended Engineering Remediation:</span>
+<ul class="font-body-sm text-body-sm text-on-surface list-disc list-inside space-y-0.5">
+<li>Deploy automatic next/image optimization with Cloudflare Polish AVIF conversion.</li>
+<li>Inject pre-connect headers for font CDNs and inline critical path stylesheet.</li>
+<li>Defer duplicate Google Tag Manager containers and analytics telemetry.</li>
+</ul>
+</div>
+<!-- Bottom Action Scope Toggle -->
+<div class="flex items-center justify-between mt-space-md pt-space-xs border-t border-outline-variant/30">
+<span class="font-mono-code text-[11px] text-outline">ESTIMATED DEV EFFORT: 8-12 ENGINEERING HOURS</span>
+<button class="scope-toggle-btn bg-primary text-on-primary hover:bg-secondary-container hover:text-on-secondary-fixed transition-all px-3 py-1.5 rounded font-mono-label text-mono-label uppercase font-semibold flex items-center gap-1.5" data-cost="4200" type="button">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+<span class="btn-text">Included in Scope ($4,200)</span>
+</button>
+</div>
+</article>
+<!-- FINDING CARD 2 (ACCESSIBILITY / COMPLIANCE) -->
+<article class="finding-card critical a11y bg-surface-container-low rounded-xl p-space-md shadow-sm transition-all hover:shadow-md">
+<div class="flex flex-wrap items-center justify-between gap-space-xs pb-space-xs border-b border-outline-variant/30">
+<div class="flex items-center gap-2">
+<span class="font-mono-label text-[10px] uppercase bg-error/15 text-error px-2 py-0.5 rounded font-semibold">HIGH COMPLIANCE RISK</span>
+<span class="font-mono-label text-[10px] uppercase bg-surface text-on-surface-variant px-2 py-0.5 rounded">WCAG 2.1 AA // Legal</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-mono-code text-[11px] text-secondary font-semibold bg-secondary-container/25 px-2 py-0.5 rounded">+$4,600 Billable Sprint</span>
+<span class="font-mono-code text-[11px] text-outline">#FIND-802</span>
+</div>
+</div>
+<div class="pt-space-sm">
+<h3 class="font-headline-sm text-headline-sm text-primary mb-1">12 Severe Color Contrast Failures on Enterprise Plan CTA &amp; Tier Switcher</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Low-contrast body copy (#7C8B9E on #F5F3ED background) yields a 2.1:1 ratio, failing minimum WCAG 2.1 AA 4.5:1 standards and exposing the enterprise to ADA demand letter exposure.</p>
+</div>
+<!-- Code Locator & DOM Inspector Strip -->
+<div class="bg-surface p-space-sm rounded mt-space-sm font-mono-code text-mono-code text-on-surface">
+<div class="flex items-center justify-between text-outline text-[11px] mb-1">
+<span>AFFECTED TARGET: /pricing (All Tier Cards)</span>
+<span>DOM SELECTOR: .plan-card--enterprise button.btn-secondary</span>
+</div>
+<div class="bg-surface-container-lowest p-2 rounded text-primary text-[11px] overflow-x-auto">
+<code>&lt;button class="text-[#7C8B9E] bg-[#F5F3ED]"&gt;Talk to Sales (Enterprise)&lt;/button&gt; /* Contrast Ratio: 2.14:1 (FAIL: Req 4.5:1) */</code>
+</div>
+</div>
+<!-- Diagnostic Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-sm mt-space-sm pt-space-xs">
+<div class="bg-surface p-space-sm rounded">
+<span class="font-mono-label text-[10px] uppercase text-outline block mb-1">AI Root Cause Diagnostic</span>
+<p class="font-body-sm text-body-sm text-on-surface">Design tokens in Tailwind configuration were overridden with arbitrary soft pastel shades without automated CI color contrast linting.</p>
+</div>
+<div class="bg-surface p-space-sm rounded">
+<span class="font-mono-label text-[10px] uppercase text-error block mb-1">Business Impact (Client Pitch Angle)</span>
+<p class="font-body-sm text-body-sm text-on-surface">Unmitigated accessibility litigation liability for high-visibility B2B targets, plus direct UX abandonment by procurement executives with visual impairments.</p>
+</div>
+</div>
+<!-- Recommended Engineering Remediation -->
+<div class="mt-space-sm bg-surface-container-high/40 p-space-sm rounded">
+<span class="font-mono-label text-[10px] uppercase text-primary block mb-1">Recommended Engineering Remediation:</span>
+<ul class="font-body-sm text-body-sm text-on-surface list-disc list-inside space-y-0.5">
+<li>Refactor Tailwind theme palette to compliant semantic tokens (min contrast 7.1:1 on primary buttons).</li>
+<li>Implement Axe-core and Playwright accessibility testing suites in GitHub Actions CI.</li>
+<li>Provide client with a formal VPAT (Voluntary Product Accessibility Template) summary.</li>
+</ul>
+</div>
+<!-- Bottom Action Scope Toggle -->
+<div class="flex items-center justify-between mt-space-md pt-space-xs border-t border-outline-variant/30">
+<span class="font-mono-code text-[11px] text-outline">ESTIMATED DEV EFFORT: 14-16 ENGINEERING HOURS</span>
+<button class="scope-toggle-btn bg-primary text-on-primary hover:bg-secondary-container hover:text-on-secondary-fixed transition-all px-3 py-1.5 rounded font-mono-label text-mono-label uppercase font-semibold flex items-center gap-1.5" data-cost="4600" type="button">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+<span class="btn-text">Included in Scope ($4,600)</span>
+</button>
+</div>
+</article>
+<!-- FINDING CARD 3 (PERFORMANCE & HYDRATION) -->
+<article class="finding-card critical perf bg-surface-container-low rounded-xl p-space-md shadow-sm transition-all hover:shadow-md">
+<div class="flex flex-wrap items-center justify-between gap-space-xs pb-space-xs border-b border-outline-variant/30">
+<div class="flex items-center gap-2">
+<span class="font-mono-label text-[10px] uppercase bg-error/15 text-error px-2 py-0.5 rounded font-semibold">CRITICAL LEAKAGE</span>
+<span class="font-mono-label text-[10px] uppercase bg-surface text-on-surface-variant px-2 py-0.5 rounded">Mobile Hydration // Runtime</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-mono-code text-[11px] text-secondary font-semibold bg-secondary-container/25 px-2 py-0.5 rounded">+$3,200 Billable Sprint</span>
+<span class="font-mono-code text-[11px] text-outline">#FIND-803</span>
+</div>
+</div>
+<div class="pt-space-sm">
+<h3 class="font-headline-sm text-headline-sm text-primary mb-1">840ms JavaScript Hydration Stall on Mobile Modal Checkout</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Clicking 'Start 14-Day Pro Trial' freezes the mobile main thread while heavy client-side Stripe and Datadog bundles parse simultaneously.</p>
+</div>
+<div class="bg-surface p-space-sm rounded mt-space-sm font-mono-code text-mono-code text-on-surface">
+<div class="flex items-center justify-between text-outline text-[11px] mb-1">
+<span>AFFECTED TARGET: /pricing (Modal Checkout Mount)</span>
+<span>DOM SELECTOR: #checkout-drawer-portal</span>
+</div>
+<div class="bg-surface-container-lowest p-2 rounded text-primary text-[11px] overflow-x-auto">
+<code>import StripeElements from '@stripe/react-stripe-js'; // Full un-dynamic bundle eager import detected</code>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-sm mt-space-sm pt-space-xs">
+<div class="bg-surface p-space-sm rounded">
+<span class="font-mono-label text-[10px] uppercase text-outline block mb-1">AI Root Cause Diagnostic</span>
+<p class="font-body-sm text-body-sm text-on-surface">Payment SDK and Datadog RUM are loaded into the initial client layout bundle rather than dynamically loaded upon user interaction intent.</p>
+</div>
+<div class="bg-surface p-space-sm rounded">
+<span class="font-mono-label text-[10px] uppercase text-error block mb-1">Business Impact (Client Pitch Angle)</span>
+<p class="font-body-sm text-body-sm text-on-surface">Users on iOS Safari believe the CTA button is broken when clicked, resulting in duplicate clicks, checkout aborts, and customer support friction.</p>
+</div>
+</div>
+<!-- Bottom Action Scope Toggle -->
+<div class="flex items-center justify-between mt-space-md pt-space-xs border-t border-outline-variant/30">
+<span class="font-mono-code text-[11px] text-outline">ESTIMATED DEV EFFORT: 8 ENGINEERING HOURS</span>
+<button class="scope-toggle-btn bg-primary text-on-primary hover:bg-secondary-container hover:text-on-secondary-fixed transition-all px-3 py-1.5 rounded font-mono-label text-mono-label uppercase font-semibold flex items-center gap-1.5" data-cost="3200" type="button">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+<span class="btn-text">Included in Scope ($3,200)</span>
+</button>
+</div>
+</article>
+<!-- FINDING CARD 4 (SEO & SCHEMA) -->
+<article class="finding-card seo bg-surface-container-low rounded-xl p-space-md shadow-sm transition-all hover:shadow-md">
+<div class="flex flex-wrap items-center justify-between gap-space-xs pb-space-xs border-b border-outline-variant/30">
+<div class="flex items-center gap-2">
+<span class="font-mono-label text-[10px] uppercase bg-surface-container-highest text-primary px-2 py-0.5 rounded font-semibold">MODERATE OPPORTUNITY</span>
+<span class="font-mono-label text-[10px] uppercase bg-surface text-on-surface-variant px-2 py-0.5 rounded">Structured Data // SERP</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-mono-code text-[11px] text-secondary font-semibold bg-secondary-container/25 px-2 py-0.5 rounded">+$2,200 Billable Sprint</span>
+<span class="font-mono-code text-[11px] text-outline">#FIND-804</span>
+</div>
+</div>
+<div class="pt-space-sm">
+<h3 class="font-headline-sm text-headline-sm text-primary mb-1">Missing Product &amp; Offer JSON-LD Rich Snippet Schema</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Google is unable to parse real-time SaaS subscription price tiers ($49/mo, $199/mo) into rich Google search snippets, suppressing organic SERP CTR by up to 23%.</p>
+</div>
+<div class="bg-surface p-space-sm rounded mt-space-sm font-mono-code text-mono-code text-on-surface">
+<div class="flex items-center justify-between text-outline text-[11px] mb-1">
+<span>AFFECTED TARGET: /pricing</span>
+<span>DOM SELECTOR: head &gt; script[type="application/ld+json"]</span>
+</div>
+<div class="bg-surface-container-lowest p-2 rounded text-primary text-[11px] overflow-x-auto">
+<code>&lt;!-- Schema Block Absent -- Missing schema.org/SoftwareApplication Offer Specification --&gt;</code>
+</div>
+</div>
+<!-- Bottom Action Scope Toggle -->
+<div class="flex items-center justify-between mt-space-md pt-space-xs border-t border-outline-variant/30">
+<span class="font-mono-code text-[11px] text-outline">ESTIMATED DEV EFFORT: 4-6 ENGINEERING HOURS</span>
+<button class="scope-toggle-btn bg-surface-container-high text-on-surface hover:bg-primary hover:text-on-primary transition-all px-3 py-1.5 rounded font-mono-label text-mono-label uppercase font-semibold flex items-center gap-1.5" data-cost="2200" type="button">
+<span class="material-symbols-outlined text-[16px]">add</span>
+<span class="btn-text">+ Add to Proposal ($2,200)</span>
+</button>
+</div>
+</article>
+</section>
+<!-- RIGHT COLUMN: REVENUE ARBITRAGE DRAWER & COMMERCIAL PITCH BLUEPRINT (4 COLS) -->
+<aside class="lg:col-span-4 flex flex-col gap-space-md sticky top-20">
+<!-- COMMERCIAL PITCH BLUEPRINT CARD -->
+<div class="bg-primary text-on-primary rounded-xl p-space-md shadow-md flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between pb-space-xs border-b border-on-surface-variant/20">
+<span class="font-mono-label text-mono-label uppercase text-secondary-container tracking-wider">Commercial Pitch Blueprint</span>
+<span class="material-symbols-outlined text-secondary-container text-[18px]">monetization_on</span>
+</div>
+<!-- Executive Pitch Summary -->
+<div class="mt-space-sm">
+<h3 class="font-headline-sm text-headline-sm text-on-primary mb-1">Executive Scope Summary</h3>
+<p class="font-body-sm text-body-sm text-outline-variant">
+                Auto-generated client pitch ready to present to Cal Analytics founders. Bridges technical bottlenecks directly to SaaS pipeline velocity.
+              </p>
+</div>
+<!-- Scope Financial Metric Box -->
+<div class="bg-surface-container-high/10 p-space-md rounded-lg mt-space-md">
+<span class="font-mono-label text-[10px] uppercase text-outline-variant block">Total Proposed Engineering Retainer</span>
+<div class="flex items-baseline justify-between mt-1">
+<span class="font-display-xl text-[36px] leading-tight text-secondary-container" id="total-scope-display">$14,200</span>
+<span class="font-mono-code text-[11px] text-outline-variant">Fixed-Price Sprints</span>
+</div>
+<div class="flex items-center justify-between text-body-sm text-outline-variant mt-2 pt-2 border-t border-on-surface-variant/20">
+<span>Estimated Turnaround:</span>
+<strong class="text-on-primary font-mono-code">2.5 Weeks</strong>
+</div>
+</div>
+<!-- Recommended Sprint Roadmap -->
+<div class="space-y-2 mt-space-md">
+<span class="font-mono-label text-[10px] uppercase text-outline-variant block">Pre-Packaged Scope Sprints:</span>
+<div class="p-2.5 rounded bg-surface-container-high/10 flex items-center justify-between">
+<div>
+<span class="font-body-sm text-body-sm text-on-primary block font-medium">Sprint 1: LCP &amp; Core Web Vitals</span>
+<span class="font-mono-code text-[10px] text-outline-variant">Image CDN, defer JS, font preloads</span>
+</div>
+<span class="font-mono-code text-body-sm text-secondary-container font-semibold">$5,800</span>
+</div>
+<div class="p-2.5 rounded bg-surface-container-high/10 flex items-center justify-between">
+<div>
+<span class="font-body-sm text-body-sm text-on-primary block font-medium">Sprint 2: WCAG 2.1 AA Compliance</span>
+<span class="font-mono-code text-[10px] text-outline-variant">Color tokens, keyboard traps, ARIA</span>
+</div>
+<span class="font-mono-code text-body-sm text-secondary-container font-semibold">$4,600</span>
+</div>
+<div class="p-2.5 rounded bg-surface-container-high/10 flex items-center justify-between">
+<div>
+<span class="font-body-sm text-body-sm text-on-primary block font-medium">Sprint 3: JSON-LD &amp; Hydration</span>
+<span class="font-mono-code text-[10px] text-outline-variant">Structured data &amp; mobile checkout</span>
+</div>
+<span class="font-mono-code text-body-sm text-secondary-container font-semibold">$3,800</span>
+</div>
+</div>
+</div>
+<!-- Bottom Proposal Studio Trigger -->
+<div class="mt-space-lg pt-space-sm border-t border-on-surface-variant/20 flex flex-col gap-2">
+<button class="w-full bg-secondary-container text-on-secondary-fixed hover:bg-on-primary hover:text-primary transition-all py-2.5 px-4 rounded font-mono-label text-mono-label uppercase font-bold flex items-center justify-center gap-2 shadow-lg" type="button">
+<span class="material-symbols-outlined text-[18px]">terminal</span>
+<span>Launch Proposal Studio</span>
+</button>
+<p class="font-mono-label text-[10px] text-outline-variant text-center">Transfers 4 selected findings into formal client contract.</p>
+</div>
+</div>
+<!-- TELEMETRY & RAW HAR AUDIT LOG PANEL -->
+<div class="bg-surface-container-low rounded-xl p-space-md shadow-sm">
+<div class="flex items-center justify-between pb-space-xs border-b border-outline-variant/30">
+<span class="font-mono-label text-mono-label uppercase text-primary">Raw HAR &amp; Crawl Telemetry</span>
+<span class="font-mono-code text-[10px] text-outline">Cluster Node_04</span>
+</div>
+<div class="grid grid-cols-2 gap-2 mt-space-sm font-mono-code text-body-sm">
+<div class="bg-surface p-2 rounded">
+<span class="text-outline text-[10px] block">TOTAL DOM NODES</span>
+<strong class="text-primary text-[14px]">1,812</strong>
+</div>
+<div class="bg-surface p-2 rounded">
+<span class="text-outline text-[10px] block">HTTP REQUESTS</span>
+<strong class="text-primary text-[14px]">84 calls</strong>
+</div>
+<div class="bg-surface p-2 rounded">
+<span class="text-outline text-[10px] block">TOTAL TRANSFER</span>
+<strong class="text-primary text-[14px]">4.82 MB</strong>
+</div>
+<div class="bg-surface p-2 rounded">
+<span class="text-outline text-[10px] block">SERVER TTFB</span>
+<strong class="text-secondary text-[14px]">180 ms</strong>
+</div>
+</div>
+<div class="mt-space-sm pt-space-xs flex items-center justify-between text-outline text-[11px] font-mono-code">
+<span>DNS Resolution: 18ms</span>
+<span>TLS Handshake: 42ms</span>
+</div>
+</div>
+</aside>
+</div>
+</div>
+<!-- INLINE CLIENT INTERACTION LOGIC (Filters & Proposal Budget Calculator) -->
+<script>
+    (function initAuditReport() {
+      // 1. Finding Tabs Filtering
+      const tabs = document.querySelectorAll('.filter-tab');
+      const cards = document.querySelectorAll('.finding-card');
+
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          tabs.forEach(t => {
+            t.classList.remove('bg-surface', 'text-primary', 'font-semibold', 'shadow-sm');
+            t.classList.add('text-on-surface-variant');
+          });
+          tab.classList.remove('text-on-surface-variant');
+          tab.classList.add('bg-surface', 'text-primary', 'font-semibold', 'shadow-sm');
+
+          const filter = tab.getAttribute('data-filter');
+          cards.forEach(card => {
+            if (filter === 'all' || card.classList.contains(filter)) {
+              card.style.display = 'block';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        });
+      });
+
+      // 2. Proposal Sizing & Scope Toggles
+      const toggleButtons = document.querySelectorAll('.scope-toggle-btn');
+      const totalDisplay = document.getElementById('total-scope-display');
+      const addAllBtn = document.getElementById('add-all-scope-btn');
+
+      let currentTotal = 12000; // Initial active cards (4200 + 4600 + 3200)
+
+      function updateTotalDisplay() {
+        if (totalDisplay) {
+          totalDisplay.textContent = '$' + currentTotal.toLocaleString();
+        }
+      }
+
+      toggleButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const cost = parseInt(btn.getAttribute('data-cost'), 10) || 0;
+          const isIncluded = btn.classList.contains('bg-primary');
+          const btnText = btn.querySelector('.btn-text');
+          const icon = btn.querySelector('.material-symbols-outlined');
+
+          if (isIncluded) {
+            // Remove from scope
+            btn.classList.remove('bg-primary', 'text-on-primary');
+            btn.classList.add('bg-surface-container-high', 'text-on-surface');
+            if (btnText) btnText.textContent = '+ Add to Proposal ($' + cost.toLocaleString() + ')';
+            if (icon) icon.textContent = 'add';
+            currentTotal -= cost;
+          } else {
+            // Add to scope
+            btn.classList.remove('bg-surface-container-high', 'text-on-surface');
+            btn.classList.add('bg-primary', 'text-on-primary');
+            if (btnText) btnText.textContent = 'Included in Scope ($' + cost.toLocaleString() + ')';
+            if (icon) icon.textContent = 'check_circle';
+            currentTotal += cost;
+          }
+          updateTotalDisplay();
+        });
+      });
+
+      if (addAllBtn) {
+        addAllBtn.addEventListener('click', () => {
+          toggleButtons.forEach(btn => {
+            const cost = parseInt(btn.getAttribute('data-cost'), 10) || 0;
+            const btnText = btn.querySelector('.btn-text');
+            const icon = btn.querySelector('.material-symbols-outlined');
+
+            btn.classList.remove('bg-surface-container-high', 'text-on-surface');
+            btn.classList.add('bg-primary', 'text-on-primary');
+            if (btnText) btnText.textContent = 'Included in Scope ($' + cost.toLocaleString() + ')';
+            if (icon) icon.textContent = 'check_circle';
+          });
+          currentTotal = 14200;
+          updateTotalDisplay();
+          addAllBtn.innerHTML = '<span class="material-symbols-outlined text-[18px]">done_all</span><span>All Items Added ($14,200)</span>';
+        });
+      }
+    })();
+  </script>
+</div></main></div></body></html>

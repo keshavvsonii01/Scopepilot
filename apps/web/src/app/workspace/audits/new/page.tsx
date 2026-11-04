@@ -1,0 +1,6 @@
+import { CreateAuditForm } from "@/components/create-audit-form";
+import styles from "../../workspace.module.css";
+
+export default function NewAuditPage() {
+  return <div className={styles.auditGrid}><div className={styles.auditIntro}><header className={styles.pageHeader}><div><p className="eyebrow">New audit / controlled submission</p><h1>Start with what the site can show us.</h1><p>Set an audit depth and select the deterministic checks you want to request. ScopePilot will clearly identify partial results when the worker cannot complete a check.</p></div></header><div className={styles.formSheet}><div className={styles.formSheetHeader}><p className="eyebrow">Audit request</p><h2>Website and scope</h2><p>Submitting queues the audit for the worker.</p></div><CreateAuditForm /></div></div><aside className={styles.scopeNote}><p className="eyebrow">Scope boundary</p><h2>What a standard audit will inspect</h2><ul><li>One homepage plus up to three relevant public internal pages.</li><li>Titles, metadata, headings, links, image attributes, canonical and robots signals.</li><li>PageSpeed and selected accessibility checks when configured.</li><li>Desktop screenshots where feasible.</li></ul><p>Submissions are subject to public-URL validation, rate limits, and browser safety controls.</p></aside></div>;
+}

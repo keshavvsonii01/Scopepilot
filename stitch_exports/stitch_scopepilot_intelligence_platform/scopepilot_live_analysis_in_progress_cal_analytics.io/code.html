@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface":"#fbf9f3","background":"#fbf9f3","on-secondary-fixed-variant":"#105300","tertiary-container":"#0e1c2d","on-tertiary-container":"#77859a","primary-fixed":"#e1e3e1","secondary-fixed":"#8afd67","inverse-surface":"#30312d","on-secondary-fixed":"#032100","inverse-primary":"#c5c7c5","secondary":"#196e00","surface-container-lowest":"#ffffff","surface-container-highest":"#e4e2dc","on-secondary":"#ffffff","surface-container-high":"#eae8e2","primary":"#000000","on-secondary-container":"#1b7400","surface-container-low":"#f5f3ed","error":"#ba1a1a","on-surface-variant":"#434846","on-surface":"#1b1c18","on-error":"#ffffff","tertiary-fixed":"#d5e3fb","tertiary":"#000000","surface-variant":"#e4e2dc","on-primary":"#ffffff","surface-bright":"#fbf9f3","on-primary-fixed":"#191c1b","on-error-container":"#93000a","inverse-on-surface":"#f3f1eb","on-primary-container":"#828483","error-container":"#ffdad6","tertiary-fixed-dim":"#b9c7df","primary-container":"#191c1b","surface-container":"#f0eee8","primary-fixed-dim":"#c5c7c5","outline":"#747876","on-tertiary-fixed-variant":"#3a485b","outline-variant":"#c4c7c5","surface-dim":"#dcdad4","on-primary-fixed-variant":"#444746","on-tertiary":"#ffffff","on-tertiary-fixed":"#0e1c2d","on-background":"#1b1c18","secondary-fixed-dim":"#6edf4d","surface-tint":"#5c5f5d","secondary-container":"#8afd67"},borderRadius:{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},spacing:{"space-xl":"2.5rem","space-sm":"0.5rem","space-2xl":"4rem","margin-sm":"1rem","space-lg":"1.5rem","gutter-lg":"2.5rem","margin":"2rem","gutter-sm":"1rem","margin-lg":"4rem","space-xs":"0.25rem","space-md":"1rem","gutter":"1.5rem"},fontFamily:{"body-md":["Inter"],"display-xl-mobile":["Space Grotesk"],"mono-metric":["JetBrains Mono"],"body-lg":["Inter"],"headline-lg-mobile":["Space Grotesk"],"mono-label":["JetBrains Mono"],"display-xl":["Space Grotesk"],"mono-code":["JetBrains Mono"],"headline-sm":["Space Grotesk"],"headline-lg":["Space Grotesk"],"headline-md":["Space Grotesk"],"body-sm":["Inter"]},fontSize:{"body-md":["14px",{"lineHeight":"22px","letterSpacing":"0em","fontWeight":"400"}],"display-xl-mobile":["38px",{"lineHeight":"42px","letterSpacing":"-0.03em","fontWeight":"700"}],"mono-metric":["20px",{"lineHeight":"24px","letterSpacing":"-0.02em","fontWeight":"600"}],"body-lg":["17px",{"lineHeight":"26px","letterSpacing":"-0.01em","fontWeight":"400"}],"headline-lg-mobile":["28px",{"lineHeight":"32px","letterSpacing":"-0.02em","fontWeight":"600"}],"mono-label":["11px",{"lineHeight":"14px","letterSpacing":"0.06em","fontWeight":"500"}],"display-xl":["56px",{"lineHeight":"60px","letterSpacing":"-0.04em","fontWeight":"700"}],"mono-code":["12px",{"lineHeight":"18px","letterSpacing":"0em","fontWeight":"400"}],"headline-sm":["18px",{"lineHeight":"24px","letterSpacing":"-0.01em","fontWeight":"600"}],"headline-lg":["36px",{"lineHeight":"40px","letterSpacing":"-0.03em","fontWeight":"600"}],"headline-md":["24px",{"lineHeight":"28px","letterSpacing":"-0.02em","fontWeight":"600"}],"body-sm":["12px",{"lineHeight":"18px","letterSpacing":"0em","fontWeight":"400"}]}}}};</script></head><body class="bg-background font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-72 bg-surface-container-low border-r border-outline-variant/40 z-50 flex flex-col justify-between overflow-y-auto"><div class="flex flex-col"><div class="p-space-md border-b border-outline-variant/30"><div class="flex items-center justify-between mb-space-xs"><div class="flex items-center gap-space-xs"><span class="w-2.5 h-2.5 bg-primary rounded-none"></span><span class="font-headline-sm text-headline-sm uppercase tracking-tight text-primary">ScopePilot</span></div><span class="font-mono-label text-[10px] tracking-wider bg-secondary-container/20 text-on-secondary-fixed-variant border border-secondary px-1.5 py-0.5 rounded">SYS: ONLINE</span></div><div class="flex items-center justify-between text-on-surface-variant"><span class="font-mono-code text-[10px] uppercase text-outline">TELEMETRY // V2.4</span><span class="font-mono-code text-[10px] text-outline">+</span></div></div><div class="p-space-md border-b border-outline-variant/30 bg-surface-container/60"><div class="font-mono-label text-mono-label uppercase text-on-surface-variant mb-1">Active Workspace</div><div class="flex items-center justify-between cursor-pointer py-1 px-2 bg-surface border border-outline-variant rounded hover:border-primary transition-colors"><div class="flex items-center gap-2 truncate"><span class="w-2 h-2 rounded-full bg-secondary"></span><span class="font-mono-code text-mono-code text-on-surface truncate">Studio Archetype // Pro Agency</span></div><span class="material-symbols-outlined text-[16px] text-on-surface-variant">unfold_more</span></div></div><div class="px-space-md py-space-sm"><span class="font-mono-label text-mono-label uppercase text-on-surface-variant px-space-xs mb-space-xs block">Workspace Navigation</span><nav class="flex flex-col gap-1" data-active-classes="bg-primary text-on-primary font-medium rounded"><a class="flex items-center gap-space-sm px-space-sm py-2 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[18px]">grid_view</span><span>Dashboard</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md" data-path="new-audit" href="#"><span class="material-symbols-outlined text-[18px]">radar</span><span>New Audit</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md" data-path="intelligence-pipeline" href="#"><span class="material-symbols-outlined text-[18px]">account_tree</span><span>Intelligence Pipeline</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md" data-path="audit-reports" href="#"><span class="material-symbols-outlined text-[18px]">terminal</span><span>Audit Reports</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded text-on-surface-variant hover:bg-space-container-high hover:text-on-surface transition-colors font-body-md text-body-md" data-path="proposal-studio" href="#"><span class="material-symbols-outlined text-[18px]">description</span><span>Proposal Studio</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md" data-path="client-deliverables" href="#"><span class="material-symbols-outlined text-[18px]">inventory_2</span><span>Client Deliverables</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md" data-path="agency-settings" href="#"><span class="material-symbols-outlined text-[18px]">tune</span><span>Agency Settings</span></a></nav></div></div><div class="flex flex-col border-t border-outline-variant/30"><div class="p-space-md bg-surface-container-high/40 border-b border-outline-variant/30 space-y-2"><div class="flex items-center justify-between text-on-surface-variant"><span class="font-mono-label text-[10px] uppercase">Chromium Cluster</span><span class="font-mono-code text-[10px] text-secondary flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>Active</span></div><div class="space-y-1"><div class="flex items-center justify-between text-on-surface-variant"><span class="font-mono-label text-[10px] uppercase">Audit Quota</span><span class="font-mono-code text-[10px] text-on-surface">38 / 50 Used</span></div><div class="w-full bg-surface-container-highest h-1 rounded-none overflow-hidden"><div class="bg-primary h-full w-[76%]"></div></div></div></div><div class="p-space-md flex items-center justify-between bg-surface-container-low"><div class="flex items-center gap- space-sm"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div><div class="flex flex-col"><span class="font-body-md text-body-sm font-semibold text-on-surface leading-tight">Devin Vance</span><span class="font-mono-label text-[10px] text-on-surface-variant">Lead Architect</span></div></div><div class="flex items-center gap-1.5"><span class="font-mono-label text-[10px] uppercase bg-primary-container text-on-primary font-semibold px-1.5 py-0.5 rounded">PRO TIER</span><button aria-label="Quick settings" class="text-on-surface-variant hover:text-on-surface transition-colors p-1" type="button"><span class="material-symbols-outlined text-[18px]">more_vert</span></button></div></div></div></aside><div class="pl-72"><header class="fixed top-0 left-72 right-0 h-16 bg-surface/90 backdrop-blur-md border-b border-outline-variant/30 z-40 flex items-center justify-between px-space-lg"><div class="flex items-center gap-space-md"><div class="flex items-center gap-2 text-on-surface-variant font-mono-code text-mono-code"><span class="text-primary font-semibold">NODE_01</span><span>/</span><span>ENV: PRODUCTION</span></div><div class="hidden md:flex items-center gap-2 pl-space-md border-l border-outline-variant/40"><span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span><span class="font-mono-label text-[11px] text-on-surface-variant">SYS_LATENCY: 24ms</span></div></div><div class="flex items-center gap-space-md"><div class="relative hidden sm:flex items-center"><input class="bg-surface-container-low border border-outline-variant/60 rounded px-space-sm py-1.5 pl-8 font-mono-code text-mono-code text-on-surface placeholder:text-outline focus:border-primary focus:outline-none w-64" placeholder="Search telemetry, audits, clients..." type="text"/><span class="material-symbols-outlined absolute left-2 text-[16px] text-outline">search</span></div><div class="flex items-center gap-2 border-l border-outline-variant/40 pl-space-md"><button aria-label="Notifications" class="p-1.5 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high rounded transition-colors relative" type="button"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-1 right-1 w-2 h-2 bg-secondary rounded-full ring-2 ring-surface"></span></button><button aria-label="Help &amp; Docs" class="p-1.5 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high rounded transition-colors" type="button"><span class="material-symbols-outlined text-[20px]">help_outline</span></button></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></header><main class="w-full pt-16 bg-background min-h-screen"><div class="flex flex-col w-full">
+<style>
+    @keyframes laserSweep {
+      0% { top: 0%; opacity: 0.9; }
+      50% { opacity: 1; }
+      100% { top: 100%; opacity: 0.9; }
+    }
+    @keyframes gridPulse {
+      0%, 100% { opacity: 0.15; }
+      50% { opacity: 0.35; }
+    }
+    @keyframes terminalScroll {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-50%); }
+    }
+    @keyframes pingSlow {
+      0% { transform: scale(0.95); opacity: 0.8; }
+      50% { transform: scale(1.05); opacity: 0.2; }
+      100% { transform: scale(0.95); opacity: 0.8; }
+    }
+    .animate-laser {
+      animation: laserSweep 3.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    }
+    .animate-pulse-slow {
+      animation: pingSlow 2.5s ease-in-out infinite;
+    }
+    .animate-grid-flicker {
+      animation: gridPulse 4s ease-in-out infinite;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .animate-laser, .animate-pulse-slow, .animate-grid-flicker {
+        animation: none !important;
+      }
+    }
+  </style>
+<!-- Top System Telemetry Strip & Pipeline Orchestrator -->
+<section class="w-full bg-surface-container-low px-gutter py-space-md shadow-sm">
+<div class="max-w-[1720px] mx-auto flex flex-col gap-space-md">
+<!-- Target & Execution Flags -->
+<div class="flex flex-wrap items-center justify-between gap-space-sm">
+<div class="flex flex-wrap items-center gap-space-sm">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-secondary-container text-on-secondary-fixed-variant font-mono-label text-mono-label font-semibold">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+            CLUSTER_04 // ACTIVE RUNTIME
+          </span>
+<span class="font-mono-code text-mono-code text-on-surface-variant">CHROMIUM_HEADLESS v124.0.6367.60 (V8 12.4.254)</span>
+<span class="text-outline-variant font-mono-code">/</span>
+<span class="font-mono-code text-mono-code text-primary font-semibold tracking-tight">TARGET: https://cal-analytics.io/pricing</span>
+</div>
+<div class="flex items-center gap-space-sm">
+<div class="hidden xl:flex items-center gap-space-md font-mono-label text-mono-label text-on-surface-variant pr-space-md">
+<div>MEM_HEAP: <span class="text-primary font-semibold">142.4 MB</span></div>
+<div>NODES: <span class="text-primary font-semibold">1,812 / 1,812</span></div>
+<div>THREADS: <span class="text-secondary font-semibold">8 WORKERS</span></div>
+<div>TTFB: <span class="text-primary font-semibold">180ms</span></div>
+</div>
+<button class="px-3 py-1.5 rounded bg-surface-container-high hover:bg-surface-container-highest text-on-surface font-mono-label text-mono-label font-semibold tracking-wider uppercase transition-colors shadow-sm flex items-center gap-1.5" id="pauseBtn" type="button">
+<span class="material-symbols-outlined text-[15px]">pause_circle</span>
+<span>Freeze Run</span>
+</button>
+<button class="px-3 py-1.5 rounded bg-primary text-on-primary font-mono-label text-mono-label font-semibold tracking-wider uppercase hover:bg-secondary hover:text-on-secondary transition-colors shadow-sm flex items-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[15px]">stream</span>
+<span>Live Trace [Alt+L]</span>
+</button>
+</div>
+</div>
+<!-- Pipeline Stepper / Stages -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-space-xs pt-space-xs">
+<!-- Stage 01 -->
+<div class="p-space-sm rounded bg-surface-container shadow-sm flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-mono-label text-mono-label text-on-surface-variant uppercase">01 // DOM Tree</span>
+<span class="material-symbols-outlined text-[16px] text-secondary">check_circle</span>
+</div>
+<div class="font-headline-sm text-body-md text-on-surface truncate">Tree Extraction</div>
+<div class="font-mono-code text-body-sm text-secondary font-medium">COMPLETE · 1.84s</div>
+</div>
+<!-- Stage 02 -->
+<div class="p-space-sm rounded bg-surface-container shadow-sm flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-mono-label text-mono-label text-on-surface-variant uppercase">02 // Network HAR</span>
+<span class="material-symbols-outlined text-[16px] text-secondary">check_circle</span>
+</div>
+<div class="font-headline-sm text-body-md text-on-surface truncate">Telemetry Stream</div>
+<div class="font-mono-code text-body-sm text-secondary font-medium">COMPLETE · 3.12s</div>
+</div>
+<!-- Stage 03 (Active) -->
+<div class="p-space-sm rounded bg-primary-container text-on-primary shadow-md flex flex-col gap-1 relative overflow-hidden">
+<div class="absolute top-0 right-0 w-16 h-16 bg-secondary/15 rounded-full blur-xl pointer-events-none"></div>
+<div class="flex items-center justify-between">
+<span class="font-mono-label text-mono-label text-secondary-fixed uppercase">03 // Rendering</span>
+<span class="w-2 h-2 rounded-full bg-secondary-fixed animate-ping"></span>
+</div>
+<div class="font-headline-sm text-body-md font-semibold text-on-primary truncate">Core Web Vitals</div>
+<div class="font-mono-code text-body-sm text-secondary-fixed font-semibold">ANALYZING · 4.82s</div>
+</div>
+<!-- Stage 04 -->
+<div class="p-space-sm rounded bg-surface-container shadow-sm flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-mono-label text-mono-label text-on-surface-variant uppercase">04 // A11Y Audit</span>
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant animate-spin">sync</span>
+</div>
+<div class="font-headline-sm text-body-md text-on-surface truncate">WCAG 2.1 AA Tree</div>
+<div class="font-mono-code text-body-sm text-on-surface-variant font-medium">PARALLEL RUNTIME</div>
+</div>
+<!-- Stage 05 -->
+<div class="p-space-sm rounded bg-surface-container shadow-sm flex flex-col gap-1 opacity-75">
+<div class="flex items-center justify-between">
+<span class="font-mono-label text-mono-label text-on-surface-variant uppercase">05 // Synthesis</span>
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">hourglass_empty</span>
+</div>
+<div class="font-headline-sm text-body-md text-on-surface truncate">AI Scope Proposal</div>
+<div class="font-mono-code text-body-sm text-outline font-medium">QUEUED · STANDBY</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Main Asymmetric Workspace -->
+<div class="max-w-[1720px] w-full mx-auto px-gutter py-space-md grid grid-cols-1 xl:grid-cols-12 gap-space-lg">
+<!-- Left/Center 8-Column Stream: Realistic Headless Viewport + Active Inspection HUD -->
+<div class="xl:col-span-8 flex flex-col gap-space-md">
+<!-- Viewport Chrome Shell -->
+<div class="bg-primary text-on-primary rounded-xl overflow-hidden shadow-xl flex flex-col">
+<!-- Chromium Browser Title Bar -->
+<div class="px-space-md py-2.5 bg-primary-container flex items-center justify-between gap-space-md">
+<div class="flex items-center gap-2">
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-3 rounded-full bg-error inline-block"></span>
+<span class="w-3 h-3 rounded-full bg-surface-container-highest inline-block"></span>
+<span class="w-3 h-3 rounded-full bg-secondary inline-block"></span>
+</div>
+<div class="font-mono-label text-[10px] uppercase text-on-primary-container pl-2 tracking-wider">
+              DISPLAY_SURFACE: 1440 × 900 // DPR 2.0 // DESKTOP EMULATION
+            </div>
+</div>
+<div class="flex items-center gap-2 font-mono-code text-[11px] text-on-primary-container">
+<span class="flex items-center gap-1 text-secondary-fixed">
+<span class="material-symbols-outlined text-[14px]">lock</span>
+              TLS 1.3 / HTTP3
+            </span>
+<span class="text-outline">|</span>
+<span class="text-on-primary">200 OK</span>
+<span class="text-outline">|</span>
+<span>NEXT_JS_14</span>
+</div>
+</div>
+<!-- Terminal URL Address Bar -->
+<div class="px-space-md py-2 bg-inverse-surface flex items-center gap-space-sm font-mono-code text-mono-code text-inverse-on-surface">
+<button aria-label="Reload trace" class="text-on-surface-variant hover:text-surface-bright transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px]">refresh</span>
+</button>
+<div class="flex-1 bg-primary px-3 py-1 rounded text-surface-bright flex items-center justify-between">
+<span class="truncate selection:bg-secondary selection:text-primary">
+<span class="text-outline">https://</span><span class="font-semibold text-secondary-fixed">cal-analytics.io</span><span class="text-surface-variant">/pricing?ref=enterprise_q3</span>
+</span>
+<span class="font-mono-label text-[10px] text-secondary bg-surface-container-highest/20 px-1 rounded">DOM_MUTATIONS: 38</span>
+</div>
+<span class="material-symbols-outlined text-[18px] text-outline">tune</span>
+</div>
+<!-- Headless Page Viewport Surface with Active Diagnostic HUD Layer -->
+<div class="relative bg-surface-container-lowest text-on-surface min-h-[580px] overflow-hidden select-none">
+<!-- Coordinate Grid Background -->
+<div class="absolute inset-0 pointer-events-none opacity-20 bg-[linear-gradient(to_right,#000_1px,transparent_1px),linear-gradient(to_bottom,#000_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+<!-- Vertical Laser Scanning Beam -->
+<div class="animate-laser absolute left-0 right-0 h-1 bg-gradient-to-r from-transparent via-secondary-fixed to-transparent shadow-[0_0_15px_#8afd67] pointer-events-none z-30">
+<div class="absolute -top-3.5 right-6 px-1.5 py-0.5 rounded bg-primary text-secondary-fixed font-mono-label text-[9px] uppercase tracking-widest shadow">
+              SCAN_BEAM: Y=542px // T=4.82s
+            </div>
+</div>
+<!-- Viewport Pixel Guides Top/Left -->
+<div class="absolute top-0 left-0 right-0 h-4 bg-surface-container-high/60 backdrop-blur pointer-events-none z-20 flex justify-between px-3 font-mono-label text-[9px] text-outline">
+<span>0px</span><span>240px</span><span>480px</span><span>720px</span><span>960px</span><span>1200px</span><span>1440px</span>
+</div>
+<div class="absolute top-0 left-0 bottom-0 w-4 bg-surface-container-high/60 backdrop-blur pointer-events-none z-20 flex flex-col justify-between py-4 font-mono-label text-[9px] text-outline items-center">
+<span>0</span><span>200</span><span>400</span><span>600</span><span>800</span>
+</div>
+<!-- Mock Audited Website DOM (cal-analytics.io hero & pricing) -->
+<div class="p-8 pt-10 pl-10 max-w-4xl mx-auto flex flex-col gap-6">
+<!-- Target Site Navigation -->
+<div class="flex items-center justify-between pb-4">
+<div class="flex items-center gap-2">
+<span class="w-5 h-5 rounded bg-primary text-on-primary flex items-center justify-center font-bold text-xs">C</span>
+<span class="font-headline-sm text-body-md font-bold text-primary tracking-tight">Cal Analytics</span>
+</div>
+<div class="flex items-center gap-4 text-on-surface-variant font-body-sm text-body-sm">
+<span>Features</span>
+<span class="text-primary font-semibold">Pricing</span>
+<span>Docs</span>
+<span>Sign in</span>
+</div>
+</div>
+<!-- Inspected Node 1: #pricing-hero (LCP DEFICIT) -->
+<div class="relative p-6 rounded-lg bg-surface-container-low transition-all" id="pricing-hero">
+<!-- Coordinate Bounding Box Tag & HUD -->
+<div class="absolute -inset-1 rounded-lg pointer-events-none z-20 bg-error/5">
+<div class="absolute -top-3.5 left-3 px-2 py-0.5 rounded bg-error text-on-error font-mono-label text-[10px] font-semibold tracking-wider flex items-center gap-1.5 shadow-sm">
+<span class="material-symbols-outlined text-[13px]">warning</span>
+<span>#pricing-hero // LCP: 4.82s (CRITICAL DEFICIT)</span>
+</div>
+<div class="absolute top-1 right-2 font-mono-code text-[10px] text-error font-semibold">
+                  BOUNDS: x:120 y:160 w:920 h:240
+                </div>
+<!-- Precision Crosshairs -->
+<span class="absolute -top-1 -left-1 font-mono-code text-error text-[10px] font-bold">+</span>
+<span class="absolute -top-1 -right-1 font-mono-code text-error text-[10px] font-bold">+</span>
+<span class="absolute -bottom-1 -left-1 font-mono-code text-error text-[10px] font-bold">+</span>
+<span class="absolute -bottom-1 -right-1 font-mono-code text-error text-[10px] font-bold">+</span>
+</div>
+<div class="max-w-xl flex flex-col gap-2">
+<span class="font-mono-label text-[11px] uppercase tracking-wider text-secondary">Infrastructure Metrics · V2 Release</span>
+<h1 class="font-headline-lg text-headline-md text-primary leading-tight">Predictable billing for distributed event streams.</h1>
+<p class="font-body-md text-body-sm text-on-surface-variant">Real-time trace ingestion. 100k free monthly datapoints, scale infinitely with zero query timeouts.</p>
+</div>
+<!-- Unoptimized Hero Graphic Container with Deficit Badge -->
+<div class="mt-4 p-3 rounded bg-surface-container flex items-center justify-between text-body-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-error text-[20px]">image</span>
+<div class="flex flex-col">
+<span class="font-mono-code text-body-sm font-semibold text-primary">hero-telemetry-visual.png</span>
+<span class="font-mono-label text-[10px] text-error font-medium">3.8 MB Uncompressed · Cloudflare Edge Cache Miss (CF-Cache-Status: DYNAMIC)</span>
+</div>
+</div>
+<span class="px-2 py-1 rounded bg-error-container text-on-error-container font-mono-label text-[10px] font-bold">AVIF Opportunity: -92% (304KB)</span>
+</div>
+</div>
+<!-- Inspected Node 2 & 3: Pricing Cards + Buttons (#checkout-cta-btn & #stripe-hydration-drawer) -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+<!-- Plan 1: Team Plan with A11Y Contrast Deficit -->
+<div class="p-5 rounded-lg bg-surface shadow-sm relative flex flex-col justify-between gap-4">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-headline-sm text-body-lg text-primary">Team Cluster</h3>
+<div class="font-display-xl text-headline-md text-primary mt-1">$149<span class="text-body-sm text-on-surface-variant font-normal"> / mo</span></div>
+</div>
+<span class="px-2 py-0.5 rounded bg-surface-container font-mono-label text-[10px] text-on-surface">PER-NODE</span>
+</div>
+<!-- Inspected Node 2: #checkout-cta-btn (A11Y CONTRAST FAIL) -->
+<div class="relative" id="checkout-cta-btn">
+<!-- Inspection HUD Frame -->
+<div class="absolute -inset-1.5 rounded pointer-events-none z-20 bg-secondary-fixed/10">
+<div class="absolute -top-3.5 left-2 px-1.5 py-0.5 rounded bg-primary text-secondary-fixed font-mono-label text-[9px] font-bold tracking-wider flex items-center gap-1 shadow">
+<span class="material-symbols-outlined text-[11px] text-secondary-fixed">contrast</span>
+<span>#checkout-btn // CONTRAST: 2.1:1 (FAIL)</span>
+</div>
+</div>
+<button class="w-full py-2.5 rounded bg-surface-container-high text-outline font-headline-sm text-body-sm font-semibold text-center cursor-default" type="button">
+                    Start 14-Day Free Evaluation
+                  </button>
+</div>
+</div>
+<!-- Plan 2: Enterprise with Hydration Lock Deficit -->
+<div class="p-5 rounded-lg bg-surface shadow-sm relative flex flex-col justify-between gap-4">
+<!-- Inspection HUD Frame on Drawer -->
+<div class="absolute -inset-1.5 rounded pointer-events-none z-20 bg-secondary-container/10" id="stripe-hydration-drawer">
+<div class="absolute -top-3.5 right-2 px-1.5 py-0.5 rounded bg-tertiary-container text-tertiary-fixed font-mono-label text-[9px] font-bold tracking-wider flex items-center gap-1 shadow">
+<span class="material-symbols-outlined text-[11px] text-secondary-fixed">timer</span>
+<span>#stripe-drawer // HYDRATION BLOCK: 840ms</span>
+</div>
+</div>
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-headline-sm text-body-lg text-primary">Dedicated Engine</h3>
+<div class="font-display-xl text-headline-md text-primary mt-1">Custom<span class="text-body-sm text-on-surface-variant font-normal"> / SLA</span></div>
+</div>
+<span class="px-2 py-0.5 rounded bg-primary text-on-primary font-mono-label text-[10px]">ENTERPRISE</span>
+</div>
+<button class="w-full py-2.5 rounded bg-primary text-on-primary font-headline-sm text-body-sm font-semibold text-center shadow-sm" type="button">
+                  Schedule Architect Briefing
+                </button>
+</div>
+</div>
+</div>
+<!-- Bottom Viewport Status Strip -->
+<div class="absolute bottom-0 left-0 right-0 px-4 py-1.5 bg-primary-container text-on-primary font-mono-label text-[10px] flex items-center justify-between z-20">
+<span class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary-fixed animate-ping"></span>
+              HEADLESS_FRAME: ACTIVE_SAMPLING @ 60FPS
+            </span>
+<span class="text-outline">VIEWPORT: 1440px / SCROLL_OFFSET: 0px / MUTATION_OBSERVER: 12 HOOKS</span>
+</div>
+</div>
+</div>
+<!-- Quick Inspection Action Matrix -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-sm">
+<div class="p-space-sm rounded bg-surface-container shadow-sm flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-surface-container-highest flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">photo_camera</span>
+</div>
+<div class="flex flex-col">
+<span class="font-mono-label text-mono-label text-on-surface-variant">FULL DOM SNAPSHOT</span>
+<span class="font-mono-code text-mono-code font-semibold text-primary">Captured (Raw 14.8MB)</span>
+</div>
+</div>
+<div class="p-space-sm rounded bg-surface-container shadow-sm flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-surface-container-highest flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[18px]">security</span>
+</div>
+<div class="flex flex-col">
+<span class="font-mono-label text-mono-label text-on-surface-variant">HEADER TELEMETRY</span>
+<span class="font-mono-code text-mono-code font-semibold text-primary">HSTS, CSP Verified</span>
+</div>
+</div>
+<div class="p-space-sm rounded bg-surface-container shadow-sm flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-surface-container-highest flex items-center justify-center text-error">
+<span class="material-symbols-outlined text-[18px]">analytics</span>
+</div>
+<div class="flex flex-col">
+<span class="font-mono-label text-mono-label text-on-surface-variant">SYNTHESIZED OPPORTUNITY</span>
+<span class="font-mono-code text-mono-code font-semibold text-secondary">3 Core Sprints ($14.2k)</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Rail 4-Column Diagnostic Engine (Multi-Stream Pillar Console) -->
+<div class="xl:col-span-4 flex flex-col gap-space-md">
+<!-- PILLAR D: AI Commercial Opportunity Engine (Top Highlight) -->
+<div class="p-space-md rounded-xl bg-primary text-on-primary shadow-xl flex flex-col gap-space-sm relative overflow-hidden">
+<div class="absolute -top-10 -right-10 w-32 h-32 bg-secondary/20 rounded-full blur-2xl pointer-events-none"></div>
+<div class="flex items-center justify-between pb-space-xs">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 bg-secondary-fixed rounded-none"></span>
+<span class="font-headline-sm text-body-md font-bold tracking-tight text-on-primary uppercase">ScopePilot AI Synthesis</span>
+</div>
+<span class="px-2 py-0.5 rounded bg-secondary text-on-secondary font-mono-label text-[10px] font-semibold">ENGINE RUNNING</span>
+</div>
+<p class="font-mono-code text-mono-code text-surface-variant leading-relaxed">
+          Correlating detected bottlenecks with client revenue impact. Compiling scoping deliverables in real-time...
+        </p>
+<!-- Billable Sprint Slices Dynamic Synthesizer -->
+<div class="flex flex-col gap-2 pt-1">
+<div class="p-2.5 rounded bg-primary-container flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-body-md text-body-sm font-semibold text-on-primary">Sprint 01: Edge Asset Pipeline</span>
+<span class="font-mono-label text-[10px] text-outline">LCP &lt;1.2s Fix · AVIF + CDN Routing</span>
+</div>
+<span class="font-mono-metric text-headline-sm text-secondary-fixed font-bold">$5,800</span>
+</div>
+<div class="p-2.5 rounded bg-primary-container flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-body-md text-body-sm font-semibold text-on-primary">Sprint 02: WCAG 2.1 AA Remediation</span>
+<span class="font-mono-label text-[10px] text-outline">Contrast Audit + Screen Reader Tree</span>
+</div>
+<span class="font-mono-metric text-headline-sm text-secondary-fixed font-bold">$4,600</span>
+</div>
+<div class="p-2.5 rounded bg-primary-container flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-body-md text-body-sm font-semibold text-on-primary">Sprint 03: Hydration Decoupling</span>
+<span class="font-mono-label text-[10px] text-outline">Stripe Drawer Thread Unlock (840ms)</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[14px] text-secondary-fixed animate-spin">refresh</span>
+<span class="font-mono-metric text-headline-sm text-secondary-fixed font-bold">$3,800</span>
+</div>
+</div>
+</div>
+<!-- Total Pipeline Scope Value Callout -->
+<div class="mt-2 pt-space-xs flex items-center justify-between">
+<span class="font-mono-label text-mono-label uppercase text-on-primary-container">Total Generated Agency Scope:</span>
+<span class="font-mono-metric text-headline-md text-secondary-fixed font-bold tracking-tight">$14,200+</span>
+</div>
+</div>
+<!-- PILLAR A: Web Vitals & Performance Telemetry -->
+<div class="p-space-md rounded-xl bg-surface-container shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-primary">speed</span>
+<span class="font-headline-sm text-body-md text-primary font-bold">Performance &amp; Core Vitals</span>
+</div>
+<span class="font-mono-label text-[10px] bg-error-container text-on-error-container px-2 py-0.5 rounded font-bold">LCP FAIL</span>
+</div>
+<!-- Metric Gauges Grid -->
+<div class="grid grid-cols-3 gap-2 pt-1 text-center">
+<div class="p-2 rounded bg-surface flex flex-col items-center">
+<span class="font-mono-label text-[10px] text-on-surface-variant uppercase">LCP Paint</span>
+<span class="font-mono-metric text-headline-sm text-error font-bold mt-0.5">4.82s</span>
+<span class="font-mono-label text-[9px] text-outline">Threshold: 2.5s</span>
+</div>
+<div class="p-2 rounded bg-surface flex flex-col items-center">
+<span class="font-mono-label text-[10px] text-on-surface-variant uppercase">INP Thread</span>
+<span class="font-mono-metric text-headline-sm text-secondary font-bold mt-0.5">142ms</span>
+<span class="font-mono-label text-[9px] text-outline">Target: &lt;200ms</span>
+</div>
+<div class="p-2 rounded bg-surface flex flex-col items-center">
+<span class="font-mono-label text-[10px] text-on-surface-variant uppercase">CLS Shift</span>
+<span class="font-mono-metric text-headline-sm text-secondary font-bold mt-0.5">0.02</span>
+<span class="font-mono-label text-[9px] text-outline">Stable (&lt;0.10)</span>
+</div>
+</div>
+<!-- Inline SVG Performance Sparkline / Waterfall Profile -->
+<div class="p-2 rounded bg-surface flex flex-col gap-1.5">
+<div class="flex items-center justify-between font-mono-label text-[10px] text-on-surface-variant">
+<span>THREAD EXECUTION TIMELINE (0ms – 5000ms)</span>
+<span class="text-error font-semibold">TBT: 920ms</span>
+</div>
+<svg aria-label="Thread Execution Timeline Sparkline" class="w-full h-8 text-primary overflow-visible" preserveaspectratio="none" viewbox="0 0 300 32">
+<rect fill="currentColor" height="16" opacity="0.2" rx="2" width="40" x="0" y="8"></rect>
+<rect fill="currentColor" height="16" opacity="0.5" rx="2" width="70" x="42" y="8"></rect>
+<rect class="fill-error" height="24" opacity="0.8" rx="2" width="110" x="114" y="4"></rect>
+<rect class="fill-secondary" height="16" opacity="0.7" rx="2" width="70" x="226" y="8"></rect>
+</svg>
+<div class="flex justify-between font-mono-label text-[9px] text-outline">
+<span>DNS/TLS: 180ms</span>
+<span>HTML: 320ms</span>
+<span class="text-error font-semibold">Script Eval: 1,840ms</span>
+<span class="text-secondary">LCP: 4,820ms</span>
+</div>
+</div>
+<!-- Payload Breakdown Bar -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between font-mono-label text-[10px] text-on-surface-variant">
+<span>PAYLOAD COMPOSITION (5.42 MB TOTAL)</span>
+<span>Images 70% · JS 26%</span>
+</div>
+<div class="w-full h-2 rounded bg-surface flex overflow-hidden">
+<div class="h-full bg-error" style="width: 70%" title="Images 3.8MB"></div>
+<div class="h-full bg-surface-tint" style="width: 26%" title="JavaScript 1.42MB"></div>
+<div class="h-full bg-secondary" style="width: 4%" title="HTML/CSS 200KB"></div>
+</div>
+<div class="flex justify-between font-mono-code text-[10px] text-on-surface-variant pt-0.5">
+<span>Unused JS detected: <span class="font-semibold text-primary">840 KB</span></span>
+<span class="text-secondary font-semibold">Optimization potential: 82%</span>
+</div>
+</div>
+</div>
+<!-- PILLAR B: WCAG 2.1 AA Compliance Stream -->
+<div class="p-space-md rounded-xl bg-surface-container shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-primary">accessibility_new</span>
+<span class="font-headline-sm text-body-md text-primary font-bold">Accessibility Compliance (AA)</span>
+</div>
+<span class="font-mono-label text-[10px] bg-surface-container-highest px-2 py-0.5 rounded text-primary font-semibold">16 ISSUES</span>
+</div>
+<div class="space-y-2">
+<div class="p-2 rounded bg-surface flex items-start justify-between gap-2">
+<div class="flex flex-col">
+<span class="font-body-md text-body-sm font-semibold text-primary">12 Contrast Threshold Breaches</span>
+<span class="font-mono-code text-[11px] text-on-surface-variant">Ratio 2.1:1 on primary action CTAs (req: 4.5:1)</span>
+</div>
+<span class="px-1.5 py-0.5 rounded bg-error-container text-on-error-container font-mono-label text-[9px] font-bold">CRITICAL</span>
+</div>
+<div class="p-2 rounded bg-surface flex items-start justify-between gap-2">
+<div class="flex flex-col">
+<span class="font-body-md text-body-sm font-semibold text-primary">4 Form Inputs Missing ARIA Labels</span>
+<span class="font-mono-code text-[11px] text-on-surface-variant">input#billing-zip, input#company-seats</span>
+</div>
+<span class="px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface font-mono-label text-[9px] font-bold">MEDIUM</span>
+</div>
+<div class="p-2 rounded bg-surface flex items-start justify-between gap-2">
+<div class="flex flex-col">
+<span class="font-body-md text-body-sm font-semibold text-primary">Keyboard Focus Trap</span>
+<span class="font-mono-code text-[11px] text-on-surface-variant">Stripe modal drawer retains tab cycle without escape</span>
+</div>
+<span class="px-1.5 py-0.5 rounded bg-error-container text-on-error-container font-mono-label text-[9px] font-bold">CRITICAL</span>
+</div>
+</div>
+</div>
+<!-- PILLAR C: Semantic Architecture & Metadata Diagnostic -->
+<div class="p-space-md rounded-xl bg-surface-container shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-primary">schema</span>
+<span class="font-headline-sm text-body-md text-primary font-bold">SEO &amp; Structured Schema</span>
+</div>
+<span class="font-mono-label text-[10px] text-secondary font-semibold">2 WARNINGS</span>
+</div>
+<div class="font-mono-code text-[11px] space-y-1.5">
+<div class="flex items-center justify-between p-1.5 rounded bg-surface text-on-surface">
+<span>JSON-LD Product Schema:</span>
+<span class="text-error font-semibold">NULL / MISSING</span>
+</div>
+<div class="flex items-center justify-between p-1.5 rounded bg-surface text-on-surface">
+<span>Canonical Link:</span>
+<span class="text-secondary font-semibold">VALID (cal-analytics.io)</span>
+</div>
+<div class="flex items-center justify-between p-1.5 rounded bg-surface text-on-surface">
+<span>OG:Image Protocol:</span>
+<span class="text-on-surface font-semibold">1200x630 (Valid)</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Real-time Chromium Trace Log (CDP Terminal) -->
+<section class="w-full bg-primary text-on-primary px-gutter py-space-md mt-space-md shadow-2xl">
+<div class="max-w-[1720px] mx-auto flex flex-col gap-2">
+<div class="flex items-center justify-between pb-1">
+<div class="flex items-center gap-2 font-mono-label text-mono-label uppercase text-on-primary-container">
+<span class="w-2 h-2 rounded-full bg-secondary-fixed"></span>
+<span>CHROMIUM DEVTOOLS PROTOCOL (CDP) // REAL-TIME TRACE BUFFER</span>
+</div>
+<div class="flex items-center gap-4 font-mono-code text-[11px] text-on-primary-container">
+<span>EVENT_RATE: 24.2 msg/sec</span>
+<span class="text-secondary-fixed">STATUS: STREAMING</span>
+</div>
+</div>
+<div class="h-28 overflow-y-auto font-mono-code text-[11px] text-surface-variant space-y-1 bg-primary-container/80 p-3 rounded" id="terminalStream">
+<div class="text-outline">[CDP:Target.attachToTarget] Session id: cdp-sess-92182 attached to cal-analytics.io</div>
+<div class="text-outline">[CDP:Page.navigate] Target navigated to https://cal-analytics.io/pricing (HTTP/3 200 OK)</div>
+<div class="text-surface-bright">[CDP:DOM.getDocument] Root node #document injected (depth: 14, children: 1,812)</div>
+<div class="text-secondary-fixed">[CDP:Performance.metrics] LayoutDuration: 412ms | ScriptDuration: 1,840ms | TaskDuration: 2,410ms</div>
+<div class="text-error">[AUDIT:LCP] Largest Contentful Paint node #pricing-hero media file trigger recorded at 4,821ms</div>
+<div class="text-surface-bright">[CDP:Accessibility.getFullAXTree] Node count: 684 | Contrast failures flagged: 12 elements</div>
+<div class="text-secondary-fixed">[AI_AGENT:synthesize_roi] Correlating 840ms hydration stall with mobile checkout abandon rates...</div>
+<div class="text-surface-bright flex items-center gap-1">
+<span class="text-secondary-fixed font-bold">&gt;&gt;</span>
+<span>Analyzing CSS layout shifts and computing draft Sprint 03 deliverables...</span>
+<span class="w-1.5 h-3.5 bg-secondary-fixed inline-block animate-pulse"></span>
+</div>
+</div>
+</div>
+</section>
+<!-- Client-side Interactive Telemetry Controller -->
+<script>
+    (function initTelemetryConsole() {
+      const pauseBtn = document.getElementById('pauseBtn');
+      const terminalStream = document.getElementById('terminalStream');
+      let isPaused = false;
+
+      const logEvents = [
+        '[CDP:Network.responseReceived] 200 OK https://js.stripe.com/v3/ (Size: 142KB)',
+        '[CDP:DOM.attributeModified] Node #checkout-cta-btn mutated className',
+        '[CDP:Performance.metrics] LayoutShift detected score: 0.004',
+        '[AI_SYNTHESIZER] Quantified Sprint 01 ROI: +18.4% conversion uplift on mobile',
+        '[CDP:Tracing.dataCollected] Heap allocation snapshot verified at 142.4MB'
+      ];
+
+      let logIndex = 0;
+      setInterval(() => {
+        if (isPaused || !terminalStream) return;
+        const entry = document.createElement('div');
+        entry.className = logIndex % 2 === 0 ? 'text-secondary-fixed' : 'text-surface-bright';
+        entry.textContent = `[TRACE:${new Date().toISOString().substring(11, 23)}] ${logEvents[logIndex % logEvents.length]}`;
+        terminalStream.appendChild(entry);
+        terminalStream.scrollTop = terminalStream.scrollHeight;
+        logIndex++;
+      }, 3400);
+
+      if (pauseBtn) {
+        pauseBtn.addEventListener('click', () => {
+          isPaused = !isPaused;
+          pauseBtn.querySelector('span:last-child').textContent = isPaused ? 'Resume Run' : 'Freeze Run';
+          pauseBtn.classList.toggle('bg-error');
+          pauseBtn.classList.toggle('text-on-error');
+        });
+      }
+    })();
+  </script>
+</div></main></div></body></html>

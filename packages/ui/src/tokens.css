@@ -1,0 +1,18 @@
+:root {
+  --paper: #f2f0ea;
+  --paper-bright: #fbf9f3;
+  --ink: #171a19;
+  --ink-muted: #525754;
+  --lime: #8cff69;
+  --blue: #d9e7ff;
+  --amber: #e8a45d;
+  --line: #d8d4ca;
+  --line-dark: #2a2e2c;
+  --danger: #bd3131;
+  --display: "Space Grotesk", Arial, sans-serif;
+  --body: "Inter", Arial, sans-serif;
+  --mono: "JetBrains Mono", monospace;
+  --shadow-hard: 3px 3px 0 var(--ink);
+  --radius-control: 4px;
+  --radius-sheet: 8px;
+}

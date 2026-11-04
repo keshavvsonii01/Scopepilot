@@ -1,0 +1,23 @@
+{
+  "name": "@scopepilot/crawl-core",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "exports": {
+    "./security": "./src/security.ts",
+    "./normalization": "./src/normalization.ts",
+    "./execution": "./src/execution.ts"
+  },
+  "dependencies": {
+    "@scopepilot/contracts": "workspace:*"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "typescript": "^5.7.0",
+    "vitest": "^3.2.4"
+  }
+}

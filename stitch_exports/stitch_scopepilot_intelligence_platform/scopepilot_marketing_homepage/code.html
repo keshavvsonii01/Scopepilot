@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Space+Grotesk:wght@100..900&display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "primary-fixed-dim": "#c5c7c5", "on-tertiary": "#ffffff", "surface-container-low": "#f5f3ed", "on-secondary-container": "#1b7400", "secondary-container": "#8afd67", "surface-container-high": "#eae8e2", "on-tertiary-fixed": "#0e1c2d", "outline-variant": "#c4c7c5", "surface": "#fbf9f3", "primary-fixed": "#e1e3e1", "error-container": "#ffdad6", "background": "#fbf9f3", "surface-container-lowest": "#ffffff", "inverse-primary": "#c5c7c5", "tertiary": "#000000", "error": "#ba1a1a", "on-primary-fixed": "#191c1b", "on-secondary": "#ffffff", "surface-bright": "#fbf9f3", "tertiary-fixed": "#d5e3fb", "inverse-on-surface": "#f3f1eb", "primary-container": "#191c1b", "on-error-container": "#93000a", "secondary": "#196e00", "secondary-fixed-dim": "#6edf4d", "tertiary-container": "#0e1c2d", "on-tertiary-container": "#77859a", "on-primary-container": "#828483", "inverse-surface": "#30312d", "on-error": "#ffffff", "on-secondary-fixed-variant": "#105300", "on-secondary-fixed": "#032100", "tertiary-fixed-dim": "#b9c7df", "on-primary": "#ffffff", "on-tertiary-fixed-variant": "#3a485b", "primary": "#000000", "secondary-fixed": "#8afd67", "on-background": "#1b1c18", "outline": "#747876", "surface-container": "#f0eee8", "surface-container-highest": "#e4e2dc", "on-surface": "#1b1c18", "on-primary-fixed-variant": "#444746", "on-surface-variant": "#434846", "surface-tint": "#5c5f5d", "surface-dim": "#dcdad4", "surface-variant": "#e4e2dc" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": { "space-lg": "1.5rem", "space-md": "1rem", "space-xl": "2.5rem", "space-2xl": "4rem", "gutter": "1.5rem", "space-sm": "0.5rem", "gutter-lg": "2.5rem", "margin-sm": "1rem", "margin-lg": "4rem", "space-xs": "0.25rem", "gutter-sm": "1rem", "margin": "2rem" }, "fontFamily": { "headline-lg": ["Space Grotesk"], "display-xl-mobile": ["Space Grotesk"], "body-sm": ["Inter"], "mono-label": ["JetBrains Mono"], "body-lg": ["Inter"], "headline-lg-mobile": ["Space Grotesk"], "mono-metric": ["JetBrains Mono"], "display-xl": ["Space Grotesk"], "headline-sm": ["Space Grotesk"], "body-md": ["Inter"], "mono-code": ["JetBrains Mono"], "headline-md": ["Space Grotesk"] }, "fontSize": { "headline-lg": ["36px", { "lineHeight": "40px", "letterSpacing": "-0.03em", "fontWeight": "600" }], "display-xl-mobile": ["38px", { "lineHeight": "42px", "letterSpacing": "-0.03em", "fontWeight": "700" }], "body-sm": ["12px", { "lineHeight": "18px", "letterSpacing": "0em", "fontWeight": "400" }], "mono-label": ["11px", { "lineHeight": "14px", "letterSpacing": "0.06em", "fontWeight": "500" }], "body-lg": ["17px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "400" }], "headline-lg-mobile": ["28px", { "lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "600" }], "mono-metric": ["20px", { "lineHeight": "24px", "letterSpacing": "-0.02em", "fontWeight": "600" }], "display-xl": ["56px", { "lineHeight": "60px", "letterSpacing": "-0.04em", "fontWeight": "700" }], "headline-sm": ["18px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "body-md": ["14px", { "lineHeight": "22px", "letterSpacing": "0em", "fontWeight": "400" }], "mono-code": ["12px", { "lineHeight": "18px", "letterSpacing": "0em", "fontWeight": "400" }], "headline-md": ["24px", { "lineHeight": "28px", "letterSpacing": "-0.02em", "fontWeight": "600" }] } } } };</script></head><body class="bg-surface font-body-md text-on-surface antialiased selection:bg-secondary-fixed selection:text-on-secondary-fixed"><header class="fixed top-0 w-full z-50 bg-surface/90 backdrop-blur-md border-b border-outline-variant/30"><div class="h-16 w-full px-margin-sm lg:px-margin flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-md"><a class="flex items-center gap-space-sm" data-path="overview" href="#"><img alt="ScopePilot Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1X124AcwR99Uc9wO0soc7y6qaYgKs5T4ZPAiJs6MwpAGGZ05scFDCrSeMUcU8Fhe6bFd8Os7vzRARjeNr1f64yse-7SjP88YDbQfDzMS5YvZSLS1oI2_L5JOQCqVVSh0groph_fEU_ewU2FpSGYCgqSoesoWPu_2OV6qBkitPGNGwmFcNhslELdkSZtCW1SrekO4jWWtXqj7QnlcuIW9iuSUGXzQGAssj2JKBV70kpy8g"/><span class="font-headline-sm text-headline-sm uppercase tracking-tight text-on-surface">ScopePilot</span></a><div class="hidden xl:flex items-center gap-space-xs px-space-sm py-1 bg-surface-container border border-outline-variant/40 rounded-lg"><span class="w-1.5 h-1.5 rounded-full bg-secondary-fixed-dim animate-pulse"></span><span class="font-mono-label text-mono-label text-on-surface-variant uppercase tracking-wider">SYS: ONLINE // ENGINE v2.4</span></div></div><nav class="hidden lg:flex items-center gap-space-xs" data-active-classes="text-on-surface bg-surface-container-high rounded-lg"><a class="px-space-sm py-1.5 font-mono-code text-mono-code text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low rounded-lg transition-colors uppercase" data-path="intelligence-engine" href="#">Intelligence Engine</a><a class="px-space-sm py-1.5 font-mono-code text-mono-code text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low rounded-lg transition-colors uppercase" data-path="the-pipeline" href="#">The Pipeline</a><a class="px-space-sm py-1.5 font-mono-code text-mono-code text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low rounded-lg transition-colors uppercase" data-path="audit-matrix" href="#">Audit Matrix</a><a class="px-space-sm py-1.5 font-mono-code text-mono-code text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low rounded-lg transition-colors uppercase" data-path="proposal-studio" href="#">Proposal Studio</a><a class="px-space-sm py-1.5 font-mono-code text-mono-code text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low rounded-lg transition-colors uppercase" data-path="pricing" href="#">Pricing</a></nav><div class="flex items-center gap-space-md"><a class="hidden sm:inline-block font-mono-label text-mono-label text-on-surface-variant hover:text-on-surface transition-colors uppercase tracking-wider" data-path="sign-in" href="#">Sign In</a><a class="group relative inline-flex items-center gap-space-xs bg-primary px-space-md py-2 rounded-lg text-on-primary font-mono-label text-mono-label uppercase tracking-wider hover:bg-surface-container-lowest hover:text-primary transition-all duration-150 border border-primary" data-path="audit-matrix" href="#"><span class="w-1.5 h-1.5 rounded-full bg-secondary-fixed transition-transform group-hover:scale-125"></span><span>Run Free Audit</span></a><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-16 bg-surface min-h-[calc(100vh-4rem)]"><div class="flex flex-col w-full">
+<!-- HERO SECTION -->
+<section class="relative w-full px-margin-sm lg:px-margin pt-space-xl pb-space-2xl overflow-hidden">
+<!-- Ambient Structural Grid Anchor -->
+<div class="absolute inset-0 pointer-events-none opacity-[0.035] bg-[radial-gradient(#191c1b_1px,transparent_1px)] [background-size:24px_24px]"></div>
+<!-- Top Telemetry Micro-tag Header -->
+<div class="relative z-10 flex flex-wrap items-center justify-between gap-space-sm pb-space-lg">
+<div class="flex items-center gap-space-xs font-mono-label text-mono-label text-on-surface-variant uppercase tracking-widest">
+<span class="text-secondary font-bold">[</span>
+<span class="text-on-surface font-semibold">SYSTEM 01 // AUDIT PIPELINE</span>
+<span class="text-secondary font-bold">]</span>
+<span class="text-outline-variant px-1 font-mono-code">+</span>
+<span class="text-on-surface-variant">ACTIVE TELEMETRY: 41,209 AUDITS RUN</span>
+</div>
+<div class="flex items-center gap-space-xs px-space-sm py-1 bg-surface-container border border-outline-variant/40 rounded-lg">
+<span class="w-2 h-2 rounded-full bg-secondary-fixed animate-ping"></span>
+<span class="font-mono-label text-mono-label text-on-surface font-medium">DISCOVERY ENGINE: V2.4 RUNTIME READY</span>
+</div>
+</div>
+<!-- Editorial Hero Columns -->
+<div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-start">
+<!-- Left Editorial Pitch & Live URL Console (7 cols) -->
+<div class="lg:col-span-7 flex flex-col justify-between space-y-space-xl">
+<div class="space-y-space-md">
+<div class="inline-flex items-center gap-space-xs font-mono-label text-mono-label uppercase text-on-secondary-container bg-secondary-container/20 px-space-sm py-0.5 rounded-lg border border-secondary-fixed/50">
+<span class="material-symbols-outlined text-[14px]">radar</span>
+<span>DOM DECOMPILER & REVENUE CAPTURE ENGINE</span>
+</div>
+<h1 class="font-headline-lg lg:font-display-xl text-headline-lg lg:text-display-xl text-on-surface tracking-tight uppercase leading-[0.98]">
+            Your next client is <span class="underline decoration-secondary-fixed decoration-wavy decoration-2 underline-offset-8">hiding</span> in plain sight.
+          </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl leading-relaxed pt-space-xs">
+            Point ScopePilot at any live URL. We dissect underlying DOM bottlenecks, Core Web Vitals decay, missing semantic SEO, and accessibility liabilities—translating technical debt into client-ready, multi-thousand-dollar agency proposals in 90 seconds.
+          </p>
+</div>
+<!-- Integrated URL Audit Cockpit Container -->
+<div class="w-full bg-surface-container-low border-2 border-primary rounded-xl p-space-md shadow-[4px_4px_0px_#191c1b] space-y-space-md relative">
+<!-- Corner Crosshairs -->
+<span class="absolute top-2 left-2 font-mono-code text-[10px] text-outline select-none">+</span>
+<span class="absolute top-2 right-2 font-mono-code text-[10px] text-outline select-none">+</span>
+<span class="absolute bottom-2 left-2 font-mono-code text-[10px] text-outline select-none">+</span>
+<span class="absolute bottom-2 right-2 font-mono-code text-[10px] text-outline select-none">+</span>
+<div class="flex items-center justify-between border-b border-outline-variant/60 pb-space-xs">
+<span class="font-mono-label text-mono-label text-on-surface font-bold uppercase tracking-wider">// TARGET URL DEPLOYMENT</span>
+<span class="font-mono-label text-[10px] text-secondary font-semibold uppercase flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary-fixed"></span> HEADLESS CHROMIUM POOL: 64 NODES
+            </span>
+</div>
+<!-- Main Input Field Bar -->
+<form class="flex flex-col sm:flex-row gap-space-xs items-stretch" id="hero-audit-form" onsubmit="event.preventDefault(); runHeroAudit();">
+<div class="flex-1 flex items-center bg-surface-container-lowest border border-outline-variant rounded-lg px-space-md py-2.5 focus-within:border-primary focus-within:ring-2 focus-within:ring-secondary-fixed/50 transition-all">
+<span class="font-mono-code text-mono-code text-outline font-semibold select-none pr-space-xs">https://</span>
+<input class="w-full bg-transparent font-mono-code text-mono-code text-on-surface placeholder:text-outline focus:outline-none" id="hero-audit-input" placeholder="enter-prospect-domain.com" type="text" value="cal-analytics.io"/>
+<span class="material-symbols-outlined text-outline-variant text-[18px]">travel_explore</span>
+</div>
+<button class="group relative inline-flex items-center justify-center gap-space-xs bg-primary px-space-lg py-3 rounded-lg text-on-primary font-mono-label text-mono-label uppercase tracking-wider hover:bg-secondary-fixed hover:text-on-secondary-fixed transition-all duration-200 shadow-md shrink-0 active:translate-y-0.5 cursor-pointer" type="submit">
+<span class="w-2 h-2 rounded-full bg-secondary-fixed group-hover:bg-primary transition-colors"></span>
+<span>Initialize Deep Audit</span>
+<span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</form>
+<!-- Preset Target Domain Pills -->
+<div class="flex flex-wrap items-center gap-space-xs pt-space-xs">
+<span class="font-mono-label text-[10px] text-on-surface-variant uppercase">Instant Telemetry Test:</span>
+<button class="font-mono-code text-mono-code px-space-sm py-0.5 bg-surface-container border border-outline-variant/60 rounded-md hover:bg-surface-container-high hover:border-primary text-on-surface transition-colors" onclick="setDomain('linear.app')" type="button">try "linear.app"</button>
+<button class="font-mono-code text-mono-code px-space-sm py-0.5 bg-surface-container border border-outline-variant/60 rounded-md hover:bg-surface-container-high hover:border-primary text-on-surface transition-colors" onclick="setDomain('acme-corp.io')" type="button">try "acme-corp.io"</button>
+<button class="font-mono-code text-mono-code px-space-sm py-0.5 bg-surface-container border border-outline-variant/60 rounded-md hover:bg-surface-container-high hover:border-primary text-on-surface transition-colors" onclick="setDomain('studio-archetype.de')" type="button">try "studio-archetype.de"</button>
+</div>
+<!-- Micro-telemetry Guarantee -->
+<div class="pt-space-xs flex flex-wrap items-center justify-between text-[11px] font-mono-code text-on-surface-variant">
+<span>• No client login required</span>
+<span>• Instant DOM crawl</span>
+<span>• Headless Chromium engine</span>
+<span class="text-secondary font-semibold">100% Client-Ready Output</span>
+</div>
+</div>
+</div>
+<!-- Right Visual Interactive Website Preview HUD (5 cols) -->
+<div class="lg:col-span-5 relative mt-space-md lg:mt-0">
+<!-- Offset Hard Drop Shadow Frame -->
+<div class="w-full bg-surface-container-lowest border-2 border-primary rounded-xl shadow-[8px_8px_0px_#191c1b] overflow-hidden relative">
+<!-- Browser Frame Top Bar -->
+<div class="bg-primary px-space-md py-2.5 flex items-center justify-between text-on-primary font-mono-label text-mono-label">
+<div class="flex items-center gap-space-xs">
+<span class="w-2.5 h-2.5 rounded-full bg-error"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-[#E8A45D]"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-secondary-fixed"></span>
+<span class="ml-2 font-mono-code text-[11px] text-surface-dim uppercase" id="preview-url-bar">cal-analytics.io [VIEWPORT: 1440x900]</span>
+</div>
+<div class="flex items-center gap-space-xs text-[10px] text-secondary-fixed">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary-fixed animate-ping"></span>
+<span id="scan-state">ANALYZING DOM</span>
+</div>
+</div>
+<!-- Synthetic Inspection Viewport -->
+<div class="relative w-full h-[470px] bg-[#EBE8E0] overflow-hidden flex flex-col justify-between p-space-md selection:bg-none">
+<!-- Scanning Laser Line sweeping across canvas -->
+<div class="absolute inset-x-0 h-1 bg-secondary-fixed shadow-[0_0_12px_#8afd67] z-30 pointer-events-none animate-[scan_3.5s_ease-in-out_infinite]"></div>
+<!-- Precision HUD Coordinates Overlay -->
+<div class="absolute top-2 left-2 font-mono-code text-[9px] text-outline bg-surface/80 px-1 py-0.5 rounded border border-outline-variant/40 pointer-events-none z-10">
+              LOC: [X: 1042, Y: 890] | TREE_DEPTH: 14
+            </div>
+<!-- Simulated Web Design Canvas Wireframe underneath inspection -->
+<div class="w-full space-y-space-md opacity-85 select-none pointer-events-none pt-4">
+<!-- Mock Nav -->
+<div class="flex items-center justify-between border-b border-outline-variant/60 pb-2">
+<div class="h-4 w-28 bg-primary rounded-xs"></div>
+<div class="flex gap-3">
+<div class="h-2 w-12 bg-outline rounded-xs"></div>
+<div class="h-2 w-12 bg-outline rounded-xs"></div>
+<div class="h-2 w-12 bg-outline rounded-xs"></div>
+</div>
+</div>
+<!-- Mock Hero Typography -->
+<div class="space-y-2 pt-2">
+<div class="h-6 w-3/4 bg-primary/90 rounded-xs"></div>
+<div class="h-3 w-1/2 bg-outline rounded-xs"></div>
+</div>
+<!-- Mock Content Split with Giant Uncompressed Asset Box -->
+<div class="grid grid-cols-2 gap-3 pt-3">
+<div class="h-28 bg-surface-container border border-dashed border-outline-variant rounded-sm flex items-center justify-center font-mono-code text-[10px] text-outline">
+                  [HERO_UNCOMPRESSED.PNG (5.4MB)]
+                </div>
+<div class="h-28 space-y-2">
+<div class="h-2.5 w-full bg-outline-variant rounded-xs"></div>
+<div class="h-2.5 w-5/6 bg-outline-variant rounded-xs"></div>
+<div class="h-2.5 w-2/3 bg-outline-variant rounded-xs"></div>
+<div class="h-8 w-24 bg-primary rounded-sm mt-3"></div>
+</div>
+</div>
+</div>
+<!-- Layered Inspection HUD Overlay 1 (LCP Spike on Hero Asset) -->
+<div class="absolute top-28 left-6 z-20 max-w-[280px] bg-surface-container-lowest border-2 border-[#191c1b] p-space-sm rounded-lg shadow-[3px_3px_0px_#191c1b] animate-bounce [animation-duration:3s]">
+<div class="flex items-center justify-between pb-1 mb-1 border-b border-outline-variant/40">
+<span class="font-mono-label text-[10px] bg-[#E8A45D]/20 text-[#191c1b] font-bold px-1.5 py-0.2 rounded border border-[#E8A45D]">CORE WEB VITALS: LCP SPIKE</span>
+<span class="material-symbols-outlined text-[14px] text-[#E8A45D]">warning</span>
+</div>
+<p class="font-mono-code text-[11px] text-on-surface leading-tight font-medium">
+                LCP 4.2s (Budget: 2.5s) → <span class="font-bold text-error">42% Mobile Bounce Risk</span>
+</p>
+<div class="mt-1 flex items-center justify-between font-mono-label text-[9px] text-on-surface-variant">
+<span>FILE: 5.4MB PNG</span>
+<span class="text-secondary font-bold">REFACTOR: WEBP/AVIF (-91%)</span>
+</div>
+</div>
+<!-- Layered Inspection HUD Overlay 2 (Accessibility Barrier) -->
+<div class="absolute top-10 right-4 z-20 max-w-[260px] bg-surface-container-lowest border border-primary p-space-sm rounded-lg shadow-[2px_2px_0px_#191c1b]">
+<div class="flex items-center justify-between pb-1 mb-1 border-b border-outline-variant/40">
+<span class="font-mono-label text-[9px] bg-error-container text-on-error-container font-bold px-1 rounded">WCAG 2.1 AA LIABILITY</span>
+<span class="font-mono-code text-[9px] text-outline">NODE #nav_cta</span>
+</div>
+<p class="font-mono-code text-[10px] text-on-surface leading-tight">
+                Contrast 2.1:1 (Req: 4.5:1). <span class="font-semibold text-error">Legal Risk Flagged.</span>
+</p>
+</div>
+<!-- Layered Inspection HUD Overlay 3 (Conversion & Revenue Friction) -->
+<div class="absolute bottom-20 left-12 z-20 max-w-[310px] bg-primary text-on-primary p-space-sm rounded-lg shadow-[3px_3px_0px_#8afd67]">
+<div class="flex items-center justify-between pb-1 mb-1 border-b border-outline/40">
+<span class="font-mono-label text-[10px] text-secondary-fixed font-bold tracking-wider">// MONETIZATION DECAY</span>
+<span class="font-mono-code text-[9px] text-primary-fixed-dim">REVENUE LEAK</span>
+</div>
+<p class="font-mono-code text-[11px] text-on-primary leading-tight">
+                Missing Schema.org & 840ms FID on Checkout button.
+              </p>
+<div class="mt-1 pt-1 border-t border-outline/30 flex justify-between font-mono-label text-[10px]">
+<span class="text-secondary-fixed font-bold">EST. LOSS: ~$14,200/MO</span>
+<span class="text-primary-fixed-dim">SOLVABLE IN SPRINT 1</span>
+</div>
+</div>
+<!-- Floating Live Telemetry Bottom Dock -->
+<div class="relative z-20 w-full bg-primary-container text-on-primary px-space-sm py-2 rounded-lg border border-outline/50 flex flex-wrap items-center justify-between gap-1 shadow-lg">
+<div class="flex items-center gap-space-xs font-mono-code text-[10px]">
+<span class="w-2 h-2 rounded-full bg-secondary-fixed animate-pulse"></span>
+<span>NODES: 3,412</span>
+<span class="text-outline">|</span>
+<span>TTFB: 890ms</span>
+<span class="text-outline">|</span>
+<span class="text-error font-medium">WEIGHT: 6.8MB</span>
+</div>
+<div class="font-mono-label text-[10px] text-secondary-fixed font-bold flex items-center gap-1">
+<span>CONVERSION LEAK: 68/100</span>
+<span class="material-symbols-outlined text-[13px]">trending_down</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Metric Floating Capsule -->
+<div class="absolute -bottom-4 -left-4 z-30 bg-surface-container-high border-2 border-primary px-space-md py-1.5 rounded-lg shadow-[3px_3px_0px_#191c1b] hidden sm:flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-secondary text-[20px]">speed</span>
+<div>
+<div class="font-mono-label text-[9px] text-on-surface-variant uppercase">OPPORTUNITY INDEX</div>
+<div class="font-mono-metric text-[14px] text-on-surface font-bold leading-none">$12,400 DISCOVERED</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- THE PROGRESSION STORY (5-Phase Conversion Loop) -->
+<section class="w-full bg-surface-container border-y border-outline-variant/40 px-margin-sm lg:px-margin py-space-2xl">
+<div class="max-w-4xl space-y-space-xs mb-space-xl">
+<div class="flex items-center gap-space-xs font-mono-label text-mono-label text-on-surface-variant uppercase">
+<span class="text-secondary font-bold">// ARCHITECTURAL PIPELINE</span>
+<span class="text-outline">+</span>
+<span>ZERO UNPAID SPEC WORK</span>
+</div>
+<h2 class="font-headline-lg lg:font-headline-lg text-headline-lg text-on-surface uppercase tracking-tight">
+        FROM CODE AUDIT TO SIGNED RETAINER
+      </h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">
+        The 5-phase conversion loop that replaces weeks of unpaid technical discovery with automated, unassailable diagnostic proof.
+      </p>
+</div>
+<!-- Timeline Grid with Connecting Architectural Motif -->
+<div class="grid grid-cols-1 md:grid-cols-5 gap-space-md relative">
+<!-- Step 01 -->
+<div class="bg-surface border border-outline-variant/60 rounded-xl p-space-md space-y-space-sm relative shadow-sm hover:border-primary transition-colors">
+<div class="flex items-center justify-between font-mono-code text-[11px] text-on-surface-variant border-b border-outline-variant/40 pb-2">
+<span class="font-bold text-on-surface">PHASE 01</span>
+<span class="text-secondary font-bold">[INGEST]</span>
+</div>
+<div class="font-headline-sm text-headline-sm text-on-surface">URL Ingestion</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+          Instant headless browser capture, rendering tree extraction, and 140+ diagnostic heuristic sweeps in <15 seconds.
+        </p>
+<div class="pt-2 font-mono-label text-[10px] text-outline flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">input</span>
+<span>DOM Extraction</span>
+</div>
+</div>
+<!-- Step 02 -->
+<div class="bg-surface border border-outline-variant/60 rounded-xl p-space-md space-y-space-sm relative shadow-sm hover:border-primary transition-colors">
+<div class="flex items-center justify-between font-mono-code text-[11px] text-on-surface-variant border-b border-outline-variant/40 pb-2">
+<span class="font-bold text-on-surface">PHASE 02</span>
+<span class="text-secondary font-bold">[DECOMPILE]</span>
+</div>
+<div class="font-headline-sm text-headline-sm text-on-surface">Deep Technical Audit</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+          Core Web Vitals trace, script execution waterfall, structural DOM bloat, unminified payloads, and WCAG AA compliance.
+        </p>
+<div class="pt-2 font-mono-label text-[10px] text-outline flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">analytics</span>
+<span>140+ Tests Run</span>
+</div>
+</div>
+<!-- Step 03 -->
+<div class="bg-surface border-2 border-primary rounded-xl p-space-md space-y-space-sm relative shadow-[3px_3px_0px_#191c1b] bg-surface-container-lowest">
+<div class="flex items-center justify-between font-mono-code text-[11px] text-on-surface-variant border-b border-outline-variant/40 pb-2">
+<span class="font-bold text-on-surface">PHASE 03</span>
+<span class="text-secondary font-bold bg-secondary-fixed/20 px-1 rounded">[SYNTHESIZE]</span>
+</div>
+<div class="font-headline-sm text-headline-sm text-on-surface">Business Intelligence</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+          Translating raw stack traces into executive financial stakes: bounce velocity, lost Google rankings, and revenue leakage.
+        </p>
+<div class="pt-2 font-mono-label text-[10px] text-secondary font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">monetization_on</span>
+<span>Financial Translation</span>
+</div>
+</div>
+<!-- Step 04 -->
+<div class="bg-surface border border-outline-variant/60 rounded-xl p-space-md space-y-space-sm relative shadow-sm hover:border-primary transition-colors">
+<div class="flex items-center justify-between font-mono-code text-[11px] text-on-surface-variant border-b border-outline-variant/40 pb-2">
+<span class="font-bold text-on-surface">PHASE 04</span>
+<span class="text-secondary font-bold">[SCOPING]</span>
+</div>
+<div class="font-headline-sm text-headline-sm text-on-surface">Deliverables Matrix</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+          Automated scoping into concrete sprints: CDN asset refactoring, SSR migration, semantic SEO rebuild, and accessibility patches.
+        </p>
+<div class="pt-2 font-mono-label text-[10px] text-outline flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">view_kanban</span>
+<span>Sprint Assembly</span>
+</div>
+</div>
+<!-- Step 05 -->
+<div class="bg-surface border border-outline-variant/60 rounded-xl p-space-md space-y-space-sm relative shadow-sm hover:border-primary transition-colors">
+<div class="flex items-center justify-between font-mono-code text-[11px] text-on-surface-variant border-b border-outline-variant/40 pb-2">
+<span class="font-bold text-on-surface">PHASE 05</span>
+<span class="text-secondary font-bold">[CONTRACT]</span>
+</div>
+<div class="font-headline-sm text-headline-sm text-on-surface">Proposal Studio</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+          Interactive client proposal URL with tier toggles ($4.5k / $8.5k / $15k), custom terms, and direct one-click contract acceptance.
+        </p>
+<div class="pt-2 font-mono-label text-[10px] text-secondary font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">verified</span>
+<span>Signed Retainer</span>
+</div>
+</div>
+</div>
+</section>
+<!-- SIDE-BY-SIDE TECHNICAL EVIDENCE BOARD (Audit Report Preview) -->
+<section class="w-full px-margin-sm lg:px-margin py-space-2xl bg-surface">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-start">
+<!-- Narrative Left Column (40%) -->
+<div class="lg:col-span-5 space-y-space-lg">
+<div class="space-y-space-xs">
+<span class="font-mono-label text-mono-label text-on-surface-variant uppercase tracking-wider">// THE TECHNICAL PROOF ENGINE</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface uppercase tracking-tight">
+            Speak their business language without losing technical rigor.
+          </h2>
+</div>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+          Clients dismiss abstract code grievances like "refactoring debt" or "missing meta tags." But when you demonstrate that their unoptimized images trigger a 4.82-second mobile LCP resulting in a documented 18.4% traffic abandonment, the conversation shifts from price debate to emergency triage.
+        </p>
+<!-- Feature Points -->
+<div class="space-y-space-md pt-space-xs">
+<div class="flex items-start gap-space-sm">
+<div class="w-6 h-6 rounded-md bg-primary text-on-primary flex items-center justify-center font-mono-code text-[11px] shrink-0">01</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Quantified Revenue Bleed</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Every millisecond of latency mapped to industry standard e-commerce conversion erosion models.</p>
+</div>
+</div>
+<div class="flex items-start gap-space-sm">
+<div class="w-6 h-6 rounded-md bg-primary text-on-primary flex items-center justify-center font-mono-code text-[11px] shrink-0">02</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Audit Matrix Defense</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Provide prospective clients with a tamper-proof live link that validates every line item you propose to fix.</p>
+</div>
+</div>
+<div class="flex items-start gap-space-sm">
+<div class="w-6 h-6 rounded-md bg-primary text-on-primary flex items-center justify-center font-mono-code text-[11px] shrink-0">03</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">White-label Authority</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Present audits under your agency's domain with custom branding and curated deliverable pricing matrices.</p>
+</div>
+</div>
+</div>
+<div class="pt-space-sm">
+<a class="inline-flex items-center gap-space-xs font-mono-label text-mono-label text-on-surface hover:text-secondary uppercase tracking-wider font-bold transition-colors" data-path="audit-matrix" href="#">
+<span>Explore The Full Diagnostic Checklist (140+ Metrics)</span>
+<span class="material-symbols-outlined text-[16px]">arrow_outward</span>
+</a>
+</div>
+</div>
+<!-- Right Column: High-Fidelity Audit Report Board (60%) -->
+<div class="lg:col-span-7 bg-primary text-on-primary rounded-xl border border-outline/50 shadow-[6px_6px_0px_#191c1b] p-space-md sm:p-space-lg space-y-space-md">
+<!-- Audit Report Header Bar -->
+<div class="flex flex-wrap items-center justify-between gap-space-sm border-b border-outline/30 pb-space-sm">
+<div class="flex items-center gap-space-sm">
+<div class="w-3 h-3 bg-error rounded-full animate-ping"></div>
+<div>
+<span class="font-mono-label text-[10px] text-primary-fixed-dim uppercase block">TARGET AUDIT INSPECTION</span>
+<span class="font-mono-metric text-[15px] font-bold text-on-primary">cal-analytics.io // FULL RUNTIME MATRIX</span>
+</div>
+</div>
+<!-- Score Dial / Health Badge -->
+<div class="flex items-center gap-space-md bg-primary-container px-space-md py-1.5 rounded-lg border border-outline/40">
+<div class="text-right">
+<span class="font-mono-label text-[9px] text-outline block">COMPLIANCE INDEX</span>
+<span class="font-mono-label text-[11px] text-[#E8A45D] font-bold uppercase">NEEDS REMEDIATION</span>
+</div>
+<div class="font-display-xl text-[36px] font-headline-lg text-secondary-fixed leading-none">
+              58<span class="text-[16px] text-primary-fixed-dim">/100</span>
+</div>
+</div>
+</div>
+<!-- Telemetry Data Matrix Rows -->
+<div class="space-y-space-xs font-mono-code text-[12px]">
+<!-- Metric Row 1 -->
+<div class="grid grid-cols-12 gap-2 py-2.5 px-space-sm bg-surface-container-lowest/5 rounded hover:bg-surface-container-lowest/10 transition-colors items-center border-l-2 border-error">
+<div class="col-span-5 flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-error shrink-0"></span>
+<span class="font-bold text-on-primary">Largest Contentful Paint</span>
+</div>
+<div class="col-span-3 text-error font-semibold">4.82s (+2.3s OVER)</div>
+<div class="col-span-4 text-right text-primary-fixed-dim text-[11px]">Unoptimized 5.4MB Hero Asset</div>
+</div>
+<!-- Metric Row 2 -->
+<div class="grid grid-cols-12 gap-2 py-2.5 px-space-sm bg-surface-container-lowest/5 rounded hover:bg-surface-container-lowest/10 transition-colors items-center border-l-2 border-[#E8A45D]">
+<div class="col-span-5 flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-[#E8A45D] shrink-0"></span>
+<span class="font-bold text-on-primary">Cumulative Layout Shift</span>
+</div>
+<div class="col-span-3 text-[#E8A45D] font-semibold">0.28 (POOR)</div>
+<div class="col-span-4 text-right text-primary-fixed-dim text-[11px]">Webfont FOUT Swap Pop-in</div>
+</div>
+<!-- Metric Row 3 -->
+<div class="grid grid-cols-12 gap-2 py-2.5 px-space-sm bg-surface-container-lowest/5 rounded hover:bg-surface-container-lowest/10 transition-colors items-center border-l-2 border-error">
+<div class="col-span-5 flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-error shrink-0"></span>
+<span class="font-bold text-on-primary">Unused JavaScript Payload</span>
+</div>
+<div class="col-span-3 text-error font-semibold">1.4MB Bloat</div>
+<div class="col-span-4 text-right text-primary-fixed-dim text-[11px]">GTM + 3 Unbundled Analytics</div>
+</div>
+<!-- Metric Row 4 -->
+<div class="grid grid-cols-12 gap-2 py-2.5 px-space-sm bg-surface-container-lowest/5 rounded hover:bg-surface-container-lowest/10 transition-colors items-center border-l-2 border-[#E8A45D]">
+<div class="col-span-5 flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-[#E8A45D] shrink-0"></span>
+<span class="font-bold text-on-primary">OpenGraph & Canonical Tags</span>
+</div>
+<div class="col-span-3 text-[#E8A45D] font-semibold">Missing (18 URLs)</div>
+<div class="col-span-4 text-right text-primary-fixed-dim text-[11px]">Social Previews Broken</div>
+</div>
+<!-- Metric Row 5 -->
+<div class="grid grid-cols-12 gap-2 py-2.5 px-space-sm bg-surface-container-lowest/5 rounded hover:bg-surface-container-lowest/10 transition-colors items-center border-l-2 border-[#E8A45D]">
+<div class="col-span-5 flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-[#E8A45D] shrink-0"></span>
+<span class="font-bold text-on-primary">Accessibility WCAG 2.1</span>
+</div>
+<div class="col-span-3 text-[#E8A45D] font-semibold">71/100</div>
+<div class="col-span-4 text-right text-primary-fixed-dim text-[11px]">48 Contrast, 12 ARIA Errors</div>
+</div>
+<!-- Metric Row 6 (Pass) -->
+<div class="grid grid-cols-12 gap-2 py-2.5 px-space-sm bg-surface-container-lowest/5 rounded hover:bg-surface-container-lowest/10 transition-colors items-center border-l-2 border-secondary-fixed">
+<div class="col-span-5 flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-secondary-fixed shrink-0"></span>
+<span class="font-bold text-on-primary">SSL & Modern HTTP/3</span>
+</div>
+<div class="col-span-3 text-secondary-fixed font-semibold">PASSED</div>
+<div class="col-span-4 text-right text-primary-fixed-dim text-[11px]">Valid Cert (TLS 1.3)</div>
+</div>
+</div>
+<!-- Commercial Impact Calculator Callout -->
+<div class="bg-primary-container p-space-md rounded-lg border border-secondary-fixed/40 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-md">
+<div class="space-y-1">
+<span class="font-mono-label text-[10px] text-secondary-fixed font-bold uppercase tracking-wider">CALCULATED FINANCIAL IMPACT</span>
+<div class="font-headline-sm text-headline-sm text-on-primary">
+              Est. Abandonment Rate: <span class="text-error">-18.4%</span>
+</div>
+<p class="font-mono-code text-[11px] text-primary-fixed-dim">
+              Estimated Monthly Revenue Loss: <strong class="text-on-primary">$14,200/mo</strong>
+</p>
+</div>
+<div class="bg-surface-container-lowest text-primary px-space-md py-2 rounded-lg text-center shrink-0">
+<div class="font-mono-metric text-[18px] font-bold text-secondary">+28%</div>
+<div class="font-mono-label text-[9px] uppercase font-bold">Projected Sprint Lift</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- PROPOSAL STUDIO PREVIEW (Turn Findings into Money) -->
+<section class="w-full px-margin-sm lg:px-margin py-space-2xl bg-surface-container-low border-b border-outline-variant/40">
+<div class="max-w-3xl mb-space-xl space-y-space-xs">
+<div class="flex items-center gap-space-xs font-mono-label text-mono-label text-on-surface-variant uppercase">
+<span class="text-secondary font-bold">// MODULE 04</span>
+<span class="text-outline">+</span>
+<span>PROPOSAL AUTOMATION ENGINE</span>
+</div>
+<h2 class="font-headline-lg lg:font-display-xl text-headline-lg lg:text-display-xl text-on-surface uppercase tracking-tight leading-none">
+        Turn diagnostic findings into concrete invoices.
+      </h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant pt-2">
+        ScopePilot transforms detected bottlenecks directly into modular work sprints. Toggle deliverables, adjust agency hourly rates, and generate a client presentation in seconds.
+      </p>
+</div>
+<!-- Split: Interactive Scope Builder & Live Client Proposal Document -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-start">
+<!-- Interactive Scope Builder (Left, 5 cols) -->
+<div class="lg:col-span-5 bg-surface-container-lowest border-2 border-primary rounded-xl p-space-md shadow-[4px_4px_0px_#191c1b] space-y-space-md">
+<div class="flex items-center justify-between border-b border-outline-variant/60 pb-space-xs">
+<span class="font-mono-label text-mono-label text-on-surface font-bold uppercase tracking-wider">
+            [ SPRINT DELIVERABLES BUILDER ]
+          </span>
+<span class="font-mono-code text-[11px] text-secondary font-bold">ACTIVE WORKSPACE</span>
+</div>
+<div class="space-y-space-sm" id="scope-items">
+<!-- Item 1 -->
+<label class="flex items-start gap-space-sm p-space-sm bg-surface rounded-lg border border-outline-variant/60 hover:border-primary cursor-pointer transition-colors block">
+<input checked="" class="mt-1 accent-primary w-4 h-4 cursor-pointer" id="scope-item-1" onchange="calculateScopeTotal()" type="checkbox"/>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<span class="font-mono-code text-mono-code font-bold text-on-surface">Core Web Vitals & CDN Re-architecture</span>
+<span class="font-mono-code text-mono-code font-bold text-secondary" data-price="3800">$3,800</span>
+</div>
+<p class="font-body-sm text-[12px] text-on-surface-variant pt-1">
+                LCP image conversion, script deferral, headless cloud delivery setup.
+              </p>
+</div>
+</label>
+<!-- Item 2 -->
+<label class="flex items-start gap-space-sm p-space-sm bg-surface rounded-lg border border-outline-variant/60 hover:border-primary cursor-pointer transition-colors block">
+<input checked="" class="mt-1 accent-primary w-4 h-4 cursor-pointer" id="scope-item-2" onchange="calculateScopeTotal()" type="checkbox"/>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<span class="font-mono-code text-mono-code font-bold text-on-surface">WCAG 2.1 AA Full Remediation</span>
+<span class="font-mono-code text-mono-code font-bold text-secondary" data-price="2600">$2,600</span>
+</div>
+<p class="font-body-sm text-[12px] text-on-surface-variant pt-1">
+                Contrast restoration, screen reader ARIA tree rebuild, legal indemnity certificate.
+              </p>
+</div>
+</label>
+<!-- Item 3 -->
+<label class="flex items-start gap-space-sm p-space-sm bg-surface rounded-lg border border-outline-variant/60 hover:border-primary cursor-pointer transition-colors block">
+<input checked="" class="mt-1 accent-primary w-4 h-4 cursor-pointer" id="scope-item-3" onchange="calculateScopeTotal()" type="checkbox"/>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<span class="font-mono-code text-mono-code font-bold text-on-surface">Technical SEO & Schema Graph</span>
+<span class="font-mono-code text-mono-code font-bold text-secondary" data-price="1900">$1,900</span>
+</div>
+<p class="font-body-sm text-[12px] text-on-surface-variant pt-1">
+                Dynamic OpenGraph, JSON-LD Schema integration on 18 dynamic templates.
+              </p>
+</div>
+</label>
+<!-- Item 4 (Optional) -->
+<label class="flex items-start gap-space-sm p-space-sm bg-surface rounded-lg border border-outline-variant/60 hover:border-primary cursor-pointer transition-colors block">
+<input class="mt-1 accent-primary w-4 h-4 cursor-pointer" id="scope-item-4" onchange="calculateScopeTotal()" type="checkbox"/>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<span class="font-mono-code text-mono-code font-bold text-on-surface">Ongoing Monthly Health Retainer</span>
+<span class="font-mono-code text-mono-code font-bold text-secondary" data-price="1200">$1,200/mo</span>
+</div>
+<p class="font-body-sm text-[12px] text-on-surface-variant pt-1">
+                Continuous synthetic monitoring, regression alerts, weekly telemetry audits.
+              </p>
+</div>
+</label>
+</div>
+<!-- Calculated Summary Box -->
+<div class="bg-surface-container p-space-md rounded-lg border border-outline-variant/80 flex items-center justify-between">
+<div>
+<span class="font-mono-label text-[10px] text-on-surface-variant uppercase block">TOTAL BILLABLE SCOPE</span>
+<span class="font-mono-metric text-mono-metric font-bold text-on-surface" id="scope-total-display">$8,300</span>
+</div>
+<button class="bg-primary text-on-primary font-mono-label text-[11px] px-space-md py-2 rounded-lg hover:bg-secondary-fixed hover:text-on-secondary-fixed transition-colors uppercase tracking-wider font-semibold cursor-pointer" type="button">
+            Export Proposal PDF
+          </button>
+</div>
+</div>
+<!-- Generated Proposal Sheet Preview (Right, 7 cols) -->
+<div class="lg:col-span-7 bg-surface-container-lowest border-2 border-primary rounded-xl p-space-lg shadow-[6px_6px_0px_#191c1b] space-y-space-lg relative">
+<div class="flex items-center justify-between border-b border-outline-variant/40 pb-space-md">
+<div>
+<div class="font-mono-label text-[10px] text-on-surface-variant uppercase">CLIENT PRESENTATION DRAFT // REF: 2025-CAL-09</div>
+<div class="font-headline-sm text-headline-sm text-on-surface uppercase">ENGINEERING REMEDIATION PROPOSAL</div>
+</div>
+<span class="bg-secondary-fixed/30 border border-secondary text-on-surface font-mono-label text-[10px] px-2 py-1 rounded uppercase font-bold">READY TO SIGN</span>
+</div>
+<!-- Executive Narrative Letter -->
+<div class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+<p class="font-bold text-on-surface">Prepared for: Executive Leadership, Cal Analytics Inc.</p>
+<p>
+            Following our automated diagnostic inspection of <span class="font-mono-code text-[11px] text-on-surface bg-surface-container px-1 py-0.5 rounded">cal-analytics.io</span>, our engineering team has pinpointed 3 critical performance bottlenecks responsible for an estimated 18.4% user abandonment rate across mobile sessions.
+          </p>
+<p>
+            This proposal outlines a precision 2-week implementation sprint to restore sub-second interactivity, eliminate legal ADA accessibility exposures, and reclaim lost organic search market share.
+          </p>
+</div>
+<!-- Scope Breakdown Line Items Table -->
+<div class="border border-outline-variant/60 rounded-lg overflow-hidden font-mono-code text-[11px]">
+<div class="bg-surface-container px-space-sm py-2 font-mono-label text-[10px] text-on-surface uppercase flex justify-between border-b border-outline-variant/40">
+<span>DELIVERABLE SPECIFICATION</span>
+<span>COMMITTED TIMELINE</span>
+<span>INVESTMENT</span>
+</div>
+<div class="divide-y divide-outline-variant/30">
+<div class="px-space-sm py-2 flex justify-between items-center text-on-surface">
+<span>01. Core Web Vitals Optimization & CDN Setup</span>
+<span class="text-on-surface-variant">5 Days</span>
+<span class="font-bold">$3,800</span>
+</div>
+<div class="px-space-sm py-2 flex justify-between items-center text-on-surface">
+<span>02. WCAG 2.1 AA Full Accessibility Remediation</span>
+<span class="text-on-surface-variant">4 Days</span>
+<span class="font-bold">$2,600</span>
+</div>
+<div class="px-space-sm py-2 flex justify-between items-center text-on-surface">
+<span>03. Structured Data Graph & Template Meta</span>
+<span class="text-on-surface-variant">3 Days</span>
+<span class="font-bold">$1,900</span>
+</div>
+</div>
+</div>
+<!-- Signature Authorization Terminal Module -->
+<div class="bg-surface-container p-space-md rounded-lg border border-outline-variant/80 flex flex-col sm:flex-row items-center justify-between gap-space-md">
+<div class="space-y-1">
+<span class="font-mono-label text-[9px] text-on-surface-variant uppercase block">CLIENT AUTHORIZATION</span>
+<div class="font-body-sm text-[12px] text-on-surface font-semibold">1-Click Retainer Acceptance</div>
+<p class="font-mono-code text-[10px] text-outline">Digital Signature Hash: #8F22-A99B-SCOPE</p>
+</div>
+<div class="flex items-center gap-space-sm w-full sm:w-auto">
+<button class="w-full sm:w-auto bg-primary text-on-primary px-space-md py-2.5 rounded-lg font-mono-label text-mono-label uppercase tracking-wider hover:bg-secondary-fixed hover:text-on-secondary-fixed transition-colors flex items-center justify-center gap-1 cursor-pointer" type="button">
+<span class="material-symbols-outlined text-[16px]">draw</span>
+<span>Sign & Accept Scope</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- COMPARATIVE PROPOSITION (Why Freelancers & Agencies Win) -->
+<section class="w-full px-margin-sm lg:px-margin py-space-2xl bg-surface">
+<div class="max-w-3xl space-y-space-xs mb-space-xl">
+<div class="flex items-center gap-space-xs font-mono-label text-mono-label text-on-surface-variant uppercase">
+<span class="text-secondary font-bold">// THE METHODOLOGY SHIFT</span>
+<span class="text-outline">+</span>
+<span>AGENCY ARBITRAGE</span>
+</div>
+<h2 class="font-headline-lg lg:font-display-xl text-headline-lg lg:text-display-xl text-on-surface uppercase tracking-tight leading-none">
+        The Old Pitch Way vs. The ScopePilot Standard
+      </h2>
+</div>
+<!-- Non-standard Asymmetric Grid Comparison -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-lg">
+<!-- The Old Pitch Way -->
+<div class="bg-surface-container-high/60 border border-outline-variant/60 rounded-xl p-space-lg space-y-space-md">
+<div class="flex items-center justify-between border-b border-outline-variant/60 pb-space-xs">
+<span class="font-mono-label text-mono-label text-error uppercase font-bold tracking-wider">[ THE OLD PITCH METHOD ]</span>
+<span class="material-symbols-outlined text-error text-[18px]">cancel</span>
+</div>
+<ul class="space-y-space-md font-body-md text-body-md text-on-surface-variant">
+<li class="flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-error text-[18px] shrink-0 mt-0.5">close</span>
+<div>
+<strong class="text-on-surface block font-semibold">10-20 hours of unpaid discovery</strong>
+              Manually inspecting codebases, writing bespoke audits before a contract is signed.
+            </div>
+</li>
+<li class="flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-error text-[18px] shrink-0 mt-0.5">close</span>
+<div>
+<strong class="text-on-surface block font-semibold">Dense 40-page PDF reports that get ignored</strong>
+              Clients don't read raw lighthouse dumps or understand generic dev jargon.
+            </div>
+</li>
+<li class="flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-error text-[18px] shrink-0 mt-0.5">close</span>
+<div>
+<strong class="text-on-surface block font-semibold">Vague "Site Redesign" proposals</strong>
+              Pricing treated as subjective aesthetic opinion, prompting clients to look for cheaper offshore alternatives.
+            </div>
+</li>
+</ul>
+</div>
+<!-- The ScopePilot Methodology -->
+<div class="bg-surface-container-lowest border-2 border-primary rounded-xl p-space-lg space-y-space-md shadow-[6px_6px_0px_#191c1b]">
+<div class="flex items-center justify-between border-b border-outline-variant/60 pb-space-xs">
+<span class="font-mono-label text-mono-label text-secondary uppercase font-bold tracking-wider">[ THE SCOPEPILOT PROTOCOL ]</span>
+<span class="material-symbols-outlined text-secondary text-[20px]">check_circle</span>
+</div>
+<ul class="space-y-space-md font-body-md text-body-md text-on-surface-variant">
+<li class="flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-secondary text-[18px] shrink-0 mt-0.5">check</span>
+<div>
+<strong class="text-on-surface block font-semibold">Instant 90-second objective diagnosis</strong>
+              Headless Chromium executes exhaustive telemetry without touching client repos or waiting for credentials.
+            </div>
+</li>
+<li class="flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-secondary text-[18px] shrink-0 mt-0.5">check</span>
+<div>
+<strong class="text-on-surface block font-semibold">Financial translation that creates urgency</strong>
+              Framing technical debt as active revenue leakage ($14.2k/mo) makes engineering sprints an urgent commercial investment.
+            </div>
+</li>
+<li class="flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-secondary text-[18px] shrink-0 mt-0.5">check</span>
+<div>
+<strong class="text-on-surface block font-semibold">Modular sprint proposals with signed contracts</strong>
+              Presenting tiered, customizable work scopes ($4k to $15k) ready for immediate client signature.
+            </div>
+</li>
+</ul>
+</div>
+</div>
+</section>
+<!-- PRICING SECTION -->
+<section class="w-full px-margin-sm lg:px-margin py-space-2xl bg-surface-container-low border-t border-outline-variant/40">
+<div class="max-w-3xl space-y-space-xs mb-space-xl text-center mx-auto">
+<div class="inline-flex items-center gap-space-xs font-mono-label text-mono-label text-on-surface-variant uppercase justify-center">
+<span class="text-secondary font-bold">// TIER STRUCTURE</span>
+<span class="text-outline">+</span>
+<span>ROI ON YOUR FIRST AUDIT</span>
+</div>
+<h2 class="font-headline-lg lg:font-display-xl text-headline-lg lg:text-display-xl text-on-surface uppercase tracking-tight">
+        Predictable Licensing for Technical Teams
+      </h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xl mx-auto">
+        One closed $4,500 remediation retainer pays for multiple years of ScopePilot. Cancel anytime.
+      </p>
+</div>
+<!-- Three Pricing Cards -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-lg items-stretch">
+<!-- Tier 1: Independent -->
+<div class="bg-surface-container-lowest border border-outline-variant/80 rounded-xl p-space-lg flex flex-col justify-between space-y-space-lg">
+<div class="space-y-space-md">
+<div class="flex items-center justify-between border-b border-outline-variant/40 pb-2">
+<span class="font-mono-label text-mono-label text-on-surface uppercase font-bold">INDEPENDENT</span>
+<span class="font-mono-code text-[11px] text-outline">TIER 01</span>
+</div>
+<div>
+<div class="font-display-xl text-[44px] font-headline-lg text-on-surface leading-none">
+              $49<span class="text-mono-label text-[14px] text-on-surface-variant">/mo</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant pt-2">
+              For solo freelance developers and technical consultants vetting incoming client leads.
+            </p>
+</div>
+<div class="border-t border-outline-variant/30 pt-space-md space-y-space-sm font-mono-code text-[12px] text-on-surface">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[15px] text-secondary">check</span>
+<span>30 Deep URL Audits / month</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[15px] text-secondary">check</span>
+<span>1 Single Seat</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[15px] text-secondary">check</span>
+<span>Standard PDF Proposal Export</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[15px] text-secondary">check</span>
+<span>Core Web Vitals & WCAG Check</span>
+</div>
+</div>
+</div>
+<button class="w-full bg-surface-container-high border border-outline-variant hover:border-primary text-on-surface py-2.5 rounded-lg font-mono-label text-mono-label uppercase tracking-wider transition-colors cursor-pointer" type="button">
+          Select Independent
+        </button>
+</div>
+<!-- Tier 2: Studio Pro (Featured) -->
+<div class="bg-surface-container-lowest border-2 border-primary rounded-xl p-space-lg flex flex-col justify-between space-y-space-lg shadow-[8px_8px_0px_#191c1b] relative">
+<div class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-secondary-fixed text-on-secondary-fixed font-mono-label text-[10px] font-bold px-space-md py-0.5 rounded-full border border-primary uppercase tracking-wider">
+          ★ RECOMMENDED FOR AGENCIES
+        </div>
+<div class="space-y-space-md">
+<div class="flex items-center justify-between border-b border-outline-variant/40 pb-2">
+<span class="font-mono-label text-mono-label text-on-surface uppercase font-bold">STUDIO PRO</span>
+<span class="font-mono-code text-[11px] text-secondary font-bold">TIER 02</span>
+</div>
+<div>
+<div class="font-display-xl text-[44px] font-headline-lg text-on-surface leading-none">
+              $119<span class="text-mono-label text-[14px] text-on-surface-variant">/mo</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant pt-2">
+              For established design and development agencies closing 5-figure technical sprints.
+            </p>
+</div>
+<div class="border-t border-outline-variant/30 pt-space-md space-y-space-sm font-mono-code text-[12px] text-on-surface">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[15px] text-secondary font-bold">check</span>
+<strong class="font-bold">Unlimited Deep Audits</strong>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[15px] text-secondary font-bold">check</span>
+<span>5 Team Seats Included</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[15px] text-secondary font-bold">check</span>
+<span>White-label Agency Branding</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[15px] text-secondary font-bold">check</span>
+<span>Interactive Client Proposal Links</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[15px] text-secondary font-bold">check</span>
+<span>Custom Deliverable Rate Cards</span>
+</div>
+</div>
+</div>
+<button class="w-full bg-primary hover:bg-secondary-fixed hover:text-on-secondary-fixed text-on-primary py-3 rounded-lg font-mono-label text-mono-label uppercase tracking-wider font-bold transition-colors cursor-pointer shadow-md" type="button">
+          Start 14-Day Studio Trial →
+        </button>
+</div>
+<!-- Tier 3: Enterprise Network -->
+<div class="bg-surface-container-lowest border border-outline-variant/80 rounded-xl p-space-lg flex flex-col justify-between space-y-space-lg">
+<div class="space-y-space-md">
+<div class="flex items-center justify-between border-b border-outline-variant/40 pb-2">
+<span class="font-mono-label text-mono-label text-on-surface uppercase font-bold">ENTERPRISE NETWORK</span>
+<span class="font-mono-code text-[11px] text-outline">TIER 03</span>
+</div>
+<div>
+<div class="font-display-xl text-[44px] font-headline-lg text-on-surface leading-none">
+              $299<span class="text-mono-label text-[14px] text-on-surface-variant">/mo</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant pt-2">
+              For high-volume consultancy groups and multi-entity agency networks requiring API hooks.
+            </p>
+</div>
+<div class="border-t border-outline-variant/30 pt-space-md space-y-space-sm font-mono-code text-[12px] text-on-surface">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[15px] text-secondary">check</span>
+<span>Unlimited Audits & Seats</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[15px] text-secondary">check</span>
+<span>Custom Headless Crawlers & API</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[15px] text-secondary">check</span>
+<span>Multi-tenant Workspaces</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[15px] text-secondary">check</span>
+<span>Dedicated Solutions Architect</span>
+</div>
+</div>
+</div>
+<button class="w-full bg-surface-container-high border border-outline-variant hover:border-primary text-on-surface py-2.5 rounded-lg font-mono-label text-mono-label uppercase tracking-wider transition-colors cursor-pointer" type="button">
+          Deploy Enterprise
+        </button>
+</div>
+</div>
+</section>
+<!-- CALL TO ACTION FINALE -->
+<section class="w-full px-margin-sm lg:px-margin py-space-2xl bg-primary text-on-primary relative overflow-hidden">
+<div class="absolute right-0 top-0 bottom-0 w-1/3 bg-radial from-secondary-fixed/10 via-transparent to-transparent pointer-events-none"></div>
+<div class="max-w-4xl space-y-space-lg relative z-10">
+<div class="flex items-center gap-space-xs font-mono-label text-mono-label text-secondary-fixed uppercase">
+<span class="w-2 h-2 rounded-full bg-secondary-fixed animate-ping"></span>
+<span>READY FOR PRODUCTION RUNTIMES</span>
+<span class="text-primary-fixed-dim">+</span>
+<span>NO REPOSITORY CLONING REQUIRED</span>
+</div>
+<h2 class="font-headline-lg lg:font-display-xl text-headline-lg lg:text-display-xl tracking-tight uppercase leading-[0.98]">
+        Stop pitching in the dark.<br/>
+        Find what others miss.
+      </h2>
+<p class="font-body-lg text-body-lg text-primary-fixed-dim max-w-2xl leading-relaxed">
+        Join over 1,400 agency principals, senior engineers, and growth consultants who uncover lucrative client sprints before breakfast.
+      </p>
+<!-- Terminal CTA Input Action -->
+<div class="pt-space-sm flex flex-col sm:flex-row items-stretch sm:items-center gap-space-sm max-w-xl">
+<div class="flex-1 flex items-center bg-surface-container-lowest/10 border border-outline/60 rounded-lg px-space-md py-3 focus-within:border-secondary-fixed">
+<span class="font-mono-code text-[12px] text-primary-fixed-dim pr-2">target:</span>
+<input class="bg-transparent font-mono-code text-[12px] text-on-primary placeholder:text-outline focus:outline-none w-full" placeholder="your-next-client.com" type="text"/>
+</div>
+<button class="bg-secondary-fixed text-on-secondary-fixed px-space-xl py-3 rounded-lg font-mono-label text-mono-label uppercase tracking-wider font-bold hover:bg-on-primary hover:text-primary transition-colors shrink-0 shadow-lg cursor-pointer" type="button">
+          Audit Prospect Free →
+        </button>
+</div>
+<div class="font-mono-label text-[11px] text-primary-fixed-dim flex items-center gap-space-md pt-space-xs">
+<span>✓ 14-day full platform access</span>
+<span>✓ No credit card required</span>
+<span>✓ Export instant PDF proposals</span>
+</div>
+</div>
+</section>
+</div>
+<!-- Inline JavaScript Micro-interactions -->
+<script>
+  function setDomain(domain) {
+    const input = document.getElementById('hero-audit-input');
+    const previewUrl = document.getElementById('preview-url-bar');
+    if (input) input.value = domain;
+    if (previewUrl) previewUrl.textContent = domain + ' [VIEWPORT: 1440x900]';
+    runHeroAudit();
+  }
+
+  function runHeroAudit() {
+    const scanState = document.getElementById('scan-state');
+    const input = document.getElementById('hero-audit-input');
+    const previewUrl = document.getElementById('preview-url-bar');
+    
+    if (previewUrl && input) {
+      previewUrl.textContent = input.value + ' [VIEWPORT: 1440x900]';
+    }
+
+    if (scanState) {
+      scanState.textContent = 'RUNNING HEURISTICS...';
+      scanState.classList.remove('text-secondary-fixed');
+      scanState.classList.add('text-[#E8A45D]');
+
+      setTimeout(() => {
+        scanState.textContent = 'AUDIT COMPLETE // READY';
+        scanState.classList.remove('text-[#E8A45D]');
+        scanState.classList.add('text-secondary-fixed');
+      }, 1200);
+    }
+  }
+
+  function calculateScopeTotal() {
+    let total = 0;
+    const items = [
+      { id: 'scope-item-1', price: 3800 },
+      { id: 'scope-item-2', price: 2600 },
+      { id: 'scope-item-3', price: 1900 },
+      { id: 'scope-item-4', price: 1200 }
+    ];
+
+    items.forEach(item => {
+      const checkbox = document.getElementById(item.id);
+      if (checkbox && checkbox.checked) {
+        total += item.price;
+      }
+    });
+
+    const display = document.getElementById('scope-total-display');
+    if (display) {
+      display.textContent = '$' + total.toLocaleString();
+    }
+  }
+</script></main><footer class="w-full bg-surface-container border-t border-outline-variant/40"><div class="w-full px-margin-sm lg:px-margin pt-space-2xl pb-space-xl"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-space-xl pb-space-2xl border-b border-outline-variant/30"><div class="lg:col-span-5 flex flex-col justify-between"><div class="space-y-space-md"><div class="flex items-center gap-space-xs"><span class="font-mono-label text-mono-label text-on-surface-variant uppercase tracking-wider">[SYSTEM TELEMETRY & DIAGNOSTICS]</span><span class="font-mono-code text-mono-code text-outline">+</span></div><h2 class="font-headline-lg text-headline-lg lg:font-display-xl lg:text-display-xl text-on-surface tracking-tight uppercase leading-none">PRECISION<br/>SCOPING FOR<br/>HIGH-STAKES<br/>ENGINEERING.</h2></div><div class="pt-space-xl"><div class="inline-flex items-center gap-space-sm px-space-md py-space-xs bg-surface-container-high border border-outline-variant/50 rounded-lg"><span class="w-2 h-2 rounded-full bg-secondary-fixed"></span><span class="font-mono-code text-mono-code text-on-surface uppercase">STATUS: ALL SYSTEMS NOMINAL</span></div></div></div><div class="lg:col-span-4 flex flex-col justify-between"><div class="space-y-space-md"><span class="font-mono-label text-mono-label text-on-surface-variant uppercase tracking-wider">// AUDIT DISPATCH</span><p class="font-body-md text-body-md text-on-surface-variant">Subscribe to weekly production telemetry briefings, architectural debt benchmarks, and scope automation release notes.</p><form class="flex items-center gap-space-xs pt-space-sm"><input class="w-full bg-surface border border-outline-variant/60 rounded-lg px-space-md py-2 font-mono-code text-mono-code text-on-surface placeholder:text-outline focus:outline-none focus:border-primary focus:ring-1 focus:ring-secondary-fixed" placeholder="ENGINEER@AGENCY.COM" type="email"/><button class="bg-primary px-space-md py-2 rounded-lg font-mono-label text-mono-label text-on-primary uppercase tracking-wider hover:bg-secondary-fixed hover:text-on-secondary-fixed transition-colors shrink-0" type="button">DISPATCH</button></form></div><div class="pt-space-xl font-mono-code text-mono-code text-on-surface-variant"><p class="text-body-sm">EST. LATENCY: <14MS // NODES: US-EAST, EU-WEST, AP-SOUTH</p></div></div><div class="lg:col-span-3 grid grid-cols-2 gap-space-lg"><div class="space-y-space-sm"><span class="font-mono-label text-mono-label text-on-surface uppercase tracking-wider block">ARCHIVE</span><ul class="space-y-space-xs font-mono-code text-mono-code"><li class="flex items-center"><a class="text-on-surface-variant hover:text-on-surface transition-colors uppercase" data-path="intelligence-engine" href="#">Engine</a></li><li class="flex items-center"><a class="text-on-surface-variant hover:text-on-surface transition-colors uppercase" data-path="the-pipeline" href="#">Pipeline</a></li><li class="flex items-center"><a class="text-on-surface-variant hover:text-on-surface transition-colors uppercase" data-path="audit-matrix" href="#">Audit Matrix</a></li><li class="flex items-center"><a class="text-on-surface-variant hover:text-on-surface transition-colors uppercase" data-path="proposal-studio" href="#">Studio</a></li><li class="flex items-center"><a class="text-on-surface-variant hover:text-on-surface transition-colors uppercase" data-path="pricing" href="#">Pricing</a></li></ul></div><div class="space-y-space-sm"><span class="font-mono-label text-mono-label text-on-surface uppercase tracking-wider block">OPERATIONS</span><ul class="space-y-space-xs font-mono-code text-mono-code"><li class="flex items-center"><a class="text-on-surface-variant hover:text-on-surface transition-colors uppercase" data-path="api-docs" href="#">API Telemetry</a></li><li class="flex items-center"><a class="text-on-surface-variant hover:text-on-surface transition-colors uppercase" data-path="sign-in" href="#">Terminal Auth</a></li><li class="flex items-center"><a class="text-on-surface-variant hover:text-on-surface transition-colors uppercase" data-path="security-protocols" href="#">Security</a></li><li class="flex items-center"><a class="text-on-surface-variant hover:text-on-surface transition-colors uppercase" data-path="status" href="#">System Health</a></li></ul></div></div></div><div class="pt-space-lg flex flex-col md:flex-row items-center justify-between gap-space-md font-mono-label text-mono-label text-on-surface-variant"><div class="flex items-center gap-space-md"><span class="uppercase">© 2025 SCOPEPILOT SYSTEMS INC.</span><span>REF: SPEC-2025-ARCH</span></div><div class="flex items-center gap-space-lg uppercase"><span>PRECISION ASSURANCE LABS</span><span>DOCUMENTARIAN CADENCE</span></div></div></div></footer></body></html>

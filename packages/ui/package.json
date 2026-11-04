@@ -1,0 +1,17 @@
+{
+  "name": "@scopepilot/ui",
+  "private": true,
+  "version": "0.1.0",
+  "exports": {
+    "./tokens.css": "./src/tokens.css",
+    "./styles.css": "./src/styles.css",
+    "./components": "./src/components.tsx"
+  },
+  "peerDependencies": {
+    "react": ">=19"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "react": "^19.0.0"
+  }
+}

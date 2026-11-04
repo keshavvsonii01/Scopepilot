@@ -1,0 +1,29 @@
+{
+  "name": "@scopepilot/worker",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "node --env-file-if-exists=.env --import tsx --watch src/index.ts",
+    "build": "tsc --noEmit && node ../../scripts/bundle-service.mjs src/index.ts dist/index.js",
+    "start": "node --env-file-if-exists=.env --enable-source-maps dist/index.js",
+    "install:browsers": "playwright install --with-deps chromium",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@scopepilot/analysis": "workspace:*",
+    "@scopepilot/contracts": "workspace:*",
+    "@scopepilot/crawl-core": "workspace:*",
+    "@scopepilot/persistence": "workspace:*",
+    "axe-core": "^4.14.0",
+    "mongoose": "^8.24.7",
+    "playwright": "^1.55.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "tsx": "^4.23.15",
+    "typescript": "^5.7.0",
+    "vitest": "^3.2.7"
+  }
+}

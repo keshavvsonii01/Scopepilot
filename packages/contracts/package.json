@@ -1,0 +1,7 @@
+{
+  "name": "@scopepilot/contracts",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "exports": { "./auth": "./src/auth.ts", "./audit": "./src/audit.ts", "./analysis": "./src/analysis.ts", "./interpretation": "./src/interpretation.ts", "./proposal": "./src/proposal.ts" }
+}

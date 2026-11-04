@@ -1,0 +1,16 @@
+{
+  "name": "@scopepilot/persistence",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "exports": { "./auth": "./src/auth.ts", "./audits": "./src/audits.ts", "./dns": "./src/dns.ts", "./interpretations": "./src/interpretations.ts", "./migration": "./src/migration.ts", "./proposals": "./src/proposals.ts" },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@scopepilot/contracts": "workspace:*",
+    "mongoose": "^8.18.0"
+  },
+  "devDependencies": { "@types/node": "^22.10.0", "typescript": "^5.7.0", "vitest": "^3.2.4" }
+}

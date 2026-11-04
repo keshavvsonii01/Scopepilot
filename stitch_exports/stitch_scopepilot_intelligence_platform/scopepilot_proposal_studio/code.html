@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface":"#fbf9f3","background":"#fbf9f3","on-secondary-fixed-variant":"#105300","tertiary-container":"#0e1c2d","on-tertiary-container":"#77859a","primary-fixed":"#e1e3e1","secondary-fixed":"#8afd67","inverse-surface":"#30312d","on-secondary-fixed":"#032100","inverse-primary":"#c5c7c5","secondary":"#196e00","surface-container-lowest":"#ffffff","surface-container-highest":"#e4e2dc","on-secondary":"#ffffff","surface-container-high":"#eae8e2","primary":"#000000","on-secondary-container":"#1b7400","surface-container-low":"#f5f3ed","error":"#ba1a1a","on-surface-variant":"#434846","on-surface":"#1b1c18","on-error":"#ffffff","tertiary-fixed":"#d5e3fb","tertiary":"#000000","surface-variant":"#e4e2dc","on-primary":"#ffffff","surface-bright":"#fbf9f3","on-primary-fixed":"#191c1b","on-error-container":"#93000a","inverse-on-surface":"#f3f1eb","on-primary-container":"#828483","error-container":"#ffdad6","tertiary-fixed-dim":"#b9c7df","primary-container":"#191c1b","surface-container":"#f0eee8","primary-fixed-dim":"#c5c7c5","outline":"#747876","on-tertiary-fixed-variant":"#3a485b","outline-variant":"#c4c7c5","surface-dim":"#dcdad4","on-primary-fixed-variant":"#444746","on-tertiary":"#ffffff","on-tertiary-fixed":"#0e1c2d","on-background":"#1b1c18","secondary-fixed-dim":"#6edf4d","surface-tint":"#5c5f5d","secondary-container":"#8afd67"},borderRadius:{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},spacing:{"space-xl":"2.5rem","space-sm":"0.5rem","space-2xl":"4rem","margin-sm":"1rem","space-lg":"1.5rem","gutter-lg":"2.5rem","margin":"2rem","gutter-sm":"1rem","margin-lg":"4rem","space-xs":"0.25rem","space-md":"1rem","gutter":"1.5rem"},fontFamily:{"body-md":["Inter"],"display-xl-mobile":["Space Grotesk"],"mono-metric":["JetBrains Mono"],"body-lg":["Inter"],"headline-lg-mobile":["Space Grotesk"],"mono-label":["JetBrains Mono"],"display-xl":["Space Grotesk"],"mono-code":["JetBrains Mono"],"headline-sm":["Space Grotesk"],"headline-lg":["Space Grotesk"],"headline-md":["Space Grotesk"],"body-sm":["Inter"]},fontSize:{"body-md":["14px",{"lineHeight":"22px","letterSpacing":"0em","fontWeight":"400"}],"display-xl-mobile":["38px",{"lineHeight":"42px","letterSpacing":"-0.03em","fontWeight":"700"}],"mono-metric":["20px",{"lineHeight":"24px","letterSpacing":"-0.02em","fontWeight":"600"}],"body-lg":["17px",{"lineHeight":"26px","letterSpacing":"-0.01em","fontWeight":"400"}],"headline-lg-mobile":["28px",{"lineHeight":"32px","letterSpacing":"-0.02em","fontWeight":"600"}],"mono-label":["11px",{"lineHeight":"14px","letterSpacing":"0.06em","fontWeight":"500"}],"display-xl":["56px",{"lineHeight":"60px","letterSpacing":"-0.04em","fontWeight":"700"}],"mono-code":["12px",{"lineHeight":"18px","letterSpacing":"0em","fontWeight":"400"}],"headline-sm":["18px",{"lineHeight":"24px","letterSpacing":"-0.01em","fontWeight":"600"}],"headline-lg":["36px",{"lineHeight":"40px","letterSpacing":"-0.03em","fontWeight":"600"}],"headline-md":["24px",{"lineHeight":"28px","letterSpacing":"-0.02em","fontWeight":"600"}],"body-sm":["12px",{"lineHeight":"18px","letterSpacing":"0em","fontWeight":"400"}]}}}};</script></head><body class="bg-background font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-72 bg-surface-container-low border-r border-outline-variant/40 z-50 flex flex-col justify-between overflow-y-auto"><div class="flex flex-col"><div class="p-space-md border-b border-outline-variant/30"><div class="flex items-center justify-between mb-space-xs"><div class="flex items-center gap-space-xs"><span class="w-2.5 h-2.5 bg-primary rounded-none"></span><span class="font-headline-sm text-headline-sm uppercase tracking-tight text-primary">ScopePilot</span></div><span class="font-mono-label text-[10px] tracking-wider bg-secondary-container/20 text-on-secondary-fixed-variant border border-secondary px-1.5 py-0.5 rounded">SYS: ONLINE</span></div><div class="flex items-center justify-between text-on-surface-variant"><span class="font-mono-code text-[10px] uppercase text-outline">TELEMETRY // V2.4</span><span class="font-mono-code text-[10px] text-outline">+</span></div></div><div class="p-space-md border-b border-outline-variant/30 bg-surface-container/60"><div class="font-mono-label text-mono-label uppercase text-on-surface-variant mb-1">Active Workspace</div><div class="flex items-center justify-between cursor-pointer py-1 px-2 bg-surface border border-outline-variant rounded hover:border-primary transition-colors"><div class="flex items-center gap-2 truncate"><span class="w-2 h-2 rounded-full bg-secondary"></span><span class="font-mono-code text-mono-code text-on-surface truncate">Studio Archetype // Pro Agency</span></div><span class="material-symbols-outlined text-[16px] text-on-surface-variant">unfold_more</span></div></div><div class="px-space-md py-space-sm"><span class="font-mono-label text-mono-label uppercase text-on-surface-variant px-space-xs mb-space-xs block">Workspace Navigation</span><nav class="flex flex-col gap-1" data-active-classes="bg-primary text-on-primary font-medium rounded"><a class="flex items-center gap-space-sm px-space-sm py-2 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[18px]">grid_view</span><span>Dashboard</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md" data-path="new-audit" href="#"><span class="material-symbols-outlined text-[18px]">radar</span><span>New Audit</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md" data-path="intelligence-pipeline" href="#"><span class="material-symbols-outlined text-[18px]">account_tree</span><span>Intelligence Pipeline</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md" data-path="audit-reports" href="#"><span class="material-symbols-outlined text-[18px]">terminal</span><span>Audit Reports</span></a><a aria-current="page" class="flex items-center gap-space-sm px-space-sm py-2 transition-colors bg-primary text-on-primary font-medium rounded" data-path="proposal-studio" href="#"><span class="material-symbols-outlined text-[18px]">description</span><span>Proposal Studio</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md" data-path="client-deliverables" href="#"><span class="material-symbols-outlined text-[18px]">inventory_2</span><span>Client Deliverables</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md" data-path="agency-settings" href="#"><span class="material-symbols-outlined text-[18px]">tune</span><span>Agency Settings</span></a></nav></div></div><div class="flex flex-col border-t border-outline-variant/30"><div class="p-space-md bg-surface-container-high/40 border-b border-outline-variant/30 space-y-2"><div class="flex items-center justify-between text-on-surface-variant"><span class="font-mono-label text-[10px] uppercase">Chromium Cluster</span><span class="font-mono-code text-[10px] text-secondary flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>Active</span></div><div class="space-y-1"><div class="flex items-center justify-between text-on-surface-variant"><span class="font-mono-label text-[10px] uppercase">Audit Quota</span><span class="font-mono-code text-[10px] text-on-surface">38 / 50 Used</span></div><div class="w-full bg-surface-container-highest h-1 rounded-none overflow-hidden"><div class="bg-primary h-full w-[76%]"></div></div></div></div><div class="p-space-md flex items-center justify-between bg-surface-container-low"><div class="flex items-center gap-space-sm"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div><div class="flex flex-col"><span class="font-body-md text-body-sm font-semibold text-on-surface leading-tight">Devin Vance</span><span class="font-mono-label text-[10px] text-on-surface-variant">Lead Architect</span></div></div><div class="flex items-center gap-1.5"><span class="font-mono-label text-[10px] uppercase bg-primary-container text-on-primary font-semibold px-1.5 py-0.5 rounded">PRO TIER</span><button aria-label="Quick settings" class="text-on-surface-variant hover:text-on-surface transition-colors p-1" type="button"><span class="material-symbols-outlined text-[18px]">more_vert</span></button></div></div></div></aside><div class="pl-72"><header class="fixed top-0 left-72 right-0 h-16 bg-surface/90 backdrop-blur-md border-b border-outline-variant/30 z-40 flex items-center justify-between px-space-lg"><div class="flex items-center gap-space-md"><div class="flex items-center gap-2 text-on-surface-variant font-mono-code text-mono-code"><span class="text-primary font-semibold">NODE_01</span><span>/</span><span>ENV: PRODUCTION</span></div><div class="hidden md:flex items-center gap-2 pl-space-md border-l border-outline-variant/40"><span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span><span class="font-mono-label text-[11px] text-on-surface-variant">SYS_LATENCY: 24ms</span></div></div><div class="flex items-center gap-space-md"><div class="relative hidden sm:flex items-center"><input class="bg-surface-container-low border border-outline-variant/60 rounded px-space-sm py-1.5 pl-8 font-mono-code text-mono-code text-on-surface placeholder:text-outline focus:border-primary focus:outline-none w-64" placeholder="Search telemetry, audits, clients..." type="text"/><span class="material-symbols-outlined absolute left-2 text-[16px] text-outline">search</span></div><div class="flex items-center gap-2 border-l border-outline-variant/40 pl-space-md"><button aria-label="Notifications" class="p-1.5 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high rounded transition-colors relative" type="button"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-1 right-1 w-2 h-2 bg-secondary rounded-full ring-2 ring-surface"></span></button><button aria-label="Help &amp; Docs" class="p-1.5 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high rounded transition-colors" type="button"><span class="material-symbols-outlined text-[20px]">help_outline</span></button></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></header><main class="w-full pt-16 bg-background min-h-screen"><div class="flex flex-col w-full">
+<!-- Sub-Header Bar: Studio Control Strip -->
+<div class="sticky top-16 z-30 flex flex-wrap items-center justify-between gap-y-3 bg-surface-container-low px-space-lg py-3 shadow-sm">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="flex items-center gap-2">
+<span class="font-mono-label text-mono-label uppercase text-on-surface-variant">Proposals</span>
+<span class="text-on-surface-variant font-mono-code text-mono-code">/</span>
+<span class="font-mono-label text-mono-label uppercase text-primary font-semibold">PROP-2025-04</span>
+<span class="text-on-surface-variant font-mono-code text-mono-code">/</span>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface truncate font-semibold">cal-analytics.io — Performance &amp; Architecture Remediation Sprint</h2>
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-secondary-container/30 text-on-secondary-fixed-variant font-mono-label text-[10px] uppercase font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+        DRAFT // AUTO-SYNCED (Just now)
+      </span>
+</div>
+<div class="flex items-center gap-2 shrink-0">
+<button class="group flex items-center gap-1.5 px-3 py-1.5 rounded bg-surface-container hover:bg-surface-container-high text-on-surface font-mono-label text-mono-label transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px] text-secondary">auto_fix_high</span>
+<span>AI ENHANCE ALL COPY</span>
+<span class="px-1 py-0.2 rounded bg-surface-container-highest text-on-surface-variant text-[9px] font-mono-label">GPT-4o</span>
+</button>
+<button class="flex items-center gap-1.5 px-3 py-1.5 rounded bg-surface hover:bg-surface-container text-on-surface font-mono-label text-mono-label transition-colors shadow-sm" type="button">
+<span class="material-symbols-outlined text-[16px]">visibility</span>
+<span>CLIENT PREVIEW</span>
+</button>
+<button class="flex items-center gap-1.5 px-3 py-1.5 rounded bg-surface-container-highest hover:bg-surface-container-high text-on-surface font-mono-label text-mono-label transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px]">download</span>
+<span>EXPORT PDF</span>
+</button>
+<button class="flex items-center gap-2 px-4 py-1.5 rounded bg-secondary-container hover:bg-secondary-fixed text-on-secondary-fixed font-mono-label text-mono-label font-bold transition-all shadow-sm" type="button">
+<span class="material-symbols-outlined text-[16px]">send</span>
+<span>SEND CONTRACT</span>
+</button>
+</div>
+</div>
+<!-- Workbench Master Grid: Left Builder (48%) / Right Live Proposal Document (52%) -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-gutter-lg px-space-lg py-space-lg">
+<!-- LEFT PANE: Studio Editor & Scope Controls (Columns: 5) -->
+<div class="xl:col-span-5 flex flex-col gap-space-lg">
+<!-- AI Pitch Co-Pilot Widget -->
+<div class="rounded-lg bg-surface-container p-space-md shadow-sm">
+<div class="flex items-center justify-between pb-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-secondary">psychology</span>
+<span class="font-mono-label text-mono-label uppercase text-on-surface font-semibold tracking-wider">AI Pitch Co-Pilot // Model Active</span>
+</div>
+<span class="font-mono-label text-[10px] text-secondary bg-secondary-container/20 px-1.5 py-0.5 rounded">ONLINE</span>
+</div>
+<div class="grid grid-cols-2 gap-2 text-left mb-3">
+<div class="bg-surface-container-low p-2 rounded">
+<div class="font-mono-label text-[10px] uppercase text-on-surface-variant">Tone Calibration</div>
+<div class="font-mono-code text-mono-code text-on-surface font-semibold truncate">C-Suite / Technical ROI</div>
+</div>
+<div class="bg-surface-container-low p-2 rounded">
+<div class="font-mono-label text-[10px] uppercase text-on-surface-variant">Pricing Engine</div>
+<div class="font-mono-code text-mono-code text-on-surface font-semibold truncate">Value-Anchored Sprint</div>
+</div>
+</div>
+<div class="relative bg-surface rounded p-2.5 shadow-sm">
+<div class="flex items-start gap-2">
+<span class="material-symbols-outlined text-[16px] text-outline pt-0.5">smart_toy</span>
+<input class="w-full bg-transparent font-body-sm text-body-sm text-on-surface placeholder:text-outline focus:outline-none" type="text" value="Synthesize LCP latency into executive revenue impact with 30-day recoup."/>
+</div>
+<div class="flex items-center justify-between pt-2 mt-2">
+<div class="flex gap-1.5 overflow-x-auto">
+<button class="text-[10px] font-mono-label uppercase px-2 py-0.5 rounded bg-surface-container-high text-on-surface hover:bg-surface-container-highest" type="button">+ Add SLA Term</button>
+<button class="text-[10px] font-mono-label uppercase px-2 py-0.5 rounded bg-surface-container-high text-on-surface hover:bg-surface-container-highest" type="button">+ Enterprise Risk</button>
+</div>
+<button class="px-2.5 py-1 rounded bg-primary text-on-primary font-mono-label text-[10px] uppercase hover:bg-primary-container font-semibold" type="button">Generate</button>
+</div>
+</div>
+</div>
+<!-- Section 1: Client & Engagement Metadata -->
+<div class="rounded-lg bg-surface-container-low p-space-md shadow-sm">
+<div class="flex items-center justify-between pb-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-on-surface">domain</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Client &amp; Stakeholder Dossier</h3>
+</div>
+<span class="font-mono-code text-mono-code text-on-surface-variant">SEC // 01</span>
+</div>
+<div class="grid grid-cols-2 gap-3 mb-3">
+<div>
+<label class="block font-mono-label text-mono-label uppercase text-on-surface-variant mb-1">Client Entity</label>
+<input class="w-full rounded bg-surface px-2.5 py-1.5 font-body-md text-body-md text-on-surface shadow-sm focus:outline-none focus:ring-1 focus:ring-primary" type="text" value="Cal Analytics Inc."/>
+</div>
+<div>
+<label class="block font-mono-label text-mono-label uppercase text-on-surface-variant mb-1">Key Decision Maker</label>
+<input class="w-full rounded bg-surface px-2.5 py-1.5 font-body-md text-body-md text-on-surface shadow-sm focus:outline-none focus:ring-1 focus:ring-primary" type="text" value="Sarah Chen, VP Engineering"/>
+</div>
+<div>
+<label class="block font-mono-label text-mono-label uppercase text-on-surface-variant mb-1">Target Production Host</label>
+<div class="flex items-center gap-1.5 px-2.5 py-1.5 rounded bg-surface text-on-surface shadow-sm">
+<span class="material-symbols-outlined text-[16px] text-secondary">link</span>
+<span class="font-mono-code text-mono-code truncate">cal-analytics.io</span>
+</div>
+</div>
+<div>
+<label class="block font-mono-label text-mono-label uppercase text-on-surface-variant mb-1">Linked Diagnostic Audit</label>
+<div class="flex items-center justify-between px-2.5 py-1.5 rounded bg-surface text-on-surface shadow-sm">
+<span class="font-mono-code text-mono-code font-semibold text-secondary">#AUD-9021</span>
+<span class="font-mono-label text-[10px] text-on-surface-variant">98.4% CONF</span>
+</div>
+</div>
+</div>
+<div>
+<label class="block font-mono-label text-mono-label uppercase text-on-surface-variant mb-1">Executive Thesis Statement</label>
+<textarea class="w-full rounded bg-surface p-2 font-body-md text-body-md text-on-surface shadow-sm focus:outline-none focus:ring-1 focus:ring-primary" rows="2">Immediate elimination of 4.82s LCP bottlenecks and mobile hydration locks to unlock an estimated $57,600 annualized recovery across high-intent checkout paths.</textarea>
+</div>
+</div>
+<!-- Section 2: Ingested Audit Findings -->
+<div class="rounded-lg bg-surface-container-low p-space-md shadow-sm">
+<div class="flex items-center justify-between pb-3">
+<div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-on-surface">bug_report</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Ingested Audit Deficits</h3>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Selected telemetry vectors from Chromium cluster run #AUD-9021.</p>
+</div>
+<span class="px-2 py-0.5 rounded bg-surface-container-highest text-on-surface font-mono-code text-mono-code">3 Active</span>
+</div>
+<div class="space-y-2.5">
+<!-- Finding 1 -->
+<div class="group relative rounded bg-surface p-3 shadow-sm hover:shadow transition-all">
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-start gap-2.5">
+<input checked="" class="mt-1 h-4 w-4 rounded text-primary focus:ring-0 accent-primary" type="checkbox"/>
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="font-mono-label text-[10px] font-semibold uppercase px-1.5 py-0.5 rounded bg-error-container text-on-error-container">CRITICAL // LCP</span>
+<span class="font-mono-code text-[11px] text-on-surface-variant">TBT +1,240ms</span>
+</div>
+<h4 class="font-body-md text-body-md font-semibold text-on-surface">Uncompressed 3.8MB Hero Media Blocking Main Thread</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Asset unoptimized on Cloudflare Origin. 4.82s initial paint delays conversion by 23%.</p>
+</div>
+</div>
+<div class="text-right shrink-0">
+<span class="font-mono-metric text-mono-metric font-bold text-on-surface">$5,800</span>
+<span class="block font-mono-label text-[9px] uppercase text-on-surface-variant">Allocated Value</span>
+</div>
+</div>
+</div>
+<!-- Finding 2 -->
+<div class="group relative rounded bg-surface p-3 shadow-sm hover:shadow transition-all">
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-start gap-2.5">
+<input checked="" class="mt-1 h-4 w-4 rounded text-primary focus:ring-0 accent-primary" type="checkbox"/>
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="font-mono-label text-[10px] font-semibold uppercase px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface">COMPLIANCE // A11Y</span>
+<span class="font-mono-code text-[11px] text-on-surface-variant">12 Failures</span>
+</div>
+<h4 class="font-body-md text-body-md font-semibold text-on-surface">WCAG 2.1 AA Contrast Degradation on Enterprise Checkout CTAs</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Button foreground 2.1:1 fails federal accessibility standards for enterprise procurement.</p>
+</div>
+</div>
+<div class="text-right shrink-0">
+<span class="font-mono-metric text-mono-metric font-bold text-on-surface">$4,600</span>
+<span class="block font-mono-label text-[9px] uppercase text-on-surface-variant">Allocated Value</span>
+</div>
+</div>
+</div>
+<!-- Finding 3 -->
+<div class="group relative rounded bg-surface p-3 shadow-sm hover:shadow transition-all">
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-start gap-2.5">
+<input checked="" class="mt-1 h-4 w-4 rounded text-primary focus:ring-0 accent-primary" type="checkbox"/>
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="font-mono-label text-[10px] font-semibold uppercase px-1.5 py-0.5 rounded bg-secondary-container/40 text-on-secondary-fixed-variant">PERF // HYDRATION</span>
+<span class="font-mono-code text-[11px] text-on-surface-variant">840ms Lock</span>
+</div>
+<h4 class="font-body-md text-body-md font-semibold text-on-surface">Synchronous Datadog &amp; Stripe SDK Hydration Stall</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Third-party telemetry blocks interactive touch events during initial DOM load.</p>
+</div>
+</div>
+<div class="text-right shrink-0">
+<span class="font-mono-metric text-mono-metric font-bold text-on-surface">$3,800</span>
+<span class="block font-mono-label text-[9px] uppercase text-on-surface-variant">Allocated Value</span>
+</div>
+</div>
+</div>
+</div>
+<button class="mt-3 w-full py-2 rounded bg-surface hover:bg-surface-container text-on-surface font-mono-label text-mono-label uppercase flex items-center justify-center gap-1.5 shadow-sm transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px]">add_circle</span>
+<span>Import Additional Vector from #AUD-9021</span>
+</button>
+</div>
+<!-- Section 3: Scope Packages & Deliverable Builder -->
+<div class="rounded-lg bg-surface-container-low p-space-md shadow-sm">
+<div class="flex items-center justify-between pb-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-on-surface">layers</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Scope Architecture &amp; Deliverables</h3>
+</div>
+<span class="font-mono-label text-mono-label text-secondary font-semibold">3 WORK PACKAGES</span>
+</div>
+<div class="space-y-3">
+<!-- Item 1 -->
+<div class="bg-surface rounded p-3 shadow-sm">
+<div class="flex items-center justify-between mb-1.5">
+<span class="font-mono-code text-[11px] text-on-surface-variant">WP-01 // EDGE OPTIMIZATION</span>
+<div class="flex items-center gap-2">
+<span class="font-mono-label text-[10px] bg-surface-container px-1.5 py-0.5 rounded text-on-surface">5 DAYS</span>
+<span class="font-mono-label text-mono-label font-bold text-on-surface">$5,800</span>
+</div>
+</div>
+<div class="font-headline-sm text-body-lg font-semibold text-on-surface mb-1">Cloudflare Edge Asset Pipeline &amp; Critical Path Deferral</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-2">Automated AVIF/WebP next-gen conversion, dynamic responsive srcsets, and tree-shaking inline critical CSS.</p>
+<div class="flex items-center gap-2">
+<span class="font-mono-label text-[10px] text-on-surface-variant bg-surface-container-high px-2 py-0.5 rounded">Deliverable: Signed Git PR</span>
+<span class="font-mono-label text-[10px] text-on-surface-variant bg-surface-container-high px-2 py-0.5 rounded">CI Integration</span>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="bg-surface rounded p-3 shadow-sm">
+<div class="flex items-center justify-between mb-1.5">
+<span class="font-mono-code text-[11px] text-on-surface-variant">WP-02 // DESIGN TOKENS</span>
+<div class="flex items-center gap-2">
+<span class="font-mono-label text-[10px] bg-surface-container px-1.5 py-0.5 rounded text-on-surface">4 DAYS</span>
+<span class="font-mono-label text-mono-label font-bold text-on-surface">$4,600</span>
+</div>
+</div>
+<div class="font-headline-sm text-body-lg font-semibold text-on-surface mb-1">Enterprise Design Token Harmonization &amp; WCAG 2.1 AA Compliance</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-2">Full overhaul of button tokens, form label contrast, screen reader aria attributes, and focus visible indicators.</p>
+<div class="flex items-center gap-2">
+<span class="font-mono-label text-[10px] text-on-surface-variant bg-surface-container-high px-2 py-0.5 rounded">Deliverable: WCAG Audit Certificate</span>
+<span class="font-mono-label text-[10px] text-on-surface-variant bg-surface-container-high px-2 py-0.5 rounded">Figma System</span>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="bg-surface rounded p-3 shadow-sm">
+<div class="flex items-center justify-between mb-1.5">
+<span class="font-mono-code text-[11px] text-on-surface-variant">WP-03 // HYDRATION ARCHITECTURE</span>
+<div class="flex items-center gap-2">
+<span class="font-mono-label text-[10px] bg-surface-container px-1.5 py-0.5 rounded text-on-surface">3 DAYS</span>
+<span class="font-mono-label text-mono-label font-bold text-on-surface">$3,800</span>
+</div>
+</div>
+<div class="font-headline-sm text-body-lg font-semibold text-on-surface mb-1">Stripe Elements &amp; Datadog Async Hydration Decoupling</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-2">Deferred script evaluation with requestIdleCallback, synthetic mock testing, and client thread shielding.</p>
+<div class="flex items-center gap-2">
+<span class="font-mono-label text-[10px] text-on-surface-variant bg-surface-container-high px-2 py-0.5 rounded">Deliverable: Performance Delta Benchmark</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Section 4: Sprint Architecture & Milestone Tracker -->
+<div class="rounded-lg bg-surface-container-low p-space-md shadow-sm">
+<div class="flex items-center justify-between pb-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-on-surface">calendar_view_week</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Sprint Architecture &amp; Delivery Horizon</h3>
+</div>
+<span class="font-mono-label text-mono-label uppercase px-2 py-0.5 rounded bg-secondary-container text-on-secondary-fixed font-bold">2.5 WEEKS</span>
+</div>
+<div class="space-y-2">
+<div class="flex items-center justify-between p-2 rounded bg-surface text-on-surface text-body-sm">
+<span class="font-mono-code text-mono-code">MILESTONE 01</span>
+<span class="font-body-md font-medium">Origin Baseline &amp; Edge Infrastructure Setup</span>
+<span class="font-mono-label text-[10px] text-on-surface-variant">DAY 05 // OCT 14</span>
+</div>
+<div class="flex items-center justify-between p-2 rounded bg-surface text-on-surface text-body-sm">
+<span class="font-mono-code text-mono-code">MILESTONE 02</span>
+<span class="font-body-md font-medium">Design System Remediation &amp; Script Isolation</span>
+<span class="font-mono-label text-[10px] text-on-surface-variant">DAY 09 // OCT 18</span>
+</div>
+<div class="flex items-center justify-between p-2 rounded bg-surface text-on-surface text-body-sm">
+<span class="font-mono-code text-mono-code">FINAL HANDOVER</span>
+<span class="font-body-md font-medium">Staging Verification, Production Merge &amp; SLA Transfer</span>
+<span class="font-mono-label text-[10px] text-secondary font-bold">DAY 12 // OCT 23</span>
+</div>
+</div>
+</div>
+<!-- Section 5: Commercial Terms Editor -->
+<div class="rounded-lg bg-surface-container p-space-md shadow-sm">
+<div class="flex items-center justify-between pb-3">
+<span class="font-mono-label text-mono-label uppercase text-on-surface font-semibold">Commercial Investment Terms</span>
+<span class="font-mono-metric text-mono-metric font-bold text-on-surface">$14,200.00</span>
+</div>
+<div class="grid grid-cols-2 gap-3 text-body-sm mb-3">
+<div class="bg-surface p-2.5 rounded shadow-sm">
+<span class="block font-mono-label text-[10px] uppercase text-on-surface-variant">Mobilization Retainer (50%)</span>
+<span class="font-mono-metric text-mono-metric font-bold text-on-surface">$7,100.00</span>
+<span class="block font-body-sm text-[11px] text-on-surface-variant">Due upon electronic execution</span>
+</div>
+<div class="bg-surface p-2.5 rounded shadow-sm">
+<span class="block font-mono-label text-[10px] uppercase text-on-surface-variant">Completion Balance (50%)</span>
+<span class="font-mono-metric text-mono-metric font-bold text-on-surface">$7,100.00</span>
+<span class="block font-body-sm text-[11px] text-on-surface-variant">Due post-staging acceptance</span>
+</div>
+</div>
+<div class="text-body-sm text-on-surface-variant flex items-center justify-between pt-2">
+<span class="font-mono-code text-mono-code">Net 15 Terms • Full IP Transfer • 30-Day Defect Warranty</span>
+<button class="text-secondary font-mono-label text-mono-label underline hover:text-on-secondary-fixed" type="button">Edit Clauses</button>
+</div>
+</div>
+</div>
+<!-- RIGHT PANE: Client-Facing Live Proposal Document Canvas (Columns: 7) -->
+<div class="xl:col-span-7 flex flex-col items-center">
+<!-- Document Canvas Container (Emulating High-End Heavyweight Editorial Paper) -->
+<div class="w-full bg-surface-container-lowest rounded-xl shadow-xl p-space-xl text-on-surface relative overflow-hidden transition-all">
+<!-- Subtle Top Colored Architectural Bar -->
+<div class="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-primary via-secondary to-primary"></div>
+<!-- Document Header / Meta Bar -->
+<div class="flex flex-wrap items-start justify-between gap-4 pb-space-lg">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="w-3 h-3 bg-primary rounded-none"></span>
+<span class="font-headline-sm text-headline-sm uppercase tracking-wider text-primary font-bold">Studio Archetype</span>
+</div>
+<p class="font-mono-label text-mono-label uppercase text-on-surface-variant">Technical Architecture &amp; Growth Advisory</p>
+</div>
+<div class="text-right">
+<div class="font-mono-code text-mono-code text-on-surface font-semibold">DOC // SP-PROP-2025-04</div>
+<div class="font-mono-label text-mono-label text-on-surface-variant">RELEASED: MARCH 24, 2025</div>
+<div class="font-mono-label text-[10px] uppercase text-secondary font-bold">CONFIDENTIAL // CLIENT BRIEF</div>
+</div>
+</div>
+<!-- Client Recipient Card -->
+<div class="my-space-md p-space-md rounded-lg bg-surface-container-low flex flex-wrap items-center justify-between gap-4">
+<div>
+<span class="font-mono-label text-mono-label uppercase text-on-surface-variant block">Target Client Organization</span>
+<h4 class="font-headline-sm text-headline-sm text-on-surface font-bold">Cal Analytics Inc.</h4>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Attention: Sarah Chen — VP of Engineering</span>
+</div>
+<div class="text-right">
+<span class="font-mono-label text-mono-label uppercase text-on-surface-variant block">Audited Origin</span>
+<span class="font-mono-code text-mono-code font-bold text-on-surface">https://cal-analytics.io</span>
+<span class="block font-mono-label text-[10px] text-secondary">Diagnostic Reference: AUD-9021</span>
+</div>
+</div>
+<!-- Massive Editorial Headline -->
+<div class="my-space-lg">
+<div class="flex items-center gap-2 mb-2">
+<span class="font-mono-label text-mono-label uppercase px-2 py-0.5 rounded bg-primary text-on-primary font-semibold">ENGINEERING SPECIFICATION</span>
+<span class="font-mono-code text-mono-code text-on-surface-variant">SPRINT SCOPE &amp; INVESTMENT</span>
+</div>
+<h1 class="font-display-xl text-display-xl uppercase text-on-surface font-extrabold leading-none tracking-tight">
+            ENGINEERING REMEDIATION &amp; CONVERSION SPRINT
+          </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-space-sm max-w-2xl">
+            A surgical 2.5-week intervention targeting sub-optimal Core Web Vitals, enterprise ADA/WCAG liability, and mobile checkout hydration bottlenecks.
+          </p>
+</div>
+<!-- Section A: Quantified Financial & Technical Stakes (Editorial Bento Layout) -->
+<div class="my-space-lg">
+<div class="flex items-center justify-between mb-3">
+<h3 class="font-headline-sm text-headline-sm uppercase text-on-surface tracking-wide">01 // The Executive Stakes &amp; ROI Baseline</h3>
+<span class="font-mono-code text-mono-code text-on-surface-variant">DIAGNOSTIC DELTA</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-3 mb-4">
+<div class="bg-surface-container p-space-md rounded flex flex-col justify-between">
+<div>
+<span class="font-mono-label text-mono-label uppercase text-on-surface-variant">LCP Paint Time</span>
+<div class="flex items-baseline gap-2 mt-1">
+<span class="font-display-xl-mobile text-display-xl-mobile font-bold text-error">4.82s</span>
+<span class="font-mono-label text-mono-label text-on-surface-variant">→</span>
+<span class="font-display-xl-mobile text-display-xl-mobile font-bold text-secondary">&lt;1.20s</span>
+</div>
+</div>
+<span class="font-body-sm text-[11px] text-on-surface-variant mt-2">75% reduction via Edge AVIF optimization</span>
+</div>
+<div class="bg-surface-container p-space-md rounded flex flex-col justify-between">
+<div>
+<span class="font-mono-label text-mono-label uppercase text-on-surface-variant">Mobile Drop-Off</span>
+<div class="flex items-baseline gap-2 mt-1">
+<span class="font-display-xl-mobile text-display-xl-mobile font-bold text-on-surface">18.4%</span>
+<span class="font-mono-label text-mono-label text-on-surface-variant">→</span>
+<span class="font-display-xl-mobile text-display-xl-mobile font-bold text-secondary">~0%</span>
+</div>
+</div>
+<span class="font-body-sm text-[11px] text-on-surface-variant mt-2">Recovering checkout click abandonment</span>
+</div>
+<div class="bg-surface-container p-space-md rounded flex flex-col justify-between">
+<div>
+<span class="font-mono-label text-mono-label uppercase text-on-surface-variant">Annualized Value</span>
+<div class="flex items-baseline gap-2 mt-1">
+<span class="font-display-xl-mobile text-display-xl-mobile font-bold text-secondary font-mono-metric">+$57.6k</span>
+</div>
+</div>
+<span class="font-body-sm text-[11px] text-on-surface-variant mt-2">Against $14.2k fixed project retainer</span>
+</div>
+</div>
+<div class="p-space-md rounded bg-surface-container-high/60 font-body-md text-body-md text-on-surface leading-relaxed">
+            Our synthetic performance traces indicate that Cal Analytics is losing approximately <strong>$4,800/month</strong> in potential recurring subscription value due to high-latency initial loads across mobile buyers. By decoupling analytics hydration and serving next-generation imagery directly through Cloudflare Workers, we eliminate technical debt while securing contractual enterprise WCAG 2.1 compliance.
+          </div>
+</div>
+<!-- Section B: Scoped Deliverables Matrix Table -->
+<div class="my-space-lg">
+<div class="flex items-center justify-between mb-3">
+<h3 class="font-headline-sm text-headline-sm uppercase text-on-surface tracking-wide">02 // Scoped Work Packages &amp; Investment</h3>
+<span class="font-mono-label text-mono-label text-on-surface-variant uppercase">Fixed Price Contract</span>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left font-body-md">
+<thead>
+<tr class="bg-surface-container text-on-surface-variant font-mono-label text-mono-label uppercase">
+<th class="py-2.5 px-3">Item</th>
+<th class="py-2.5 px-3">Specification &amp; Remediation Details</th>
+<th class="py-2.5 px-3">Duration</th>
+<th class="py-2.5 px-3 text-right">Fee (USD)</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-highest">
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-3 px-3 font-mono-code text-mono-code font-bold align-top">WP-01</td>
+<td class="py-3 px-3">
+<span class="font-headline-sm text-body-md font-bold text-on-surface block">Edge Asset Pipeline &amp; Critical CSS Modernization</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant block mt-0.5">Automated Cloudflare Worker transforms for WebP/AVIF, preloading key fonts, and stripping 120KB of unused render-blocking framework styling.</span>
+</td>
+<td class="py-3 px-3 font-mono-code text-mono-code align-top">5 Days</td>
+<td class="py-3 px-3 font-mono-metric text-mono-metric font-semibold text-right align-top">$5,800.00</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-3 px-3 font-mono-code text-mono-code font-bold align-top">WP-02</td>
+<td class="py-3 px-3">
+<span class="font-headline-sm text-body-md font-bold text-on-surface block">WCAG 2.1 AA Compliance Certification &amp; Token Overhaul</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant block mt-0.5">Restructuring UI design tokens for accessible 4.5:1 minimum contrast ratios across enterprise purchase workflows, modal focus trapping, and screen-reader accessibility validation.</span>
+</td>
+<td class="py-3 px-3 font-mono-code text-mono-code align-top">4 Days</td>
+<td class="py-3 px-3 font-mono-metric text-mono-metric font-semibold text-right align-top">$4,600.00</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-3 px-3 font-mono-code text-mono-code font-bold align-top">WP-03</td>
+<td class="py-3 px-3">
+<span class="font-headline-sm text-body-md font-bold text-on-surface block">Third-Party Bundle Isolation &amp; Asynchronous Hydration</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant block mt-0.5">Stripe Elements deferred loading with placeholder skeletons; Datadog real-user monitoring deferred to requestIdleCallback window, releasing the main JavaScript thread.</span>
+</td>
+<td class="py-3 px-3 font-mono-code text-mono-code align-top">3 Days</td>
+<td class="py-3 px-3 font-mono-metric text-mono-metric font-semibold text-right align-top">$3,800.00</td>
+</tr>
+<!-- Summary Total Highlight -->
+<tr class="bg-surface-container">
+<td class="py-3 px-3 text-right font-headline-sm text-headline-sm uppercase font-bold text-on-surface" colspan="3">
+                    Total Project Investment Retainer
+                  </td>
+<td class="py-3 px-3 text-right">
+<span class="inline-block px-3 py-1 rounded bg-secondary-container text-on-secondary-fixed font-mono-metric text-headline-sm font-bold shadow-sm">
+                      $14,200.00
+                    </span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Section C: Visual Implementation Timeline (Gantt Visualization) -->
+<div class="my-space-lg">
+<div class="flex items-center justify-between mb-3">
+<h3 class="font-headline-sm text-headline-sm uppercase text-on-surface tracking-wide">03 // Sprint Phasing &amp; Milestones</h3>
+<span class="font-mono-label text-mono-label text-on-surface-variant">TOTAL: 12 BUSINESS DAYS</span>
+</div>
+<div class="space-y-2 bg-surface-container-low p-space-md rounded-lg">
+<!-- Phase 1 -->
+<div>
+<div class="flex justify-between font-mono-label text-[11px] mb-1">
+<span class="font-semibold text-on-surface">WEEK 1: INFRASTRUCTURE &amp; CLOUDFLARE EDGE (DAYS 1–5)</span>
+<span class="text-secondary font-bold">100% PREPARED</span>
+</div>
+<div class="w-full h-3 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full w-full"></div>
+</div>
+</div>
+<!-- Phase 2 -->
+<div>
+<div class="flex justify-between font-mono-label text-[11px] mb-1">
+<span class="font-semibold text-on-surface">WEEK 2: ACCESSIBILITY TOKENS &amp; HYDRATION DECOUPLING (DAYS 6–9)</span>
+<span class="text-on-surface-variant">PLANNED CADENCE</span>
+</div>
+<div class="w-full h-3 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary/70 rounded-full w-3/4"></div>
+</div>
+</div>
+<!-- Phase 3 -->
+<div>
+<div class="flex justify-between font-mono-label text-[11px] mb-1">
+<span class="font-semibold text-on-surface">WEEK 2.5: SYNTHETIC VERIFICATION &amp; PRODUCTION CUTOVER (DAYS 10–12)</span>
+<span class="text-on-surface-variant">STAGING GATEWAY</span>
+</div>
+<div class="w-full h-3 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-secondary rounded-full w-1/4"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Section D: Sign-Off & Digital Execution Block -->
+<div class="mt-space-xl pt-space-lg bg-surface-container rounded-lg p-space-md shadow-sm">
+<div class="flex items-center justify-between mb-4">
+<div>
+<h3 class="font-headline-sm text-headline-sm uppercase text-on-surface font-bold">04 // Electronic Execution &amp; Authorization</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Binding commercial agreement upon electronic verification.</p>
+</div>
+<span class="px-2.5 py-1 rounded bg-secondary-container text-on-secondary-fixed font-mono-label text-[11px] font-bold uppercase tracking-wider">
+              READY FOR CLIENT SIGNATURE
+            </span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<!-- Studio Side -->
+<div class="bg-surface p-space-md rounded shadow-sm">
+<span class="font-mono-label text-[10px] uppercase text-on-surface-variant block mb-1">Service Provider Lead</span>
+<div class="font-body-md text-body-md font-bold text-on-surface">Studio Archetype // Digital Architecture</div>
+<div class="font-mono-code text-[12px] text-secondary font-semibold mt-2">Devin Vance, Lead Systems Architect</div>
+<div class="mt-3 pt-2 font-mono-label text-[10px] text-on-surface-variant flex items-center justify-between">
+<span>VERIFIED SYSTEM SIGNATURE</span>
+<span class="text-secondary font-bold">✓ COUNTERSIGNED</span>
+</div>
+</div>
+<!-- Client Side -->
+<div class="bg-surface p-space-md rounded shadow-sm relative">
+<span class="font-mono-label text-[10px] uppercase text-on-surface-variant block mb-1">Client Authorization</span>
+<div class="font-body-md text-body-md font-bold text-on-surface">Cal Analytics Inc.</div>
+<div class="font-mono-code text-[12px] text-on-surface mt-2">Sarah Chen, VP Engineering</div>
+<div class="mt-3 pt-2 font-mono-label text-[10px] text-on-surface-variant flex items-center justify-between">
+<span class="text-outline">PENDING EXECUTION</span>
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-on-surface font-mono-label text-[10px]">E-SIGN ACTIVE</span>
+</div>
+</div>
+</div>
+<div class="mt-4 flex flex-wrap items-center justify-between text-on-surface-variant font-mono-label text-[10px]">
+<span>STAMP: 2025-03-24-ARCHETYPE-CALANALYTICS-SOW-01</span>
+<span>IP TRANSFERRED UPON RECEIPT OF FINAL PAYMENT // NET 15</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div></main></div></body></html>

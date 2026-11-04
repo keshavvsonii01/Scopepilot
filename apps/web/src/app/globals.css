@@ -1,0 +1,23 @@
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; background: var(--paper); }
+body { margin: 0; color: var(--ink); background: var(--paper); font-family: var(--body); }
+button, input { font: inherit; }
+button { cursor: pointer; }
+a { color: inherit; text-decoration: none; }
+::selection { color: var(--ink); background: var(--lime); }
+.skip-link { position: fixed; z-index: 100; top: .75rem; left: .75rem; padding: .75rem 1rem; color: var(--ink); background: var(--lime); transform: translateY(-160%); }
+.skip-link:focus { transform: translateY(0); }
+.shell { width: min(100% - 2rem, 1440px); margin: 0 auto; }
+.eyebrow { font: 500 10px/1.4 var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+.display { margin: 0; font-family: var(--display); font-weight: 650; letter-spacing: -.055em; line-height: .92; }
+.button { display: inline-flex; align-items: center; justify-content: center; gap: .55rem; min-height: 2.75rem; padding: .7rem 1rem; border: 1px solid var(--ink); border-radius: var(--radius-control); font: 600 11px/1 var(--mono); letter-spacing: .04em; text-transform: uppercase; transition: color .16s, background .16s, transform .16s, box-shadow .16s; }
+.button-primary { color: var(--paper); background: var(--ink); }
+.button-primary:hover { color: var(--ink); background: var(--lime); }
+.button-secondary { color: var(--ink); background: transparent; }
+.button-secondary:hover { box-shadow: 2px 2px 0 var(--ink); transform: translate(-1px, -1px); }
+.button-lime { color: var(--ink); background: var(--lime); }
+.button-lime:hover { box-shadow: 2px 2px 0 var(--ink); transform: translate(-1px, -1px); }
+.registration { color: var(--ink-muted); font: 500 10px/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+.registration::before { content: "+"; margin-right: .4rem; color: var(--ink); }
+@media (min-width: 768px) { .shell { width: min(100% - 4rem, 1440px); } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; } }

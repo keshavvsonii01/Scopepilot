@@ -1,0 +1,20 @@
+{
+  "name": "scopepilot",
+  "private": true,
+  "packageManager": "pnpm@11.25.0",
+  "scripts": {
+    "dev": "pnpm --filter @scopepilot/web dev",
+    "build": "pnpm --filter @scopepilot/web build && pnpm --filter @scopepilot/api build && pnpm --filter @scopepilot/worker build",
+    "build:web": "pnpm --filter @scopepilot/web build",
+    "start:web": "pnpm --filter @scopepilot/web start",
+    "start:api": "pnpm --filter @scopepilot/api start",
+    "start:worker": "pnpm --filter @scopepilot/worker start",
+    "lint": "pnpm --filter @scopepilot/web lint",
+    "typecheck": "pnpm --filter @scopepilot/web typecheck && pnpm --filter @scopepilot/api typecheck && pnpm --filter @scopepilot/worker typecheck && pnpm --filter @scopepilot/crawl-core typecheck && pnpm --filter @scopepilot/persistence exec tsc --noEmit && pnpm --filter @scopepilot/analysis typecheck && pnpm --filter @scopepilot/intelligence typecheck",
+    "test": "pnpm --filter @scopepilot/crawl-core test && pnpm --filter @scopepilot/persistence test && pnpm --filter @scopepilot/analysis test && pnpm --filter @scopepilot/worker test && pnpm --filter @scopepilot/intelligence test && pnpm --filter @scopepilot/api test && pnpm --filter @scopepilot/web test"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.2",
+    "vitest": "^3.2.4"
+  }
+}

@@ -1,0 +1,27 @@
+.page { display: grid; min-height: 100vh; background: var(--paper); }
+.aside { display: none; }
+.panel { display: flex; flex-direction: column; justify-content: center; width: min(100% - 2rem, 28rem); margin: 0 auto; padding: 3rem 0; }
+.brand { display: inline-flex; align-items: center; gap: .45rem; margin-bottom: 2.5rem; font: 650 1rem/1 var(--display); text-transform: uppercase; letter-spacing: -.04em; }
+.brand span { width: .65rem; height: .65rem; background: var(--ink); }
+.panel h1 { margin: .6rem 0 .8rem; font-size: clamp(2.4rem, 6vw, 3.4rem); }
+.lede { margin: 0 0 2rem; color: var(--ink-muted); font-size: .92rem; line-height: 1.55; }
+.form { display: grid; gap: 1.25rem; }
+.field > label { display: block; margin-bottom: .55rem; color: var(--ink-muted); }
+.help, .fieldError, .note { margin: .5rem 0 0; font-size: .75rem; line-height: 1.45; }
+.help, .note { color: var(--ink-muted); }
+.fieldError { color: #981c17; }
+.formError { margin: 0; padding: .8rem .9rem; border: 1px solid #981c17; color: #981c17; background: #fbeeec; font-size: .8rem; line-height: 1.45; }
+.switch { margin: 0; color: var(--ink-muted); font-size: .82rem; }
+.switch a { color: var(--ink); text-decoration: underline; text-underline-offset: .2em; }
+.form button[type=submit] { justify-self: start; }
+.form button[type=submit]:disabled { cursor: wait; opacity: .6; }
+.status { margin: 0 0 1.5rem; padding: .8rem .9rem; border: 1px solid var(--line); background: var(--paper-bright); font-size: .8rem; line-height: 1.45; }
+@media (min-width: 960px) {
+  .page { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .aside { display: flex; flex-direction: column; justify-content: space-between; padding: 3rem; color: var(--paper); background: var(--ink); }
+  .aside .eyebrow { color: var(--lime); }
+  .aside h2 { margin: 1rem 0 0; font-size: clamp(2.6rem, 4vw, 4rem); }
+  .aside ol { display: grid; gap: .9rem; margin: 0; padding: 0; list-style: none; }
+  .aside li { display: grid; grid-template-columns: 2.5rem 1fr; padding-top: .9rem; border-top: 1px solid rgba(255,255,255,.18); font-size: .85rem; line-height: 1.45; }
+  .aside li span { color: var(--lime); font: 500 10px/1.6 var(--mono); }
+}

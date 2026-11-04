@@ -1,0 +1,34 @@
+{
+  "name": "@scopepilot/api",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "node --env-file-if-exists=.env --import tsx --watch src/server.ts",
+    "build": "tsc --noEmit && node ../../scripts/bundle-service.mjs src/server.ts dist/server.js",
+    "start": "node --env-file-if-exists=.env --enable-source-maps dist/server.js",
+    "claim-dev-data": "node --env-file-if-exists=.env --import tsx src/claim-dev-data.ts",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@node-rs/argon2": "^2.2.2",
+    "@scopepilot/contracts": "workspace:*",
+    "@scopepilot/crawl-core": "workspace:*",
+    "@scopepilot/intelligence": "workspace:*",
+    "@scopepilot/persistence": "workspace:*",
+    "express": "^5.1.0",
+    "express-rate-limit": "^8.1.0",
+    "helmet": "^8.1.0",
+    "mongoose": "^8.18.0",
+    "pdfkit": "^0.20.2"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.3",
+    "@types/node": "^22.10.0",
+    "@types/pdfkit": "^0.17.7",
+    "tsx": "^4.23.15",
+    "typescript": "^5.7.0",
+    "vitest": "^3.2.7"
+  }
+}
