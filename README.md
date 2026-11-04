@@ -56,8 +56,8 @@ ScopePilot runs as three long-lived Node.js processes sharing one MongoDB databa
 Browser ──HTTPS──▶ web (Next.js, /api/v1/* proxy) ──HTTP──▶ api (Express) ──▶ MongoDB ◀── worker (Playwright, polls MongoDB)
 ```
 
-- **web** is the only public service. The browser never calls the API directly; the Next.js route handler forwards the session cookie and CSRF header server-side.
-- **api** should be reachable only from the web server (private network or firewall).
+- **web** is the only service browsers call. The browser never calls the API directly; the Next.js route handler forwards the session cookie and CSRF header server-side.
+- **api** should be reachable only from the web server (private network or firewall). If the platform gives the API a public URL, set `SCOPEPILOT_PROXY_SECRET` on both web and API: the API then returns `404` to every request without the secret. See [docs/deployment.md](docs/deployment.md) for the zero-cost Render + Oracle Cloud setup.
 - **worker** is a persistent process, not a serverless function. It polls MongoDB for queued audits every second and launches Chromium. Run it under a supervisor that restarts it (systemd, a container restart policy, a PaaS background-worker dyno). On `SIGTERM`/`SIGINT` it stops claiming audits, waits up to 120 s for in-flight audits and disconnects.
 - If no worker picks up a queued audit within 15 minutes, the API and the worker both mark it `failed` with code `QUEUE_TIMEOUT`. After one minute in the queue, the report warns that the worker may be offline.
 
@@ -85,9 +85,11 @@ NODE_ENV=production pnpm start:worker
 | api | `SESSION_COOKIE_SECURE` | no | Always `true` in production; setting it to `false` there stops startup. |
 | api | `SESSION_TTL_HOURS`, `SESSION_IDLE_HOURS` | no | Defaults `168` and `24`. |
 | api | `API_TRUST_PROXY` | see below | Express `trust proxy` value. Default `loopback`. |
+| api, web | `SCOPEPILOT_PROXY_SECRET` | if the API is public | Same value on both, at least 32 characters (`openssl rand -hex 32`). The API returns `404` without it and rate-limits on the client address sent by the web proxy. |
 | api | `GEMINI_API_KEY`, `GEMINI_MODEL` | no | AI interpretation and drafting. Without a key they are reported as not configured. The model defaults to `gemini-3.8-flash`. |
 | worker | `PAGESPEED_API_KEY` | no | Without it, performance analysis is reported as unavailable. |
-| web | `SCOPEPILOT_API_URL` | yes | Internal API base URL, e.g. `http://api.internal:4000`. |
+| web | `SCOPEPILOT_API_URL` | yes | API base URL: internal, e.g. `http://api.internal:4000`, or public HTTPS together with `SCOPEPILOT_PROXY_SECRET`. |
+| web | `SCOPEPILOT_API_TIMEOUT_MS` | no | Upstream read timeout, 1000–300000 ms, default `15000`. Use about `75000` when the API host sleeps when idle. AI requests wait at least 90 s. |
 | web | `SCOPEPILOT_ALLOWED_ORIGINS` | no | Extra public origins allowed to make state-changing requests when the public origin differs from the URL Next.js sees. |
 
 Keep every secret in the platform's secret store. Never commit `.env` files; `.gitignore` excludes them and only the `.env.example` placeholders are tracked.
@@ -99,6 +101,7 @@ Login and registration rate limits are keyed on the client IP. The web proxy for
 - **Web and API on the same host:** keep the default `loopback`.
 - **Separate hosts:** set `API_TRUST_PROXY` to the web server's private address or subnet, e.g. `10.0.0.0/8`, or to a hop count. If you leave it at the default, every user shares the web server's rate-limit bucket.
 - **Never** set `API_TRUST_PROXY=true` on an API that is publicly reachable: clients could then spoof their IP.
+- **Public API with `SCOPEPILOT_PROXY_SECRET`:** rate limits use the `x-scopepilot-client-ip` header, which the API accepts only on requests carrying the secret. `API_TRUST_PROXY` then does not affect rate limiting.
 - The rate-limit store is in memory, per API instance. With several API instances, limits apply per instance and reset on restart.
 
 ### Security headers

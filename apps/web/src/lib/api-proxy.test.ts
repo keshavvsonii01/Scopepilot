@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { allowedOrigins, apiBaseUrl, forwardToApi, sessionCookieHeader } from "./api-proxy";
+import { allowedOrigins, apiBaseUrl, apiTimeoutMs, forwardToApi, sessionCookieHeader } from "./api-proxy";
 
 const BASE = "http://api.test";
 const ID = "65f0a1b2c3d4e5f6a7b8c9d0";
@@ -89,6 +89,21 @@ describe("forwardToApi", () => {
     expect(timedOut.status).toBe(504);
     expect(await timedOut.json()).toMatchObject({ error: "API_TIMEOUT" });
   });
+
+  it("uses SCOPEPILOT_API_TIMEOUT_MS for reads, keeps the longer AI timeout, and ignores invalid values", () => {
+    expect(apiTimeoutMs({})).toBe(15_000);
+    expect(apiTimeoutMs({ SCOPEPILOT_API_TIMEOUT_MS: "75000" })).toBe(75_000);
+    for (const bad of ["abc", "500", "999999", "1.5", ""]) expect(apiTimeoutMs({ SCOPEPILOT_API_TIMEOUT_MS: bad })).toBe(15_000);
+  });
+
+  it("applies the configured timeout to the upstream call", async () => {
+    const timeout = vi.spyOn(AbortSignal, "timeout");
+    const ok = () => fakeFetch(new Response("{}", { status: 200 }));
+    await forwardToApi(new Request("http://web.test/x"), ["audits"], { baseUrl: BASE, fetchImpl: ok(), env: { SCOPEPILOT_API_TIMEOUT_MS: "75000" } });
+    await forwardToApi(new Request("http://web.test/x", { method: "POST", body: "{}", headers: { origin: "http://web.test" } }), ["proposals", ID, "draft"], { baseUrl: BASE, fetchImpl: ok(), env: { SCOPEPILOT_API_TIMEOUT_MS: "75000" } });
+    expect(timeout.mock.calls.map(([ms]) => ms)).toEqual([75_000, 90_000]);
+    timeout.mockRestore();
+  });
 });
 
 describe("authentication forwarding", () => {
@@ -104,6 +119,21 @@ describe("authentication forwarding", () => {
     expect(headers.get("x-csrf-token")).toBe(CSRF);
     expect(headers.get("x-forwarded-for")).toBe("203.0.113.9");
     expect(headers.get("authorization")).toBeNull();
+  });
+
+  it("sends the proxy secret and client address only when SCOPEPILOT_PROXY_SECRET is set", async () => {
+    const SECRET = "p".repeat(64);
+    const send = async (env: Record<string, string>) => {
+      const fetchImpl = fakeFetch(new Response("{}", { status: 200 }));
+      await forwardToApi(new Request("http://web.test/api/v1/audits", { headers: { "x-forwarded-for": "198.51.100.1, 203.0.113.9", "x-scopepilot-proxy-secret": "forged" } }), ["audits"], { baseUrl: BASE, fetchImpl, env });
+      return new Headers(fetchImpl.mock.calls[0]![1]!.headers);
+    };
+    const withSecret = await send({ SCOPEPILOT_PROXY_SECRET: SECRET });
+    expect(withSecret.get("x-scopepilot-proxy-secret")).toBe(SECRET);
+    expect(withSecret.get("x-scopepilot-client-ip")).toBe("203.0.113.9");
+    const without = await send({});
+    expect(without.get("x-scopepilot-proxy-secret")).toBeNull();
+    expect(without.get("x-scopepilot-client-ip")).toBeNull();
   });
 
   it("drops malformed CSRF headers and requests without a session cookie", async () => {

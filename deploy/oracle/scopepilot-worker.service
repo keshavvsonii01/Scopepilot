@@ -1,0 +1,29 @@
+# ScopePilot worker on an Ubuntu VM. Install with:
+#   sudo cp /opt/scopepilot/deploy/oracle/scopepilot-worker.service /etc/systemd/system/
+#   sudo systemctl daemon-reload && sudo systemctl enable --now scopepilot-worker
+# Secrets live in /etc/scopepilot/worker.env (mode 600, owned by root), never in this file.
+[Unit]
+Description=ScopePilot audit worker
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=scopepilot
+Group=scopepilot
+WorkingDirectory=/opt/scopepilot/apps/worker
+EnvironmentFile=/etc/scopepilot/worker.env
+Environment=NODE_ENV=production
+# Must match the path used for `playwright install chromium`.
+Environment=PLAYWRIGHT_BROWSERS_PATH=/opt/scopepilot/.playwright
+ExecStart=/usr/bin/node --enable-source-maps /opt/scopepilot/apps/worker/dist/index.js
+Restart=always
+RestartSec=5
+# The worker drains in-flight audits for up to 120 s after SIGTERM; give it longer before SIGKILL.
+KillSignal=SIGTERM
+TimeoutStopSec=150
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

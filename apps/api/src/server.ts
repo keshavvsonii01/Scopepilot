@@ -20,7 +20,8 @@ if (environment.legacyDevWorkspaceId) {
   console.warn("SCOPEPILOT_DEV_WORKSPACE_ID is set but no longer used: every request now requires a signed-in user. Records in that workspace stay hidden until claimed with `pnpm --filter @scopepilot/api claim-dev-data`.");
 }
 const auth = createAuthService({ store, policy: { ttlMs: session.ttlMs, idleMs: session.idleMs, secureCookie: session.secureCookie } });
-const app = createApi({ auth, trustProxy: session.trustProxy, interpreter, drafter });
+console.log(environment.proxySecret ? "API access: only requests carrying SCOPEPILOT_PROXY_SECRET (the web proxy) are served." : "API access: open to any caller that can reach this port (SCOPEPILOT_PROXY_SECRET unset). Keep the API on a private network.");
+const app = createApi({ auth, trustProxy: session.trustProxy, interpreter, drafter, proxySecret: environment.proxySecret });
 const server = app.listen(environment.port, () => console.log(`ScopePilot API listening on ${environment.port}`));
 // Fails audits stuck in "queued" (no worker running) so the report stops waiting; the worker runs the same sweep.
 const queueSweep = setInterval(() => { failStaleQueuedAudits().catch(() => undefined); }, 60_000);

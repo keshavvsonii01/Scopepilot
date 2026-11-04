@@ -8,7 +8,7 @@ import type { AddressInfo } from "node:net";
 import { afterEach, describe, expect, it } from "vitest";
 import { createApi, type AuditStore, type AuthLimits, type ProposalStore } from "../src/app.js";
 import { argon2idHasher, createAuthService, hashToken, readCookie, sessionCookieName, type SessionPolicy } from "../src/auth.js";
-import { sessionEnvironment } from "../src/env.js";
+import { proxySecret, sessionEnvironment } from "../src/env.js";
 import { MemoryAuthStore, plainHasher, sessionFor } from "./auth-helpers.js";
 
 const PASSWORD = "correct horse battery";
@@ -65,13 +65,13 @@ afterEach(async () => {
 
 interface Client { cookie?: string; csrf?: string }
 
-async function start(options: { policy?: Partial<SessionPolicy>; now?: () => Date; limits?: Partial<AuthLimits>; hasher?: typeof plainHasher; registerMinMs?: number } = {}) {
+async function start(options: { policy?: Partial<SessionPolicy>; now?: () => Date; limits?: Partial<AuthLimits>; hasher?: typeof plainHasher; registerMinMs?: number; proxySecret?: string } = {}) {
   const authStore = new MemoryAuthStore();
   const stores = new Stores();
   const auth = createAuthService({ store: authStore, hasher: options.hasher ?? plainHasher, policy: options.policy, now: options.now, registerMinMs: options.registerMinMs ?? 0 });
   const interpreter = { provider: "gemini" as const, model: "m", promptVersion: "p", interpret: async () => ({ status: "failed" as const, input: { findingCount: 1, issueGroupCount: 1, issueGroupsOmitted: 0 }, content: null, rejected: [], uninterpretedRefs: [], failure: { code: "AI_PROVIDER_ERROR", message: "x" } }) };
   const drafter = { model: "m", draft: async () => ({ ok: false as const, failure: { code: "AI_PROVIDER_ERROR", message: "x" } }) };
-  const app = createApi({ auth, authLimits: options.limits, store: stores, proposals: stores, interpreter: interpreter as never, drafter: drafter as never, validateTarget: async (url) => new URL(url) });
+  const app = createApi({ auth, authLimits: options.limits, store: stores, proposals: stores, interpreter: interpreter as never, drafter: drafter as never, validateTarget: async (url) => new URL(url), proxySecret: options.proxySecret });
   const server = await new Promise<Server>((resolve) => { const listening = app.listen(0, "127.0.0.1", () => resolve(listening)); });
   servers.push(server);
   const base = `http://127.0.0.1:${(server.address() as AddressInfo).port}`;
@@ -400,6 +400,42 @@ describe("password hashing", () => {
     expect([...authStore.users.values()][0].passwordHash).toMatch(/^\$argon2id\$/);
     expect((await call("POST", "/v1/auth/login", { email: "real@example.com", password: PASSWORD })).status).toBe(200);
     expect((await call("POST", "/v1/auth/login", { email: "real@example.com", password: "wrong password" })).status).toBe(401);
+  });
+});
+
+describe("public API proxy secret", () => {
+  const SECRET = "s".repeat(40);
+  const via = (client = "198.51.100.7") => ({ "x-scopepilot-proxy-secret": SECRET, "x-scopepilot-client-ip": client });
+
+  it("answers 404 to callers without the shared secret, including forged forwarding headers", async () => {
+    const { call } = await start({ proxySecret: SECRET });
+    const attempts: Record<string, string>[] = [{}, { "x-scopepilot-proxy-secret": "wrong" }, { "x-scopepilot-proxy-secret": `${SECRET}x` }, { "x-forwarded-for": "203.0.113.1", "x-scopepilot-client-ip": "203.0.113.1" }];
+    for (const extra of attempts) {
+      expect(await call("GET", "/v1/auth/session", undefined, {}, extra)).toMatchObject({ status: 404, body: { error: "NOT_FOUND" } });
+      expect((await call("POST", "/v1/auth/register", { name: "A", email: "a@example.com", password: PASSWORD }, {}, extra)).status).toBe(404);
+    }
+    expect((await call("GET", "/v1/auth/session", undefined, {}, via())).status).toBe(401);
+  });
+
+  it("serves the full sign-in flow through the proxy", async () => {
+    const { call } = await start({ proxySecret: SECRET });
+    expect((await call("POST", "/v1/auth/register", { name: "A", email: "p@example.com", password: PASSWORD }, {}, via())).status).toBe(202);
+    const login = await call("POST", "/v1/auth/login", { email: "p@example.com", password: PASSWORD }, {}, via());
+    expect(login.status).toBe(200);
+    expect((await call("GET", "/v1/auth/session", undefined, clientFrom(login), via())).status).toBe(200);
+  });
+
+  it("rate-limits per client address reported by the proxy, not per connection", async () => {
+    const { call } = await start({ proxySecret: SECRET, limits: { loginPerIp: 2 } });
+    for (let attempt = 0; attempt < 2; attempt += 1) await call("POST", "/v1/auth/login", { email: "a@example.com", password: "x" }, {}, via("198.51.100.1"));
+    expect((await call("POST", "/v1/auth/login", { email: "a@example.com", password: "x" }, {}, via("198.51.100.1"))).status).toBe(429);
+    expect((await call("POST", "/v1/auth/login", { email: "b@example.com", password: "x" }, {}, via("198.51.100.2"))).status).toBe(401);
+  });
+
+  it("is optional and must be long when set", () => {
+    expect(proxySecret({})).toBeNull();
+    expect(proxySecret({ SCOPEPILOT_PROXY_SECRET: SECRET })).toBe(SECRET);
+    expect(() => proxySecret({ SCOPEPILOT_PROXY_SECRET: "short" })).toThrow(/at least 32 characters/);
   });
 });
 

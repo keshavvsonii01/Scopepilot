@@ -64,9 +64,18 @@ export function sessionEnvironment(env: Env = process.env) {
   return { production, secureCookie, ttlMs: ttlHours * 3_600_000, idleMs: idleHours * 3_600_000, trustProxy: trustProxy(optional(env, "API_TRUST_PROXY")) };
 }
 
+/** Optional shared secret between the web proxy and the API. Required when the API has a public URL. */
+export function proxySecret(env: Env): string | null {
+  const value = optional(env, "SCOPEPILOT_PROXY_SECRET");
+  if (value === undefined) return null;
+  if (value.length < 32) throw configError("SCOPEPILOT_PROXY_SECRET must be at least 32 characters. Generate one with `openssl rand -hex 32`.");
+  return value;
+}
+
 export function loadApiEnvironment(env: Env = process.env) {
   const geminiApiKey = optional(env, "GEMINI_API_KEY");
   return {
+    proxySecret: proxySecret(env),
     mongoUri: required(env, "MONGODB_URI"),
     mongoDnsServers: dnsServers(env.MONGODB_DNS_SERVERS),
     port: port(env.PORT),

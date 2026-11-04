@@ -23,10 +23,10 @@ import type { AuditFinding } from "@scopepilot/contracts/analysis";
 import type { NewProposal, ProposalChanges, ProposalUpdateResult } from "@scopepilot/persistence/proposals";
 import { randomUUID } from "node:crypto";
 import express, { type NextFunction, type Request, type Response } from "express";
-import rateLimit from "express-rate-limit";
+import rateLimit, { ipKeyGenerator } from "express-rate-limit";
 import helmet from "helmet";
 import { parseLoginInput, parseRegisterInput, REGISTER_ACCEPTED_MESSAGE, type AccountResponse, type RegisterResponse, type SessionResponse } from "@scopepilot/contracts/auth";
-import { createHash } from "node:crypto";
+import { createHash, timingSafeEqual } from "node:crypto";
 import { renderProposalPdf, proposalPdfFilename } from "./proposal-pdf.js";
 import { readCookie, tokensMatch, toSessionResponse, type AuthContext, type AuthService } from "./auth.js";
 import * as persistence from "./store.js";
@@ -69,6 +69,12 @@ export interface ApiDependencies {
    * limits use as the client address. Defaults to loopback (the local Next.js server).
    */
   trustProxy?: boolean | string | number;
+  /**
+   * Shared secret the web proxy sends on every request. When set, requests without it get 404, and rate
+   * limits key on the client address the proxy reports instead of X-Forwarded-For. Required when the
+   * API has a public URL, because the API cannot otherwise tell the web proxy apart from direct callers.
+   */
+  proxySecret?: string | null;
   /** Rate-limit overrides (requests per window). Tests use these; production uses the defaults. */
   authLimits?: Partial<AuthLimits>;
   store?: AuditStore;
@@ -110,8 +116,21 @@ function parseSubmission(value: unknown): { input?: CreateAuditInput; error?: st
   return { input: { url: body.url.trim(), mode: body.mode, includeMobileChecks: body.includeMobileChecks, includeAccessibilityChecks: body.includeAccessibilityChecks } };
 }
 
+export const PROXY_SECRET_HEADER = "x-scopepilot-proxy-secret";
+export const PROXY_CLIENT_HEADER = "x-scopepilot-client-ip";
+const CLIENT_IP = /^[0-9a-fA-F:.]{2,45}$/;
+
+/** Rate-limit key: the client address vouched for by the authenticated web proxy, else Express's `req.ip`. */
+function clientKey(request: Request, response: Response): string {
+  return ipKeyGenerator((response.locals.proxiedClientIp as string | undefined) ?? request.ip ?? "");
+}
+
 function limiter(limit: number, message: string) {
-  return rateLimit({ windowMs: 15 * 60_000, limit, standardHeaders: "draft-8", legacyHeaders: false, message: { error: "RATE_LIMITED", message } });
+  return rateLimit({ windowMs: 15 * 60_000, limit, standardHeaders: "draft-8", legacyHeaders: false, keyGenerator: clientKey, message: { error: "RATE_LIMITED", message } });
+}
+
+function sha256(value: string): Buffer {
+  return createHash("sha256").update(value).digest();
 }
 
 function storeUnavailable(response: Response) {
@@ -151,6 +170,15 @@ export function createApi(dependencies: ApiDependencies) {
   app.disable("x-powered-by");
   app.set("trust proxy", dependencies.trustProxy ?? "loopback");
   app.use(helmet({ crossOriginResourcePolicy: { policy: "same-origin" } }));
+  const proxySecretDigest = dependencies.proxySecret ? sha256(dependencies.proxySecret) : null;
+  if (proxySecretDigest) {
+    app.use((request, response, next) => {
+      if (!timingSafeEqual(sha256(request.get(PROXY_SECRET_HEADER) ?? ""), proxySecretDigest)) return response.status(404).json({ error: "NOT_FOUND", message: "Not found." });
+      const client = request.get(PROXY_CLIENT_HEADER)?.trim();
+      if (client && CLIENT_IP.test(client)) response.locals.proxiedClientIp = client;
+      next();
+    });
+  }
   // Authenticated and account responses must never be cached by browsers or intermediaries.
   app.use("/v1", (_request, response, next) => { response.set("cache-control", "no-store"); next(); });
   // Proposal documents are larger than audit submissions; the default body limit stays small elsewhere.
@@ -165,7 +193,7 @@ export function createApi(dependencies: ApiDependencies) {
   const draftLimit = limiter(10, "Too many AI drafting requests. Try again later.");
   // PDF rendering is CPU-bound; keep exports well below the read limit.
   const pdfLimit = limiter(60, "Too many PDF exports. Try again later.");
-  const registerLimit = rateLimit({ windowMs: 60 * 60_000, limit: authLimits.registerPerIp, standardHeaders: "draft-8", legacyHeaders: false, message: { error: "RATE_LIMITED", message: "Too many sign-up attempts. Try again later." } });
+  const registerLimit = rateLimit({ windowMs: 60 * 60_000, limit: authLimits.registerPerIp, standardHeaders: "draft-8", legacyHeaders: false, keyGenerator: clientKey, message: { error: "RATE_LIMITED", message: "Too many sign-up attempts. Try again later." } });
   const loginIpLimit = limiter(authLimits.loginPerIp, "Too many sign-in attempts. Try again later.");
   // Keyed by a hash of the submitted email whether or not the account exists, so the limit itself reveals nothing.
   const loginEmailLimit = rateLimit({

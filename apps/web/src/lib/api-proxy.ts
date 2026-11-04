@@ -45,6 +45,15 @@ export function apiBaseUrl(env: Record<string, string | undefined> = process.env
   return (env.SCOPEPILOT_API_URL?.trim() || "http://localhost:4000").replace(/\/+$/, "");
 }
 
+/**
+ * Read timeout for API calls (SCOPEPILOT_API_TIMEOUT_MS, 1 000–300 000). Raise it when the API host
+ * sleeps when idle and needs time to wake. AI routes always get at least their own longer timeout.
+ */
+export function apiTimeoutMs(env: Record<string, string | undefined> = process.env): number {
+  const value = Number(env.SCOPEPILOT_API_TIMEOUT_MS?.trim());
+  return Number.isInteger(value) && value >= 1_000 && value <= 300_000 ? value : DEFAULT_TIMEOUT_MS;
+}
+
 function json(status: number, body: unknown): Response {
   return Response.json(body, { status, headers: { "cache-control": "no-store" } });
 }
@@ -102,7 +111,7 @@ function clientAddress(request: Request): string | null {
   return last && /^[0-9a-fA-F:.]{2,45}$/.test(last) ? last : null;
 }
 
-function upstreamHeaders(request: Request, hasBody: boolean): Headers {
+function upstreamHeaders(request: Request, hasBody: boolean, env: Record<string, string | undefined>): Headers {
   const headers = new Headers({ accept: "application/json" });
   if (hasBody) headers.set("content-type", "application/json");
   const cookie = sessionCookieHeader(request.headers.get("cookie"));
@@ -111,6 +120,12 @@ function upstreamHeaders(request: Request, hasBody: boolean): Headers {
   if (csrf && CSRF_TOKEN.test(csrf)) headers.set("x-csrf-token", csrf);
   const client = clientAddress(request);
   if (client) headers.set("x-forwarded-for", client);
+  // Proves to a publicly reachable API that this request came through the web proxy (apps/api/src/app.ts, proxySecret).
+  const secret = env.SCOPEPILOT_PROXY_SECRET?.trim();
+  if (secret) {
+    headers.set("x-scopepilot-proxy-secret", secret);
+    if (client) headers.set("x-scopepilot-client-ip", client);
+  }
   return headers;
 }
 
@@ -127,17 +142,19 @@ export async function forwardToApi(request: Request, segments: string[], options
   if (!route) return json(404, { error: "NOT_FOUND", message: "Unknown API route." });
   if (!route.methods.includes(method)) return json(405, { error: "METHOD_NOT_ALLOWED", message: "Method not allowed." });
 
-  if (method !== "GET" && crossSiteWrite(request, options.env)) return json(403, { error: "ORIGIN_REJECTED", message: "Cross-origin requests are not allowed." });
+  const env = options.env ?? process.env;
+  if (method !== "GET" && crossSiteWrite(request, env)) return json(403, { error: "ORIGIN_REJECTED", message: "Cross-origin requests are not allowed." });
 
   const body = method === "GET" ? undefined : await request.text();
   if (body !== undefined && body.length > route.maxBody) return json(413, { error: "PAYLOAD_TOO_LARGE", message: "Request body is too large." });
-  const timeoutMs = method !== "GET" && route.writeTimeoutMs ? route.writeTimeoutMs : DEFAULT_TIMEOUT_MS;
+  const readTimeoutMs = apiTimeoutMs(env);
+  const timeoutMs = method !== "GET" && route.writeTimeoutMs ? Math.max(route.writeTimeoutMs, readTimeoutMs) : readTimeoutMs;
 
   let upstream: Response;
   try {
-    upstream = await (options.fetchImpl ?? fetch)(`${options.baseUrl ?? apiBaseUrl()}/v1/${path}${forwardedQuery(path, request.url)}`, {
+    upstream = await (options.fetchImpl ?? fetch)(`${options.baseUrl ?? apiBaseUrl(env)}/v1/${path}${forwardedQuery(path, request.url)}`, {
       method,
-      headers: upstreamHeaders(request, body !== undefined),
+      headers: upstreamHeaders(request, body !== undefined, env),
       body,
       cache: "no-store",
       signal: AbortSignal.timeout(timeoutMs),
